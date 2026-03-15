@@ -1,0 +1,241 @@
+================================================================================
+WASTE DATASET - EXPLORATORY DATA ANALYSIS
+================================================================================
+
+🗑️ DATASET OVERVIEW
+--------------------------------------------------------------------------------
+Total Waste Records: 14,070
+Date Range: 2025-01-01 00:00:37 to 2025-07-30 23:31:25
+Total Units Wasted: 1,803,695
+Average Waste per Incident: 128.2 units
+Median Waste: 129 units
+Plants: 1
+SKUs Affected (columns): 0
+Unique Batches: 6796
+
+🏭 WASTE BY STAGE (Production vs Post-Dispatch)
+--------------------------------------------------------------------------------
+               Total Units  Avg Units/Incident  ...  Record Count  % of Total
+stage                                           ...                          
+post_dispatch      1803695          128.194385  ...         14070       100.0
+
+[1 rows x 5 columns]
+
+⚠️ **POST-DISPATCH WASTE DOMINANT:** 1,803,695 units (100.0%)
+   Interpretation: Products are being wasted after leaving the plant (handling, spoilage, unsold returns)
+   Action Items:
+   - Audit cold chain compliance at depots and during transport
+   - Review demand forecasting accuracy to reduce overstocking
+   - Examine handling_condition data for rough handling patterns
+   - Analyze returned unsold products by route/depot
+
+🔍 WASTE ROOT CAUSE ANALYSIS (Top 10 Reasons)
+--------------------------------------------------------------------------------
+                   Total Units Wasted  Incidents  % of Total
+waste_reason_code                                           
+Damaged                        465455       3614       25.81
+Quality Failure                446940       3498       24.78
+Expired Waste                  446688       3488       24.77
+Returned Unsold                444612       3470       24.65
+
+🎯 **TOP WASTE REASON:** Damaged
+   - Accounts for 25.8% of all waste (465,455 units)
+   - Responsible for 3,614 waste incidents
+   - Interpretation: This is the single highest-impact waste driver in the supply chain
+   - Priority action: Immediate root cause analysis and corrective measures for Damaged
+     → Review all waste_by_reason.csv entries to prioritize prevention efforts
+
+🍞 SKU-LEVEL WASTE ANALYSIS
+--------------------------------------------------------------------------------
+                 SKU  Total Wasted  Incidents  % of Total
+3   Low GI Seed loaf        554547       5264   30.745054
+0         Soft white        402560       5255   22.318629
+2   Whole grain loaf        315422       5234   17.487546
+1  High Energy Brown        289053       5322   16.025603
+
+🔴 **HIGHEST-WASTE SKU:** Low GI Seed loaf
+   - Total wasted: 554,547 units (30.7% of total waste)
+   - Affected incidents: 5,264
+   - Interpretation: This SKU has demand forecasting or handling issues
+   - Actions: Check shelf-life, analyze temperature sensitivity, review demand patterns
+
+⚠️ High-Waste SKUs (>10% of total waste): 4
+                 SKU  Total Wasted  % of Total
+3   Low GI Seed loaf        554547   30.745054
+0         Soft white        402560   22.318629
+2   Whole grain loaf        315422   17.487546
+1  High Energy Brown        289053   16.025603
+   → Focus prevention efforts on these SKUs first (80/20 rule)
+
+🏭 PLANT-LEVEL WASTE PERFORMANCE
+--------------------------------------------------------------------------------
+                  Total Wasted  Avg per Incident  Incidents  % of Total
+plant_id                                                               
+Shepperton_Plant       1803695        128.194385      14070       100.0
+
+⏰ SHIFT-LEVEL WASTE PATTERNS
+--------------------------------------------------------------------------------
+           Total Wasted  Avg per Incident  Incidents  % of Total
+shift                                                           
+Night            604752        128.179737       4718       33.53
+Afternoon        602814        128.559181       4689       33.42
+Morning          596129        127.842376       4663       33.05
+
+⚠️ **WORST PERFORMING SHIFT:** Night
+   - Accounts for 33.5% of total waste
+   - Average waste per incident: 128.2 units (higher wastage per event)
+   - Interpretation: This shift has operational challenges (staffing, training, fatigue, supervision)
+   - Actions: Review shift procedures, audit staffing levels, conduct retraining, improve supervision
+
+🌡️ TEMPERATURE CORRELATION WITH WASTE
+--------------------------------------------------------------------------------
+count    14070.000000
+mean        24.960441
+std          4.029005
+min         18.000000
+25%         21.400000
+50%         25.000000
+75%         28.500000
+max         32.000000
+Name: temperature_at_check, dtype: float64
+
+Waste incidents with temp > 35°C: 0 (0.0%)
+Units wasted at high temp: 0 (0.0% of total)
+
+🤲 HANDLING CONDITION IMPACT
+--------------------------------------------------------------------------------
+                    Total Wasted  Incidents  % of Total
+handling_condition                                     
+Rough handling            374112       2885       20.74
+Good                      365256       2853       20.25
+Delayed offloading        358226       2798       19.86
+Overloaded crates         354872       2782       19.67
+Poor stacking             351229       2752       19.47
+
+📅 TEMPORAL WASTE PATTERNS
+--------------------------------------------------------------------------------
+Waste by Day of Week:
+            Total         Avg  Incidents
+day_name                                
+Monday     261068  126.486434       2064
+Tuesday    248492  129.355544       1921
+Wednesday  267028  129.374031       2064
+Thursday   267442  129.763222       2061
+Friday     247286  127.598555       1938
+Saturday   248711  126.764016       1962
+Sunday     261389  127.943710       2043
+
+Weekday vs Weekend:
+        qty_waste            
+              sum        mean
+Weekday   1293595  128.524093
+Weekend    510100  127.365793
+
+Peak Waste Hour: 0.0:00 (84395 units)
+
+🚛 POST-DISPATCH WASTE ANALYSIS
+--------------------------------------------------------------------------------
+Post-Dispatch Waste: 14,070 incidents, 1,803,695 units
+
+Top 15 Routes by Waste:
+           Total Wasted  Incidents
+route_id                          
+RT_BIN_01        260039       2014
+RT_MUR_01        250814       1990
+RT_HAT_02        136140       1055
+RT_HAT_01        131838       1035
+RT_CHE_01        130446        987
+RT_CHE_02        129009       1021
+RT_CHI_01        128758        983
+RT_MUT_01        128540       1006
+RT_CHI_02        127390       1021
+RT_MUT_02        122433        949
+RT_HAR_03         91942        699
+RT_HAR_02         83196        647
+RT_HAR_01         83150        663
+
+Top 15 Depots by Waste:
+          Total Wasted  Incidents
+depot_id                         
+Hatcliff        267978       2090
+Bindura         260039       2014
+Chegutu         259455       2008
+Harare          258288       2009
+Chinhoyi        256148       2004
+Mutare          250973       1955
+Murehwa         250814       1990
+
+🔗 BATCH TRACEABILITY
+--------------------------------------------------------------------------------
+Unique batches with waste: 6,796
+Top 10 batches by waste quantity:
+batch_id
+BATCH_22799    886
+BATCH_14647    688
+BATCH_25588    662
+BATCH_27096    660
+BATCH_23863    635
+BATCH_28379    630
+BATCH_28651    615
+BATCH_23705    614
+BATCH_25003    606
+BATCH_27385    605
+Name: qty_waste, dtype: int64
+
+🎯 KEY INSIGHTS & ACTION ITEMS
+================================================================================
+
+📊 QUANTITATIVE SUMMARY:
+   • Total waste volume: 1,803,695 units across 14,070 incidents
+   • Average waste per incident: 128.2 units
+   • Financial impact: CRITICAL - waste represents direct financial loss
+   • Date range analyzed: 2025-01-01 to 2025-07-30
+
+🎯 PRIMARY FOCUS AREA:
+   → POST-DISPATCH WASTE (>50% of total)
+   • Total: 1,803,695 units
+   • Root causes likely: Cold chain breaks, handling damage, shelf-life expiry
+
+🔍 SPECIFIC ACTION ITEMS (PRIORITY ORDER):
+
+1. **TOP WASTE REASON - DAMAGED** (25.8%)
+   → Impact: 465,455 units wasted
+   → Frequency: 3,614 incidents
+   Actions:
+      - Conduct immediate root cause analysis (RCA)
+      - Identify systemic failures preventing this waste
+      - Implement preventive controls
+      - Track prevention effectiveness weekly
+
+2. **HIGH-WASTE SKUS** (>10% of total)
+   → Products at risk: Low GI Seed loaf, Soft white, Whole grain loaf, High Energy Brown
+   Actions:
+      - Review demand forecasting accuracy for these SKUs
+      - Analyze shelf-life vs. inventory turnover
+      - Check temperature control compliance
+      - Consider supply chain optimization
+
+3. **SHIFT PERFORMANCE** (Night)
+   → Excess waste: 33.5% of total
+   Actions:
+      - Audit staffing levels and skill mix
+      - Review operational procedures during this shift
+      - Conduct targeted training/retraining
+      - Increase supervision/monitoring
+
+4. **LOGISTICAL HOTSPOTS** (Top 15 routes/depots)
+   Actions:
+      - Audit top routes for cold chain compliance
+      - Inspect depot equipment and storage conditions
+      - Review handling procedures with drivers/depot staff
+
+================================================================================
+📋 NEXT STEPS:
+   1. Review waste_enhanced_summary.txt (this report) with operations team
+   2. Examine waste_by_reason.csv to identify specific failure modes
+   3. Cross-reference waste_by_route_top30.csv with route performance metrics
+   4. Implement corrective actions for top 3 waste drivers
+   5. Track KPIs weekly: Total waste units, waste per incident, waste by reason
+   6. Re-run this analysis monthly to track progress
+================================================================================
+✅ Waste summary complete!

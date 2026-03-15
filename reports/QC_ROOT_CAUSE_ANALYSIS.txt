@@ -1,0 +1,217 @@
+====================================================================================================
+QUALITY CONTROL FAILURE ROOT CAUSE ANALYSIS
+GOAL: Reduce fail rate from 38.3% to target <10%
+====================================================================================================
+
+🎯 CURRENT STATE
+----------------------------------------------------------------------------------------------------
+Total QC Tests: 6,000
+Failed Tests: 2,289
+FAIL RATE: 38.15% (TARGET: <10%)
+GAP TO TARGET: 28.15 percentage points
+TESTS THAT SHOULD NOT FAIL: 1,688 tests/year
+
+⚠️ SEVERITY: CRITICAL
+   A 38.1% fail rate means nearly 4 out of 10 products fail quality standards.
+   This impacts customer satisfaction, waste, and returns.
+
+====================================================================================================
+1. FAILURE BREAKDOWN BY PARAMETER
+====================================================================================================
+
+Parameter Performance:
+Parameter               Tests   Failures    Fail Rate      Gap to 10%
+----------------------------------------------------------------------------------------------------
+seal_strength          1433.0      559.0        39.0%           29.0% 🔴 CRITICAL
+temperature            1543.0      591.0        38.3%           28.3% 🔴 CRITICAL
+moisture               1565.0      594.0        38.0%           28.0% 🔴 CRITICAL
+weight                 1459.0      545.0        37.4%           27.4% 🔴 CRITICAL
+
+🎯 PARAMETER PRIORITIES:
+1. **seal_strength**: 39.0% fail rate - HIGHEST PRIORITY
+   Action: Investigate equipment calibration, measurement methodology, spec limits
+
+2. **temperature**: 38.3% fail rate
+   Action: Review process controls, raw material quality, environmental factors
+
+3. **moisture**: 38.0% fail rate
+   Action: Review process controls, raw material quality, environmental factors
+
+====================================================================================================
+2. TEMPORAL FAILURE PATTERNS
+====================================================================================================
+
+Worst Performing Hours:
+  Hour 00:00 - 38.1% fail rate (2289.0 failures)
+
+💡 INSIGHT: Night shift (00:00-06:00) has highest failures. Review shift staffing/fatigue.
+
+Worst Day: Tuesday (40.3% fail rate)
+💡 INSIGHT: Review Tuesday operations - staffing, equipment maintenance schedule
+
+====================================================================================================
+3. BATCH-LEVEL FAILURE ANALYSIS
+====================================================================================================
+
+Batch Quality Distribution:
+  🟢 Perfect (0% fail):         1930 batches (50.4%)
+  🟢 Good (≤10% fail):             0 batches (0.0%)
+  🟡 Concerning (10-50% fail):   727 batches (19.0%)
+  🔴 Failed (>50% fail):        1171 batches (30.6%)
+
+⚠️ CRITICAL: 1171 batches (30.6%) failed majority of QC tests
+   These batches should NOT have been dispatched - risk of customer complaints.
+
+Top 10 Worst Performing Batches:
+Batch ID          Tests   Failures    Fail Rate
+--------------------------------------------------
+BATCH_20007         1.0        1.0       100.0%
+BATCH_20008         1.0        1.0       100.0%
+BATCH_20026         1.0        1.0       100.0%
+BATCH_20030         1.0        1.0       100.0%
+BATCH_20034         1.0        1.0       100.0%
+BATCH_20041         1.0        1.0       100.0%
+BATCH_20048         1.0        1.0       100.0%
+BATCH_20049         1.0        1.0       100.0%
+BATCH_20055         1.0        1.0       100.0%
+BATCH_20056         1.0        1.0       100.0%
+
+💡 ACTION: Investigate these batches in production dataset for common patterns
+   (operator, line, shift, raw materials, equipment used)
+
+====================================================================================================
+4. SKU-LEVEL FAILURE PATTERNS
+====================================================================================================
+
+SKU Performance:
+SKU                               Tests   Failures    Fail Rate
+----------------------------------------------------------------------
+High Energy Brown                1533.0      596.0        38.9% 🟡
+Low GI Seed loaf                 1479.0      568.0        38.4% 🟡
+Soft white                       1526.0      582.0        38.1% 🟡
+Whole grain loaf                 1462.0      543.0        37.1% 🟡
+
+⚠️ WORST SKU: High Energy Brown (38.9% fail rate)
+   Action: Review High Energy Brown production process, recipe, specifications
+
+====================================================================================================
+5. CORRELATION WITH PRODUCTION DEFECTS
+====================================================================================================
+
+Average Production Defect Rate:
+  Batches that PASSED QC:  6.19%
+  Batches that FAILED QC:  6.24%
+
+⚠️ WEAK CORRELATION: QC failures may not align with production defects
+   Possible issues:
+   1. QC spec limits too tight (failing good product)
+   2. QC equipment needs calibration
+   3. Different quality dimensions measured
+
+Top 5 Operators with Highest QC Fail Rates (min 10 tests):
+Operator           Tests   Failures    Fail Rate
+--------------------------------------------------
+OP_EFFIE           810.0      327.0        40.4%
+OP_ANNE            860.0      331.0        38.5%
+OP_RUDO            859.0      324.0        37.7%
+OP_CHIPO           835.0      312.0        37.4%
+OP_TAFADZWA        845.0      309.0        36.6%
+
+💡 ACTION: Provide additional training or review workload for these operators
+
+====================================================================================================
+6. QC FAILURE → WASTE CORRELATION
+====================================================================================================
+
+QC-Failed Batches: 1,898
+QC-Failed → Wasted: 654 (34.5%)
+
+⚠️ CONCERN: Only 34.5% of QC-failed batches resulted in waste.
+   This suggests many failed batches were still dispatched to customers!
+   Action: Implement HARD STOP for batches failing QC - do not dispatch.
+
+====================================================================================================
+7. COMPREHENSIVE ACTION PLAN TO ACHIEVE <10% FAIL RATE
+====================================================================================================
+
+SHORT-TERM ACTIONS (Week 1-4):
+----------------------------------------------------------------------------------------------------
+1. **IMMEDIATE: Calibrate seal_strength equipment**
+   - Current fail rate: 39.0%
+   - Target: Reduce to <20% in 2 weeks
+   - Actions: Equipment calibration, measurement SOP review, spec limit validation
+
+2. **Investigate worst 10 batches**
+   - Review production logs for common patterns
+   - Identify: operator, line, shift, raw material lot, equipment used
+   - Document findings and corrective actions
+
+3. **Implement HARD STOP for QC failures**
+   - DO NOT dispatch batches failing >50% of QC tests
+   - Quarantine failed batches for investigation
+   - Target: Prevent customer complaints from known bad batches
+
+4. **Shift-specific interventions**
+   - Worst shift: Review identified in time analysis above
+   - Actions: Staffing review, fatigue management, equipment checks
+
+
+MID-TERM ACTIONS (Month 2-3):
+----------------------------------------------------------------------------------------------------
+5. **Process improvements for top 3 failing parameters**
+   1. seal_strength: Review process controls, raw materials, environmental factors
+   2. temperature: Review process controls, raw materials, environmental factors
+   3. moisture: Review process controls, raw materials, environmental factors
+
+6. **Operator training program**
+   - Focus on worst-performing operators identified above
+   - Standard operating procedures review
+   - Quality awareness training
+
+7. **SKU-specific interventions**
+   - Focus on High Energy Brown (worst SKU)
+   - Review recipe, process, specifications
+   - Consider pilot runs with improved process
+
+
+LONG-TERM ACTIONS (Month 4-6):
+----------------------------------------------------------------------------------------------------
+8. **Statistical Process Control (SPC)**
+   - Implement control charts for all QC parameters
+   - Real-time monitoring and alerts
+   - Target: Detect issues before batches complete
+
+9. **Predictive quality model**
+   - Use production data to predict QC failures
+   - Early intervention before QC stage
+   - Target: Prevent failures at source
+
+10. **Continuous improvement program**
+    - Monthly QC fail rate tracking
+    - Root cause analysis for all batches >50% fail
+    - Quarterly spec limit review
+
+====================================================================================================
+8. SUCCESS METRICS & TARGETS
+====================================================================================================
+
+Target Milestones:
+  Month 1: Reduce fail rate to <30% (from current 38.1%)
+  Month 2: Reduce fail rate to <20%
+  Month 3: Reduce fail rate to <15%
+  Month 6: Achieve target <10%
+
+Weekly Monitoring:
+  - Overall QC fail rate
+  - Parameter-specific fail rates
+  - Failed batch count
+  - QC-failed batches dispatched (should be 0)
+
+Cost-Benefit Estimate:
+  Current waste from QC failures: 654 batches
+  Target waste reduction: 392 batches (60% reduction)
+  Estimated cost savings: Significant reduction in waste + customer returns
+
+====================================================================================================
+END OF ROOT CAUSE ANALYSIS
+====================================================================================================

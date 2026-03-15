@@ -1,0 +1,18 @@
+record_id,timestamp,plant_id,sku,qty_in,qty_out,balance
+INVSTK_900004,2025-02-13,Shepperton_Plant,High Energy Brown,918,1371,-453
+INVSTK_900005,2025-02-22,Shepperton_Plant,Whole grain loaf,285,1169,-884
+INVSTK_900010,2025-07-16,Shepperton_Plant,Whole grain loaf,241,757,-430
+INVSTK_900012,2025-04-18,Shepperton_Plant,Low GI Seed loaf,943,1518,-392
+INVSTK_900013,2025-06-04,Shepperton_Plant,Whole grain loaf,1346,1050,-134
+INVSTK_900018,2025-02-25,Shepperton_Plant,Low GI Seed loaf,513,1522,-1401
+INVSTK_900019,2025-06-03,Shepperton_Plant,Whole grain loaf,336,313,-111
+INVSTK_900023,2025-01-19,Shepperton_Plant,Low GI Seed loaf,1381,1409,-1429
+INVSTK_900031,2025-02-21,Shepperton_Plant,Low GI Seed loaf,1429,462,-462
+INVSTK_900038,2025-01-06,Shepperton_Plant,Low GI Seed loaf,651,1070,-232
+INVSTK_900039,2025-05-24,Shepperton_Plant,Low GI Seed loaf,469,529,-292
+INVSTK_900043,2025-04-07,Shepperton_Plant,Low GI Seed loaf,540,1043,-795
+INVSTK_900048,2025-06-22,Shepperton_Plant,Low GI Seed loaf,1227,1583,-1151
+INVSTK_900053,2025-06-21,Shepperton_Plant,Low GI Seed loaf,1550,1251,-852
+INVSTK_900055,2025-07-16,Shepperton_Plant,Low GI Seed loaf,629,178,-401
+INVSTK_900058,2025-05-20,Shepperton_Plant,Low GI Seed loaf,1042,1493,-272
+INVSTK_900067,2025-04-21,Shepperton_Plant,Low GI Seed loaf,833,1279,-337

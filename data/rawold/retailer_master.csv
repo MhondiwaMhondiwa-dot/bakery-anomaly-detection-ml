@@ -1,0 +1,200 @@
+retailer_id,retailer_name,retailer_type,region
+STORE_001,Retailer_1,Tuckshop,Gweru
+STORE_002,Retailer_2,Service Station,Bindura
+STORE_003,Retailer_3,Supermarket,Kwekwe
+STORE_004,Retailer_4,Tuckshop,Bindura
+STORE_005,Retailer_5,Tuckshop,Harare
+STORE_006,Retailer_6,Service Station,Mutare
+STORE_007,Retailer_7,Supermarket,Masvingo
+STORE_008,Retailer_8,Supermarket,Kwekwe
+STORE_009,Retailer_9,Tuckshop,Mutare
+STORE_010,Retailer_10,Wholesaler,Chitungwiza
+STORE_011,Retailer_11,Tuckshop,Masvingo
+STORE_012,Retailer_12,Tuckshop,Bindura
+STORE_013,Retailer_13,Tuckshop,Bindura
+STORE_014,Retailer_14,Tuckshop,Masvingo
+STORE_015,Retailer_15,Service Station,Bindura
+STORE_016,Retailer_16,Supermarket,Gweru
+STORE_017,Retailer_17,Service Station,Masvingo
+STORE_018,Retailer_18,Service Station,Mutare
+STORE_019,Retailer_19,Service Station,Masvingo
+STORE_020,Retailer_20,Tuckshop,Kwekwe
+STORE_021,Retailer_21,Wholesaler,Bindura
+STORE_022,Retailer_22,Supermarket,Gweru
+STORE_023,Retailer_23,Wholesaler,Gweru
+STORE_024,Retailer_24,Service Station,Chitungwiza
+STORE_025,Retailer_25,Service Station,Mutare
+STORE_026,Retailer_26,Wholesaler,Bulawayo
+STORE_027,Retailer_27,Wholesaler,Bulawayo
+STORE_028,Retailer_28,Wholesaler,Masvingo
+STORE_029,Retailer_29,Service Station,Chitungwiza
+STORE_030,Retailer_30,Service Station,Harare
+STORE_031,Retailer_31,Supermarket,Masvingo
+STORE_032,Retailer_32,Supermarket,Chitungwiza
+STORE_033,Retailer_33,Service Station,Mutare
+STORE_034,Retailer_34,Wholesaler,Mutare
+STORE_035,Retailer_35,Wholesaler,Mutare
+STORE_036,Retailer_36,Supermarket,Mutare
+STORE_037,Retailer_37,Service Station,Mutare
+STORE_038,Retailer_38,Supermarket,Chitungwiza
+STORE_039,Retailer_39,Supermarket,Chitungwiza
+STORE_040,Retailer_40,Tuckshop,Gweru
+STORE_041,Retailer_41,Tuckshop,Kwekwe
+STORE_042,Retailer_42,Tuckshop,Bulawayo
+STORE_043,Retailer_43,Wholesaler,Bindura
+STORE_044,Retailer_44,Service Station,Mutare
+STORE_045,Retailer_45,Service Station,Harare
+STORE_046,Retailer_46,Service Station,Bindura
+STORE_047,Retailer_47,Service Station,Chitungwiza
+STORE_048,Retailer_48,Tuckshop,Harare
+STORE_049,Retailer_49,Wholesaler,Harare
+STORE_050,Retailer_50,Wholesaler,Harare
+STORE_051,Retailer_51,Tuckshop,Gweru
+STORE_052,Retailer_52,Wholesaler,Chitungwiza
+STORE_053,Retailer_53,Tuckshop,Harare
+STORE_054,Retailer_54,Service Station,Mutare
+STORE_055,Retailer_55,Tuckshop,Masvingo
+STORE_056,Retailer_56,Service Station,Harare
+STORE_057,Retailer_57,Service Station,Gweru
+STORE_058,Retailer_58,Supermarket,Bindura
+STORE_059,Retailer_59,Tuckshop,Chitungwiza
+STORE_060,Retailer_60,Supermarket,Kwekwe
+STORE_061,Retailer_61,Tuckshop,Gweru
+STORE_062,Retailer_62,Tuckshop,Harare
+STORE_063,Retailer_63,Supermarket,Chitungwiza
+STORE_064,Retailer_64,Supermarket,Masvingo
+STORE_065,Retailer_65,Tuckshop,Harare
+STORE_066,Retailer_66,Wholesaler,Gweru
+STORE_067,Retailer_67,Service Station,Bulawayo
+STORE_068,Retailer_68,Supermarket,Mutare
+STORE_069,Retailer_69,Service Station,Kwekwe
+STORE_070,Retailer_70,Wholesaler,Bindura
+STORE_071,Retailer_71,Wholesaler,Gweru
+STORE_072,Retailer_72,Wholesaler,Chitungwiza
+STORE_073,Retailer_73,Supermarket,Kwekwe
+STORE_074,Retailer_74,Wholesaler,Kwekwe
+STORE_075,Retailer_75,Supermarket,Kwekwe
+STORE_076,Retailer_76,Wholesaler,Harare
+STORE_077,Retailer_77,Service Station,Mutare
+STORE_078,Retailer_78,Service Station,Harare
+STORE_079,Retailer_79,Tuckshop,Chitungwiza
+STORE_080,Retailer_80,Service Station,Harare
+STORE_081,Retailer_81,Tuckshop,Bulawayo
+STORE_082,Retailer_82,Service Station,Mutare
+STORE_083,Retailer_83,Supermarket,Mutare
+STORE_084,Retailer_84,Service Station,Chitungwiza
+STORE_085,Retailer_85,Tuckshop,Bindura
+STORE_086,Retailer_86,Tuckshop,Bulawayo
+STORE_087,Retailer_87,Wholesaler,Gweru
+STORE_088,Retailer_88,Supermarket,Harare
+STORE_089,Retailer_89,Service Station,Masvingo
+STORE_090,Retailer_90,Wholesaler,Harare
+STORE_091,Retailer_91,Service Station,Kwekwe
+STORE_092,Retailer_92,Service Station,Harare
+STORE_093,Retailer_93,Wholesaler,Gweru
+STORE_094,Retailer_94,Wholesaler,Harare
+STORE_095,Retailer_95,Wholesaler,Bulawayo
+STORE_096,Retailer_96,Wholesaler,Bulawayo
+STORE_097,Retailer_97,Wholesaler,Mutare
+STORE_098,Retailer_98,Service Station,Chitungwiza
+STORE_099,Retailer_99,Wholesaler,Bindura
+STORE_100,Retailer_100,Supermarket,Masvingo
+STORE_101,Retailer_101,Tuckshop,Kwekwe
+STORE_102,Retailer_102,Wholesaler,Harare
+STORE_103,Retailer_103,Wholesaler,Harare
+STORE_104,Retailer_104,Service Station,Gweru
+STORE_105,Retailer_105,Wholesaler,Chitungwiza
+STORE_106,Retailer_106,Wholesaler,Bulawayo
+STORE_107,Retailer_107,Wholesaler,Masvingo
+STORE_108,Retailer_108,Service Station,Mutare
+STORE_109,Retailer_109,Wholesaler,Bulawayo
+STORE_110,Retailer_110,Tuckshop,Kwekwe
+STORE_111,Retailer_111,Service Station,Chitungwiza
+STORE_112,Retailer_112,Tuckshop,Kwekwe
+STORE_113,Retailer_113,Service Station,Bindura
+STORE_114,Retailer_114,Wholesaler,Mutare
+STORE_115,Retailer_115,Tuckshop,Bindura
+STORE_116,Retailer_116,Service Station,Gweru
+STORE_117,Retailer_117,Supermarket,Kwekwe
+STORE_118,Retailer_118,Wholesaler,Gweru
+STORE_119,Retailer_119,Service Station,Harare
+STORE_120,Retailer_120,Supermarket,Bindura
+STORE_121,Retailer_121,Service Station,Chitungwiza
+STORE_122,Retailer_122,Supermarket,Kwekwe
+STORE_123,Retailer_123,Wholesaler,Masvingo
+STORE_124,Retailer_124,Tuckshop,Mutare
+STORE_125,Retailer_125,Supermarket,Bulawayo
+STORE_126,Retailer_126,Service Station,Chitungwiza
+STORE_127,Retailer_127,Wholesaler,Chitungwiza
+STORE_128,Retailer_128,Supermarket,Gweru
+STORE_129,Retailer_129,Service Station,Bindura
+STORE_130,Retailer_130,Service Station,Kwekwe
+STORE_131,Retailer_131,Service Station,Kwekwe
+STORE_132,Retailer_132,Supermarket,Harare
+STORE_133,Retailer_133,Supermarket,Harare
+STORE_134,Retailer_134,Supermarket,Mutare
+STORE_135,Retailer_135,Tuckshop,Gweru
+STORE_136,Retailer_136,Supermarket,Chitungwiza
+STORE_137,Retailer_137,Supermarket,Kwekwe
+STORE_138,Retailer_138,Supermarket,Masvingo
+STORE_139,Retailer_139,Tuckshop,Gweru
+STORE_140,Retailer_140,Supermarket,Mutare
+STORE_141,Retailer_141,Service Station,Mutare
+STORE_142,Retailer_142,Supermarket,Gweru
+STORE_143,Retailer_143,Service Station,Mutare
+STORE_144,Retailer_144,Service Station,Gweru
+STORE_145,Retailer_145,Service Station,Bulawayo
+STORE_146,Retailer_146,Tuckshop,Gweru
+STORE_147,Retailer_147,Tuckshop,Bindura
+STORE_148,Retailer_148,Tuckshop,Gweru
+STORE_149,Retailer_149,Supermarket,Mutare
+STORE_150,Retailer_150,Service Station,Kwekwe
+STORE_151,Retailer_151,Tuckshop,Bindura
+STORE_152,Retailer_152,Tuckshop,Mutare
+STORE_153,Retailer_153,Supermarket,Harare
+STORE_154,Retailer_154,Tuckshop,Harare
+STORE_155,Retailer_155,Supermarket,Kwekwe
+STORE_156,Retailer_156,Wholesaler,Kwekwe
+STORE_157,Retailer_157,Tuckshop,Bindura
+STORE_158,Retailer_158,Wholesaler,Bulawayo
+STORE_159,Retailer_159,Supermarket,Kwekwe
+STORE_160,Retailer_160,Service Station,Harare
+STORE_161,Retailer_161,Tuckshop,Gweru
+STORE_162,Retailer_162,Supermarket,Mutare
+STORE_163,Retailer_163,Service Station,Harare
+STORE_164,Retailer_164,Service Station,Harare
+STORE_165,Retailer_165,Wholesaler,Bulawayo
+STORE_166,Retailer_166,Supermarket,Bindura
+STORE_167,Retailer_167,Service Station,Bindura
+STORE_168,Retailer_168,Tuckshop,Chitungwiza
+STORE_169,Retailer_169,Tuckshop,Bulawayo
+STORE_170,Retailer_170,Wholesaler,Gweru
+STORE_171,Retailer_171,Service Station,Bindura
+STORE_172,Retailer_172,Supermarket,Mutare
+STORE_173,Retailer_173,Tuckshop,Kwekwe
+STORE_174,Retailer_174,Service Station,Bulawayo
+STORE_175,Retailer_175,Service Station,Kwekwe
+STORE_176,Retailer_176,Wholesaler,Harare
+STORE_177,Retailer_177,Tuckshop,Mutare
+STORE_178,Retailer_178,Tuckshop,Mutare
+STORE_179,Retailer_179,Supermarket,Harare
+STORE_180,Retailer_180,Tuckshop,Bulawayo
+STORE_181,Retailer_181,Supermarket,Harare
+STORE_182,Retailer_182,Tuckshop,Kwekwe
+STORE_183,Retailer_183,Wholesaler,Chitungwiza
+STORE_184,Retailer_184,Tuckshop,Mutare
+STORE_185,Retailer_185,Supermarket,Masvingo
+STORE_186,Retailer_186,Supermarket,Masvingo
+STORE_187,Retailer_187,Wholesaler,Kwekwe
+STORE_188,Retailer_188,Tuckshop,Gweru
+STORE_189,Retailer_189,Tuckshop,Bindura
+STORE_190,Retailer_190,Wholesaler,Harare
+STORE_191,Retailer_191,Tuckshop,Harare
+STORE_192,Retailer_192,Tuckshop,Gweru
+STORE_193,Retailer_193,Supermarket,Gweru
+STORE_194,Retailer_194,Tuckshop,Kwekwe
+STORE_195,Retailer_195,Tuckshop,Kwekwe
+STORE_196,Retailer_196,Wholesaler,Gweru
+STORE_197,Retailer_197,Wholesaler,Mutare
+STORE_198,Retailer_198,Service Station,Kwekwe
+STORE_199,Retailer_199,Supermarket,Chitungwiza

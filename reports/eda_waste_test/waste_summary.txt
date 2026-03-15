@@ -1,0 +1,28 @@
+Waste Dataset Summary
+============================================================
+Shape: 14070 rows × 20 columns
+
+Columns: qty_waste, timestamp, plant_id, depot_id, route_id, qty_waste_1, qty_waste_2, temperature_at_check, handling_condition, batch_id, shift, notes, soft_white, high_energy_brown, whole_grain_loaf, low_gi_seed_loaf, hour, dayofweek, date, is_weekend
+
+Data types:
+str               10
+int64              5
+float64            2
+datetime64[us]     1
+object             1
+bool               1
+Name: count, dtype: int64
+
+Missing values:
+timestamp      17
+batch_id     5736
+hour           17
+dayofweek      17
+date           17
+dtype: int64
+
+Waste Quantity Stats (qty_waste):
+  Total waste: 0 units
+  Mean: nan
+  Median: nan
+  Max: nan

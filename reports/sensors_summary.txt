@@ -1,0 +1,37 @@
+Sensors/IoT Dataset Summary
+============================================================
+Shape: 9000 rows × 9 columns
+
+Columns: sensor_id, timestamp, plant_id, equipment_id, metric_name, metric_value, date, hour, dayofweek
+
+Data types:
+str               5
+datetime64[us]    1
+float64           1
+object            1
+int32             1
+Name: count, dtype: int64
+
+Missing values:
+Series([], dtype: int64)
+
+Metric Value Stats:
+  Mean: 75.54
+  Median: 27.62
+  Std: 125.32
+  Min: 0.00
+  Max: 779.97
+
+Top Metric Names:
+  belt_speed_m_min: 1,967
+  zone_temperature_c: 1,050
+  motor_load_pct: 1,035
+  air_temperature_c: 536
+  seal_strength_n: 530
+  seal_temperature_c: 496
+  sensitivity_level: 489
+  humidity_pct: 486
+  temperature_c: 476
+  detection_events: 473
+
+Unique Equipment: 9

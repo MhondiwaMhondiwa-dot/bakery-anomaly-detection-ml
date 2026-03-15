@@ -1,0 +1,151 @@
+driver_id,num_routes,avg_distance_km,avg_time_min,avg_stops,avg_risk_score,primary_region
+DRIVER_001,1,56.0,281.0,14.0,0.4,Harare Urban
+DRIVER_002,1,280.0,285.0,8.0,0.97,Harare Urban
+DRIVER_003,1,124.0,174.0,13.0,0.6,Harare Urban
+DRIVER_004,1,42.0,199.0,10.0,0.29,Harare Urban
+DRIVER_005,1,328.0,74.0,15.0,1.24,Harare Urban
+DRIVER_006,1,142.0,227.0,15.0,0.68,Harare Urban
+DRIVER_007,1,228.0,75.0,15.0,0.93,Harare Urban
+DRIVER_008,1,348.0,266.0,12.0,1.25,Harare Urban
+DRIVER_009,1,177.0,135.0,13.0,0.75,Harare Urban
+DRIVER_010,1,94.0,88.0,8.0,0.42,Harare Urban
+DRIVER_011,1,420.0,224.0,13.0,1.49,Harare Urban
+DRIVER_012,1,187.0,287.0,15.0,0.82,Harare Urban
+DRIVER_013,1,398.0,160.0,8.0,1.33,Harare Urban
+DRIVER_014,1,288.0,94.0,8.0,1.0,Mashonaland West
+DRIVER_015,1,389.0,136.0,15.0,1.41,Mashonaland West
+DRIVER_016,1,230.0,168.0,12.0,0.9,Mashonaland West
+DRIVER_017,1,201.0,162.0,9.0,0.76,Mashonaland West
+DRIVER_018,1,58.0,156.0,8.0,0.3,Mashonaland West
+DRIVER_019,1,129.0,85.0,15.0,0.65,Mashonaland West
+DRIVER_020,1,348.0,235.0,10.0,1.21,Mashonaland West
+DRIVER_021,1,153.0,144.0,13.0,0.67,Mashonaland West
+DRIVER_022,1,96.0,298.0,12.0,0.5,Mashonaland West
+DRIVER_023,1,445.0,196.0,8.0,1.47,Mashonaland West
+DRIVER_024,1,40.0,186.0,12.0,0.33,Mashonaland West
+DRIVER_025,1,431.0,204.0,10.0,1.46,Mashonaland Central
+DRIVER_026,1,234.0,202.0,13.0,0.92,Mashonaland Central
+DRIVER_027,1,238.0,131.0,8.0,0.85,Mashonaland Central
+DRIVER_028,1,359.0,120.0,15.0,1.33,Mashonaland East
+DRIVER_029,1,431.0,84.0,13.0,1.51,Mashonaland East
+DRIVER_030,1,96.0,208.0,15.0,0.54,Mashonaland East
+DRIVER_031,1,118.0,99.0,11.0,0.55,Manicaland
+DRIVER_032,1,150.0,102.0,8.0,0.59,Manicaland
+DRIVER_033,1,243.0,119.0,15.0,0.97,Manicaland
+DRIVER_034,1,441.0,226.0,10.0,1.5,Manicaland
+DRIVER_035,1,215.0,165.0,10.0,0.82,Mashonaland West
+DRIVER_036,1,301.0,179.0,10.0,1.07,Mashonaland Central
+DRIVER_037,1,335.0,223.0,12.0,1.21,Harare Urban
+DRIVER_038,1,239.0,189.0,14.0,0.95,Harare Urban
+DRIVER_039,1,215.0,165.0,10.0,0.82,Mashonaland West
+DRIVER_040,1,134.0,100.0,9.0,0.56,Manicaland
+DRIVER_041,1,239.0,189.0,14.0,0.95,Harare Urban
+DRIVER_042,1,135.0,111.0,10.0,0.58,Harare Urban
+DRIVER_043,1,215.0,165.0,10.0,0.82,Mashonaland West
+DRIVER_044,1,338.0,115.0,11.0,1.2,Mashonaland West
+DRIVER_045,1,183.0,206.0,11.0,0.74,Mashonaland West
+DRIVER_046,1,185.0,136.0,12.0,0.75,Harare Urban
+DRIVER_047,1,301.0,179.0,10.0,1.07,Mashonaland Central
+DRIVER_048,1,178.0,158.0,11.0,0.72,Mashonaland West
+DRIVER_049,1,335.0,223.0,12.0,1.21,Harare Urban
+DRIVER_050,1,338.0,115.0,11.0,1.2,Mashonaland West
+DRIVER_051,1,342.0,172.0,12.0,1.23,Manicaland
+DRIVER_052,1,135.0,111.0,10.0,0.58,Harare Urban
+DRIVER_053,1,335.0,223.0,12.0,1.21,Harare Urban
+DRIVER_054,1,134.0,100.0,9.0,0.56,Manicaland
+DRIVER_055,1,183.0,206.0,11.0,0.74,Mashonaland West
+DRIVER_056,1,178.0,158.0,11.0,0.72,Mashonaland West
+DRIVER_057,1,153.0,246.0,11.0,0.64,Harare Urban
+DRIVER_058,1,338.0,115.0,11.0,1.2,Mashonaland West
+DRIVER_059,1,183.0,206.0,11.0,0.74,Mashonaland West
+DRIVER_060,1,153.0,246.0,11.0,0.64,Harare Urban
+DRIVER_061,1,295.0,137.0,14.0,1.12,Mashonaland East
+DRIVER_062,1,239.0,189.0,14.0,0.95,Harare Urban
+DRIVER_063,1,153.0,246.0,11.0,0.64,Harare Urban
+DRIVER_064,1,134.0,100.0,9.0,0.56,Manicaland
+DRIVER_065,1,342.0,172.0,12.0,1.23,Manicaland
+DRIVER_066,1,295.0,137.0,14.0,1.12,Mashonaland East
+DRIVER_067,1,342.0,172.0,12.0,1.23,Manicaland
+DRIVER_068,1,301.0,179.0,10.0,1.07,Mashonaland Central
+DRIVER_069,1,295.0,137.0,14.0,1.12,Mashonaland East
+DRIVER_070,1,295.0,137.0,14.0,1.12,Mashonaland East
+DRIVER_071,1,215.0,165.0,10.0,0.82,Mashonaland West
+DRIVER_072,1,135.0,111.0,10.0,0.58,Harare Urban
+DRIVER_073,1,335.0,223.0,12.0,1.21,Harare Urban
+DRIVER_074,1,338.0,115.0,11.0,1.2,Mashonaland West
+DRIVER_075,1,153.0,246.0,11.0,0.64,Harare Urban
+DRIVER_076,1,134.0,100.0,9.0,0.56,Manicaland
+DRIVER_077,1,183.0,206.0,11.0,0.74,Mashonaland West
+DRIVER_078,1,178.0,158.0,11.0,0.72,Mashonaland West
+DRIVER_079,1,301.0,179.0,10.0,1.07,Mashonaland Central
+DRIVER_080,1,301.0,179.0,10.0,1.07,Mashonaland Central
+DRIVER_081,1,215.0,165.0,10.0,0.82,Mashonaland West
+DRIVER_082,1,134.0,100.0,9.0,0.56,Manicaland
+DRIVER_083,1,335.0,223.0,12.0,1.21,Harare Urban
+DRIVER_084,1,134.0,100.0,9.0,0.56,Manicaland
+DRIVER_085,1,342.0,172.0,12.0,1.23,Manicaland
+DRIVER_086,1,135.0,111.0,10.0,0.58,Harare Urban
+DRIVER_087,1,335.0,223.0,12.0,1.21,Harare Urban
+DRIVER_088,1,338.0,115.0,11.0,1.2,Mashonaland West
+DRIVER_089,1,301.0,179.0,10.0,1.07,Mashonaland Central
+DRIVER_090,1,153.0,246.0,11.0,0.64,Harare Urban
+DRIVER_091,1,301.0,179.0,10.0,1.07,Mashonaland Central
+DRIVER_092,1,134.0,100.0,9.0,0.56,Manicaland
+DRIVER_093,1,295.0,137.0,14.0,1.12,Mashonaland East
+DRIVER_094,1,178.0,158.0,11.0,0.72,Mashonaland West
+DRIVER_095,1,295.0,137.0,14.0,1.12,Mashonaland East
+DRIVER_096,1,135.0,111.0,10.0,0.58,Harare Urban
+DRIVER_097,1,301.0,179.0,10.0,1.07,Mashonaland Central
+DRIVER_098,1,301.0,179.0,10.0,1.07,Mashonaland Central
+DRIVER_099,1,215.0,165.0,10.0,0.82,Mashonaland West
+DRIVER_100,1,338.0,115.0,11.0,1.2,Mashonaland West
+DRIVER_101,1,342.0,172.0,12.0,1.23,Manicaland
+DRIVER_102,1,295.0,137.0,14.0,1.12,Mashonaland East
+DRIVER_103,1,183.0,206.0,11.0,0.74,Mashonaland West
+DRIVER_104,1,301.0,179.0,10.0,1.07,Mashonaland Central
+DRIVER_105,1,183.0,206.0,11.0,0.74,Mashonaland West
+DRIVER_106,1,135.0,111.0,10.0,0.58,Harare Urban
+DRIVER_107,1,301.0,179.0,10.0,1.07,Mashonaland Central
+DRIVER_108,1,134.0,100.0,9.0,0.56,Manicaland
+DRIVER_109,1,342.0,172.0,12.0,1.23,Manicaland
+DRIVER_110,1,239.0,189.0,14.0,0.95,Harare Urban
+DRIVER_111,1,301.0,179.0,10.0,1.07,Mashonaland Central
+DRIVER_112,1,185.0,136.0,12.0,0.75,Harare Urban
+DRIVER_113,1,215.0,165.0,10.0,0.82,Mashonaland West
+DRIVER_114,1,295.0,137.0,14.0,1.12,Mashonaland East
+DRIVER_115,1,183.0,206.0,11.0,0.74,Mashonaland West
+DRIVER_116,1,338.0,115.0,11.0,1.2,Mashonaland West
+DRIVER_117,1,183.0,206.0,11.0,0.74,Mashonaland West
+DRIVER_118,1,178.0,158.0,11.0,0.72,Mashonaland West
+DRIVER_119,1,295.0,137.0,14.0,1.12,Mashonaland East
+DRIVER_120,1,134.0,100.0,9.0,0.56,Manicaland
+DRIVER_121,1,335.0,223.0,12.0,1.21,Harare Urban
+DRIVER_122,1,178.0,158.0,11.0,0.72,Mashonaland West
+DRIVER_123,1,215.0,165.0,10.0,0.82,Mashonaland West
+DRIVER_124,1,134.0,100.0,9.0,0.56,Manicaland
+DRIVER_125,1,239.0,189.0,14.0,0.95,Harare Urban
+DRIVER_126,1,295.0,137.0,14.0,1.12,Mashonaland East
+DRIVER_127,1,183.0,206.0,11.0,0.74,Mashonaland West
+DRIVER_128,1,239.0,189.0,14.0,0.95,Harare Urban
+DRIVER_129,1,342.0,172.0,12.0,1.23,Manicaland
+DRIVER_130,1,178.0,158.0,11.0,0.72,Mashonaland West
+DRIVER_131,1,239.0,189.0,14.0,0.95,Harare Urban
+DRIVER_132,1,153.0,246.0,11.0,0.64,Harare Urban
+DRIVER_133,1,295.0,137.0,14.0,1.12,Mashonaland East
+DRIVER_134,1,301.0,179.0,10.0,1.07,Mashonaland Central
+DRIVER_135,1,153.0,246.0,11.0,0.64,Harare Urban
+DRIVER_136,1,301.0,179.0,10.0,1.07,Mashonaland Central
+DRIVER_137,1,215.0,165.0,10.0,0.82,Mashonaland West
+DRIVER_138,1,178.0,158.0,11.0,0.72,Mashonaland West
+DRIVER_139,1,342.0,172.0,12.0,1.23,Manicaland
+DRIVER_140,1,239.0,189.0,14.0,0.95,Harare Urban
+DRIVER_141,1,153.0,246.0,11.0,0.64,Harare Urban
+DRIVER_142,1,295.0,137.0,14.0,1.12,Mashonaland East
+DRIVER_143,1,301.0,179.0,10.0,1.07,Mashonaland Central
+DRIVER_144,1,153.0,246.0,11.0,0.64,Harare Urban
+DRIVER_145,1,342.0,172.0,12.0,1.23,Manicaland
+DRIVER_146,1,134.0,100.0,9.0,0.56,Manicaland
+DRIVER_147,1,295.0,137.0,14.0,1.12,Mashonaland East
+DRIVER_148,1,295.0,137.0,14.0,1.12,Mashonaland East
+DRIVER_149,1,335.0,223.0,12.0,1.21,Harare Urban
+DRIVER_150,1,338.0,115.0,11.0,1.2,Mashonaland West

@@ -1,0 +1,2 @@
+plant_id,total_dispatches,total_qty,mean_qty_per_dispatch,mean_delay_min,median_delay_min,on_time_rate,unique_depots,unique_vehicles,on_time_pct
+Shepperton_Plant,9156,27438162,2996.74,11.56,8.0,0.84,7,150,84.0

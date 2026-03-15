@@ -1,0 +1,103 @@
+======================================================================
+QUALITY CONTROL (QC) DATASET SUMMARY
+======================================================================
+Dataset Shape: 18,090 QC checks × 13 columns
+Date Range: 2025-01-01 to 2025-07-30
+
+----------------------------------------------------------------------
+QC PERFORMANCE OVERVIEW
+----------------------------------------------------------------------
+Total QC Checks: 18,090
+PASSED: 11,550 (63.85%)
+FAILED: 6,540 (36.15%)
+
+⚠️ QC Fail Rate: 36.15% (Target: <2%)
+
+Batches Inspected: 6,000
+Avg QC Checks per Batch: 3.0
+Batches with Failures: 4,476 (74.60%)
+
+----------------------------------------------------------------------
+QC PARAMETERS BREAKDOWN
+----------------------------------------------------------------------
+Unique QC Parameters: 7
+
+QC Parameters (sorted by fail rate):
+
+  crust_color_level:
+    Total checks: 2,694
+    Passed: 1,198 | Failed: 1,496
+    Fail Rate: 55.53%
+    Value range: -1.49 - 7.50 (mean: 2.92)
+
+  slice_uniformity_mm:
+    Total checks: 2,603
+    Passed: 1,189 | Failed: 1,414
+    Fail Rate: 54.32%
+    Value range: -0.50 - 8.50 (mean: 4.03)
+
+  internal_temp_c:
+    Total checks: 2,555
+    Passed: 1,356 | Failed: 1,199
+    Fail Rate: 46.93%
+    Value range: 90.50 - 101.49 (mean: 96.08)
+
+  moisture_percent:
+    Total checks: 2,513
+    Passed: 1,554 | Failed: 959
+    Fail Rate: 38.16%
+    Value range: 28.51 - 41.50 (mean: 34.99)
+
+  texture_score:
+    Total checks: 2,536
+    Passed: 1,620 | Failed: 916
+    Fail Rate: 36.12%
+    Value range: -1.50 - 12.49 (mean: 5.49)
+
+  weight_grams:
+    Total checks: 2,584
+    Passed: 2,305 | Failed: 279
+    Fail Rate: 10.80%
+    Value range: 677.52 - 722.49 (mean: 700.00)
+
+  package_seal_strength:
+    Total checks: 2,605
+    Passed: 2,328 | Failed: 277
+    Fail Rate: 10.63%
+    Value range: 77.51 - 122.48 (mean: 99.93)
+
+----------------------------------------------------------------------
+SKU QUALITY PERFORMANCE
+----------------------------------------------------------------------
+Unique SKUs Inspected: 13
+
+Top 10 SKUs by Fail Rate:
+  Whole grain Brown: 71.43% fail rate (5 fails / 7 checks)
+  SoftWhite: 53.85% fail rate (7 fails / 13 checks)
+  Soft Whtie: 47.37% fail rate (9 fails / 19 checks)
+  WholegrainBrown: 40.00% fail rate (4 fails / 10 checks)
+  Family Loaf: 37.61% fail rate (936 fails / 2489 checks)
+  Wholegrain Brown: 36.94% fail rate (936 fails / 2534 checks)
+  Whole Wheat: 36.46% fail rate (933 fails / 2559 checks)
+  High Energy White: 35.87% fail rate (924 fails / 2576 checks)
+  Seed Loaf: 35.58% fail rate (931 fails / 2617 checks)
+  Soft White: 35.56% fail rate (967 fails / 2719 checks)
+
+----------------------------------------------------------------------
+TIME PATTERNS
+----------------------------------------------------------------------
+Peak QC Failure Hour: 15.0:00 (39.04% fail rate)
+Best QC Performance Hour: 21.0:00 (31.65% fail rate)
+
+----------------------------------------------------------------------
+CRITICAL INSIGHTS & ACTION ITEMS
+----------------------------------------------------------------------
+⚠️  CRITICAL: 36.15% QC fail rate (Target: <2%)
+    Action: Immediate root cause analysis required
+
+Parameter-Specific Actions:
+  1. crust_color_level: 1,496 failures - Investigate tolerance limits
+  2. slice_uniformity_mm: 1,414 failures - Investigate tolerance limits
+  3. internal_temp_c: 1,199 failures - Investigate tolerance limits
+
+======================================================================

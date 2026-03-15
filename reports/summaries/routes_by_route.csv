@@ -1,0 +1,14 @@
+route_id,route_name,distance_km,avg_estimated_time_min,stops_count,region,avg_load_capacity_kg,avg_efficiency_km_per_min,avg_risk_score,num_vehicles,num_drivers
+RT_MUT_02,Mutare ,243,172.09,15,Manicaland,11500.0,1.99,1.23,11,11
+RT_HAT_02,Hatcliff ,420,223.18,13,Harare Urban,8000.0,1.55,1.21,11,11
+RT_CHE_01,Chegutu ,288,115.0,8,Mashonaland West,11500.0,2.94,1.2,10,10
+RT_MUR_01,Murehwa ,359,137.06,15,Mashonaland East,12333.06,2.28,1.12,17,17
+RT_BIN_01,Bindura ,431,179.0,10,Mashonaland Central,10000.0,1.68,1.07,18,18
+RT_HAR_03,Harare ,142,189.09,15,Harare Urban,11333.09,1.37,0.95,11,11
+RT_CHE_02,Chegutu ,230,165.0,12,Mashonaland West,9000.0,1.3,0.82,11,11
+RT_HAR_02,Harare ,42,136.25,10,Harare Urban,12500.0,1.84,0.76,4,4
+RT_CHI_02,Chinhoyi ,153,206.0,13,Mashonaland West,10250.0,0.91,0.74,13,13
+RT_CHI_01,Chinhoyi ,58,158.18,8,Mashonaland West,11000.0,1.13,0.72,11,11
+RT_HAR_01,Harare ,56,246.17,14,Harare Urban,11666.17,0.62,0.65,12,12
+RT_HAT_01,Hatcliff ,177,111.12,13,Harare Urban,9000.0,1.21,0.58,8,8
+RT_MUT_01,Mutare ,118,100.08,11,Manicaland,8000.0,1.34,0.56,13,13

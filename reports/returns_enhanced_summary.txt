@@ -1,0 +1,118 @@
+================================================================================
+RETURNS DATASET - EXPLORATORY DATA ANALYSIS
+================================================================================
+
+↩️ DATASET OVERVIEW
+--------------------------------------------------------------------------------
+Total Return Records: 13,065
+Date Range: 2025-01-01 00:00:37 to 2025-07-30 23:31:25
+Total Units Returned: 877,520
+Average Return Size: 67.2 units
+Median Return: 60 units
+Routes Affected: 13
+Retailers Returning: 0
+SKUs Returned (Multi-SKU): 4
+
+🔍 RETURN ROOT CAUSE ANALYSIS
+--------------------------------------------------------------------------------
+                   Total Units  Avg Units/Return  Incidents  % of Total
+reason_code                                                            
+Mould Growth            132629         69.005723       1922       15.11
+Damaged Packaging       128170         67.034519       1912       14.61
+Expired                 127366         67.070037       1899       14.51
+Crushed/Squashed        124028         66.431709       1867       14.13
+Returned Unsold         123461         67.501914       1829       14.07
+Stale                   123127         67.135769       1834       14.03
+Wrong Delivery          118739         65.892897       1802       13.53
+
+🎯 **TOP RETURN REASON:** Mould Growth
+   132,629 units (15.1% of all returns)
+   Priority action: Address quality/logistics issues
+
+Preventable Returns (Expired/Damaged/Crushed/Mould): 512,193 units (58.4%)
+Demand Mismatch (Returned Unsold): 123,461 units (14.1%)
+
+🚛 ROUTE-LEVEL RETURN ANALYSIS (Top 15)
+--------------------------------------------------------------------------------
+           Total Returned  Avg per Return  Incidents  Retailers  % of Total
+route_id                                                                   
+RT_MUR_01          122776       66.257960       1853          0       13.99
+RT_BIN_01          121595       67.216694       1809          0       13.86
+RT_MUT_01           64756       68.816153        941          0        7.38
+RT_CHI_01           64657       67.351042        960          0        7.37
+RT_CHI_02           64178       68.057264        943          0        7.31
+RT_CHE_02           64110       67.484211        950          0        7.31
+RT_MUT_02           63740       64.645030        986          0        7.26
+RT_CHE_01           62287       66.688437        934          0        7.10
+RT_HAT_01           60919       67.239514        906          0        6.94
+RT_HAT_02           60160       66.401766        906          0        6.86
+RT_HAR_02           45834       70.840804        647          0        5.22
+RT_HAR_01           41651       69.418333        600          0        4.75
+RT_HAR_03           40857       64.852381        630          0        4.66
+
+⚠️ **WORST PERFORMING ROUTE:** RT_MUR_01 (122,776 units returned)
+   Action: Investigate dispatch timing, cold chain, demand forecasting for this route
+
+🏪 RETAILER-LEVEL RETURN ANALYSIS (Top 15)
+--------------------------------------------------------------------------------
+No valid retailer_id values present; retailer-level analysis skipped.
+
+🍞 SKU-LEVEL RETURN ANALYSIS
+--------------------------------------------------------------------------------
+SKU Totals Returned:
+  low_gi_seed_loaf: 313,097 units (35.7%)
+  soft_white: 226,311 units (25.8%)
+  whole_grain_loaf: 180,102 units (20.5%)
+  high_energy_brown: 158,010 units (18.0%)
+
+📅 TEMPORAL RETURN PATTERNS
+--------------------------------------------------------------------------------
+Returns by Day of Week:
+            Total        Avg  Incidents
+day_name                               
+Monday     131923  68.889295       1915
+Tuesday    120842  66.433205       1819
+Wednesday  126761  66.576155       1904
+Thursday   128693  68.856608       1869
+Friday     116142  64.811384       1792
+Saturday   119345  66.119114       1805
+Sunday     130301  68.291929       1908
+
+Peak Return Day: Monday (131923 units)
+
+Weekday vs Weekend:
+        qty_returned           
+                 sum       mean
+Weekday       627874  67.137938
+Weekend       249646  67.235658
+
+Returns by Month:
+month
+1.0    128903
+2.0    124002
+3.0    123262
+4.0    126384
+5.0    128751
+6.0    121579
+7.0    121126
+Name: qty_returned, dtype: int64
+
+🎯 KEY INSIGHTS & ACTION ITEMS
+================================================================================
+1. **Total returns:** 877,520 units across 13,065 incidents
+   Impact: Returns often lead to waste - critical to prevent
+
+2. **Top return reason:** Mould Growth (15.1%)
+   Action: Address quality control and cold chain
+
+3. **Worst route:** RT_MUR_01 (122,776 units)
+   Action: Route-specific investigation - dispatch timing, vehicle condition, demand patterns
+
+4. **Worst retailer:** N/A (0 units)
+   Action: Retailer partnership review - storage, forecasting, or reduce allocation
+
+6. **Preventable returns:** 512,193 units (quality/logistics issues)
+   Action: QC improvement, dispatch optimization, packaging reinforcement
+
+================================================================================
+✅ Returns summary complete!

@@ -1,0 +1,6 @@
+handling_condition,qty_waste_sum,qty_waste_mean,qty_waste_count,temperature_at_check_mean
+Rough handling,374112,129.67,2885,25.02
+Good,365256,128.03,2853,25.04
+Delayed offloading,358226,128.03,2798,24.99
+Overloaded crates,354872,127.56,2782,24.88
+Poor stacking,351229,127.63,2752,24.88

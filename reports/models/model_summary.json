@@ -1,0 +1,25 @@
+{
+  "total_days": 365,
+  "models_trained": [
+    "isolation_forest",
+    "statistical",
+    "ensemble"
+  ],
+  "anomalies_by_model": {
+    "isolation_forest": 19,
+    "statistical": 4,
+    "ensemble": 22
+  },
+  "top_10_anomalous_dates": [
+    "2025-06-28",
+    "2025-01-29",
+    "2025-02-03",
+    "2025-02-04",
+    "2025-02-06",
+    "2025-01-31",
+    "2025-03-03",
+    "2025-03-11",
+    "2025-03-29",
+    "2025-03-20"
+  ]
+}

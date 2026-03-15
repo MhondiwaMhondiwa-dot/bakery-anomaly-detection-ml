@@ -1,0 +1,197 @@
+================================================================================
+INVENTORY / STOCK MOVEMENTS - ENHANCED SUMMARY REPORT
+The State of the System: Final Reconciliation
+================================================================================
+
+================================================================================
+1. OVERALL INVENTORY MOVEMENT METRICS
+================================================================================
+Total Movement Records: 10,000
+Total Qty In (Production, Returns, Adjustments): 2,320,463 units
+Total Qty Out (Dispatch, Sales, Waste): 2,359,426 units
+Net Movement (In - Out): -38,963 units
+Unique SKUs Tracked: 4
+Unique Locations (Plants + Stores): 1
+Date Range: 2025-01-01 to 2025-07-28
+
+================================================================================
+2. MOVEMENT TYPE BREAKDOWN
+================================================================================
+
+Movement Type Summary:
+
+SALE:
+   - Records: 5,500 (55.0%)
+   - Qty In: 0 | Qty Out: 177,283
+   - Net Movement: -177,283
+
+DISPATCH:
+   - Records: 2,000 (20.0%)
+   - Qty In: 0 | Qty Out: 2,106,726
+   - Net Movement: -2,106,726
+
+PRODUCTION:
+   - Records: 1,200 (12.0%)
+   - Qty In: 2,272,836 | Qty Out: 0
+   - Net Movement: 2,272,836
+
+RETURN_FROM_STORE:
+   - Records: 600 (6.0%)
+   - Qty In: 37,934 | Qty Out: 0
+   - Net Movement: 37,934
+
+WASTE:
+   - Records: 500 (5.0%)
+   - Qty In: 0 | Qty Out: 65,199
+   - Net Movement: -65,199
+
+STOCK_ADJUSTMENT:
+   - Records: 200 (2.0%)
+   - Qty In: 9,693 | Qty Out: 10,218
+   - Net Movement: -525
+
+📊 Movement Distribution:
+   - Production (stock creation): 1,200 records
+   - Dispatch (stock moved): 2,000 records
+   - Store Sales (stock consumed): 5,500 records
+   - Returns (stock recovered): 600 records
+   - Waste (stock destroyed): 500 records
+   - Adjustments (corrections): 200 records
+
+================================================================================
+3. DATA INTEGRITY & ANOMALY DETECTION
+================================================================================
+
+🚨 CRITICAL ANOMALIES DETECTED:
+
+1. NEGATIVE BALANCES: 440 records (4.4%)
+
+   Negative Balance Distribution:
+   - Plant: 440 records
+
+2. BALANCE RECONCILIATION FAILURES: 0 records
+   ✅ All balances reconcile correctly!
+
+3. LARGE STOCK ADJUSTMENTS: 97 records (>100 units)
+   → 48.5% of adjustments are large (>100 units)
+   → Potential causes: Theft, miscounts, reporting errors
+   → Action: Investigate reason_codes for large adjustments
+
+================================================================================
+4. LOCATION-SPECIFIC INVENTORY (PLANT vs STORE)
+================================================================================
+
+Inventory by Location Type:
+
+PLANT:
+   - Movement Records: 10,000
+   - Qty In: 2,320,463 | Qty Out: 2,359,426
+   - Net Movement: -38,963
+   - Avg Balance: 2,415 units
+   - Number of Plants: 1
+
+📦 Inventory Flow Pattern:
+   - Plants Qty Out: 2,359,426 (production → dispatch)
+   - Stores Qty In: 0 (dispatch → inventory)
+   - Flow efficiency: 0.0% (should be ~100%)
+
+================================================================================
+5. SKU INVENTORY LEVELS & TURNOVER
+================================================================================
+
+Top 10 SKUs by Current Inventory Balance:
+1. Whole grain loaf:
+   - Current Balance: 3,315 units
+   - Total In: 622,765 | Out: 576,227
+   - Turnover Ratio: 0.93 (Out/In)
+   - Movement Records: 2,517
+2. High Energy Brown:
+   - Current Balance: 2,509 units
+   - Total In: 529,964 | Out: 589,874
+   - Turnover Ratio: 1.11 (Out/In)
+   - Movement Records: 2,444
+3. Soft white:
+   - Current Balance: 2,426 units
+   - Total In: 625,071 | Out: 595,228
+   - Turnover Ratio: 0.95 (Out/In)
+   - Movement Records: 2,547
+4. Low GI Seed loaf:
+   - Current Balance: 2,161 units
+   - Total In: 542,663 | Out: 598,097
+   - Turnover Ratio: 1.10 (Out/In)
+   - Movement Records: 2,492
+
+⚠️  Slow-Moving SKUs (Balance >1000, Turnover <0.5): 0
+
+================================================================================
+6. STOCK EXPIRY RISK ANALYSIS
+================================================================================
+
+Expiry Risk Distribution:
+   - Safe: 4,911 records (49.1%)
+   - Expired: 4,794 records (47.9%)
+   - Critical (0-2 days): 160 records (1.6%)
+   - Warning (3-5 days): 135 records (1.4%)
+
+🚨 Expired Stock Movements: 4,794 (47.9%)
+   ⚠️  HIGH EXPIRY RATE: 47.9% of movements involve expired stock
+   → Causes: Slow dispatch, overstocking, demand misforecasting
+   → Action: FIFO enforcement, reduce batch sizes, improve turnover
+
+   Expired Stock by Movement Type:
+   - sale: 2,653 records
+   - dispatch: 970 records
+   - production: 574 records
+   - return_from_store: 269 records
+   - waste: 236 records
+   - stock_adjustment: 92 records
+
+📅 Days to Expiry Statistics:
+   - Mean: 3.8 days
+   - Median: 4.0 days
+   - 25th percentile: -58.0 days
+   - 10th percentile: -113.0 days
+
+================================================================================
+7. SHRINKAGE & STOCK ADJUSTMENTS
+================================================================================
+
+Stock Adjustment Summary:
+   - Total Adjustment Records: 200
+   - Adjustments In: 9,693 units (positive corrections)
+   - Adjustments Out: 10,218 units (negative corrections)
+   - Net Adjustment: -525 units
+
+📉 Shrinkage Rate: 0.44% of total inbound stock
+
+   Top 5 Adjustment Reasons:
+   - Manual Correction: 200 records
+
+================================================================================
+8. TEMPORAL INVENTORY PATTERNS
+================================================================================
+
+📅 Daily Metrics:
+   - Average daily qty in: 11,839 units
+   - Average daily qty out: 12,038 units
+   - Average daily net movement: -199 units
+   - Average daily balance: 2,415 units
+
+📊 Day of Week Patterns:
+   - Highest in: Monday (349,696 units)
+   - Highest out: Wednesday (363,483 units)
+
+================================================================================
+9. KEY INSIGHTS & CRITICAL ACTION ITEMS
+================================================================================
+
+🎯 Critical Findings:
+
+2. HIGH EXPIRY RATE: 47.9% OF MOVEMENTS INVOLVE EXPIRED STOCK
+   → Impact: Waste risk, quality issues, customer dissatisfaction
+   → Root Cause: Slow inventory turnover, overstocking
+   → Action: FIFO enforcement, reduce batch sizes, improve dispatch speed
+
+================================================================================
+END OF REPORT
+================================================================================

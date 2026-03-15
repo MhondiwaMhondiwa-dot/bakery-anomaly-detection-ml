@@ -1,0 +1,313 @@
+{
+  "timestamp": "2026-03-14T18:02:29.643745",
+  "contamination": 0.05,
+  "features_used": [
+    "total_prod",
+    "avg_defect",
+    "high_defect_count",
+    "avg_delay",
+    "late_pct",
+    "early_pct",
+    "qc_pass_rate",
+    "total_waste",
+    "negative_balance_count",
+    "stock_movements",
+    "nearing_expiry_count",
+    "total_sold",
+    "demand_collapse_pct"
+  ],
+  "feature_groups": {
+    "production": [
+      "total_prod",
+      "avg_defect",
+      "high_defect_count"
+    ],
+    "dispatch": [
+      "avg_delay",
+      "late_pct",
+      "early_pct"
+    ],
+    "quality": [
+      "qc_pass_rate"
+    ],
+    "waste_returns": [
+      "total_waste"
+    ],
+    "inventory": [
+      "negative_balance_count",
+      "stock_movements",
+      "nearing_expiry_count"
+    ],
+    "sales": [
+      "total_sold",
+      "demand_collapse_pct"
+    ]
+  },
+  "cross_validation_folds": [
+    {
+      "fold": 1,
+      "models": {
+        "isolation_forest": {
+          "precision": 0.5714285714285714,
+          "recall": 0.07272727272727272,
+          "f1_score": 0.12903225806451613,
+          "roc_auc": 0.26545454545454544,
+          "true_positives": 4,
+          "false_positives": 3,
+          "true_negatives": 2,
+          "false_negatives": 51,
+          "anomalies_detected": 7,
+          "total_samples": 60
+        },
+        "lof": {
+          "precision": 0.75,
+          "recall": 0.16363636363636364,
+          "f1_score": 0.26865671641791045,
+          "roc_auc": 0.36363636363636365,
+          "true_positives": 9,
+          "false_positives": 3,
+          "true_negatives": 2,
+          "false_negatives": 46,
+          "anomalies_detected": 12,
+          "total_samples": 60
+        },
+        "ocsvm": {
+          "precision": 0.9215686274509803,
+          "recall": 0.8545454545454545,
+          "f1_score": 0.8867924528301887,
+          "roc_auc": 0.6327272727272727,
+          "true_positives": 47,
+          "false_positives": 4,
+          "true_negatives": 1,
+          "false_negatives": 8,
+          "anomalies_detected": 51,
+          "total_samples": 60
+        },
+        "statistical": {
+          "precision": 0.9142857142857143,
+          "recall": 0.5818181818181818,
+          "f1_score": 0.7111111111111111,
+          "roc_auc": 0.5018181818181818,
+          "true_positives": 32,
+          "false_positives": 3,
+          "true_negatives": 2,
+          "false_negatives": 23,
+          "anomalies_detected": 35,
+          "total_samples": 60
+        }
+      }
+    },
+    {
+      "fold": 2,
+      "models": {
+        "isolation_forest": {
+          "precision": 0.6666666666666666,
+          "recall": 0.07692307692307693,
+          "f1_score": 0.13793103448275862,
+          "roc_auc": 0.28365384615384615,
+          "true_positives": 4,
+          "false_positives": 2,
+          "true_negatives": 6,
+          "false_negatives": 48,
+          "anomalies_detected": 6,
+          "total_samples": 60
+        },
+        "lof": {
+          "precision": 0.6666666666666666,
+          "recall": 0.07692307692307693,
+          "f1_score": 0.13793103448275862,
+          "roc_auc": 0.3197115384615385,
+          "true_positives": 4,
+          "false_positives": 2,
+          "true_negatives": 6,
+          "false_negatives": 48,
+          "anomalies_detected": 6,
+          "total_samples": 60
+        },
+        "ocsvm": {
+          "precision": 0.9444444444444444,
+          "recall": 0.6538461538461539,
+          "f1_score": 0.7727272727272727,
+          "roc_auc": 0.6346153846153846,
+          "true_positives": 34,
+          "false_positives": 2,
+          "true_negatives": 6,
+          "false_negatives": 18,
+          "anomalies_detected": 36,
+          "total_samples": 60
+        },
+        "statistical": {
+          "precision": 0.7222222222222222,
+          "recall": 0.25,
+          "f1_score": 0.37142857142857144,
+          "roc_auc": 0.3701923076923077,
+          "true_positives": 13,
+          "false_positives": 5,
+          "true_negatives": 3,
+          "false_negatives": 39,
+          "anomalies_detected": 18,
+          "total_samples": 60
+        }
+      }
+    },
+    {
+      "fold": 3,
+      "models": {
+        "isolation_forest": {
+          "precision": 0.11904761904761904,
+          "recall": 0.21739130434782608,
+          "f1_score": 0.15384615384615385,
+          "roc_auc": 0.0023501762632197366,
+          "true_positives": 5,
+          "false_positives": 37,
+          "true_negatives": 0,
+          "false_negatives": 18,
+          "anomalies_detected": 42,
+          "total_samples": 60
+        },
+        "lof": {
+          "precision": 0.3684210526315789,
+          "recall": 0.9130434782608695,
+          "f1_score": 0.525,
+          "roc_auc": 0.039952996474735575,
+          "true_positives": 21,
+          "false_positives": 36,
+          "true_negatives": 1,
+          "false_negatives": 2,
+          "anomalies_detected": 57,
+          "total_samples": 60
+        },
+        "ocsvm": {
+          "precision": 0.38333333333333336,
+          "recall": 1.0,
+          "f1_score": 0.5542168674698795,
+          "roc_auc": 0.008225616921269083,
+          "true_positives": 23,
+          "false_positives": 37,
+          "true_negatives": 0,
+          "false_negatives": 0,
+          "anomalies_detected": 60,
+          "total_samples": 60
+        },
+        "statistical": {
+          "precision": 0.38333333333333336,
+          "recall": 1.0,
+          "f1_score": 0.5542168674698795,
+          "roc_auc": 0.04230317273795532,
+          "true_positives": 23,
+          "false_positives": 37,
+          "true_negatives": 0,
+          "false_negatives": 0,
+          "anomalies_detected": 60,
+          "total_samples": 60
+        }
+      }
+    },
+    {
+      "fold": 4,
+      "models": {
+        "isolation_forest": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1_score": 0.0,
+          "roc_auc": NaN,
+          "true_positives": 0,
+          "false_positives": 1,
+          "true_negatives": 59,
+          "false_negatives": 0,
+          "anomalies_detected": 1,
+          "total_samples": 60
+        },
+        "lof": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1_score": 0.0,
+          "roc_auc": NaN,
+          "true_positives": 0,
+          "false_positives": 1,
+          "true_negatives": 59,
+          "false_negatives": 0,
+          "anomalies_detected": 1,
+          "total_samples": 60
+        },
+        "ocsvm": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1_score": 0.0,
+          "roc_auc": NaN,
+          "true_positives": 0,
+          "false_positives": 1,
+          "true_negatives": 59,
+          "false_negatives": 0,
+          "anomalies_detected": 1,
+          "total_samples": 60
+        },
+        "statistical": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1_score": 0.0,
+          "roc_auc": NaN,
+          "true_positives": 0,
+          "false_positives": 0,
+          "true_negatives": 0,
+          "false_negatives": 0,
+          "anomalies_detected": 0,
+          "total_samples": 60
+        }
+      }
+    },
+    {
+      "fold": 5,
+      "models": {
+        "isolation_forest": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1_score": 0.0,
+          "roc_auc": NaN,
+          "true_positives": 0,
+          "false_positives": 0,
+          "true_negatives": 0,
+          "false_negatives": 0,
+          "anomalies_detected": 0,
+          "total_samples": 60
+        },
+        "lof": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1_score": 0.0,
+          "roc_auc": NaN,
+          "true_positives": 0,
+          "false_positives": 0,
+          "true_negatives": 0,
+          "false_negatives": 0,
+          "anomalies_detected": 0,
+          "total_samples": 60
+        },
+        "ocsvm": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1_score": 0.0,
+          "roc_auc": NaN,
+          "true_positives": 0,
+          "false_positives": 0,
+          "true_negatives": 0,
+          "false_negatives": 0,
+          "anomalies_detected": 0,
+          "total_samples": 60
+        },
+        "statistical": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1_score": 0.0,
+          "roc_auc": NaN,
+          "true_positives": 0,
+          "false_positives": 0,
+          "true_negatives": 0,
+          "false_negatives": 0,
+          "anomalies_detected": 0,
+          "total_samples": 60
+        }
+      }
+    }
+  ]
+}

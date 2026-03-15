@@ -1,0 +1,9 @@
+File: dispatch_dataset.parquet
+ - dropped qty_dispatched.1 because qty_dispatched exists
+
+File: returns_dataset.parquet
+ - dropped qty_returned.1 because qty_returned exists
+
+File: sales_dataset.parquet
+ - dropped quantity_sold.1 because quantity_sold exists
+

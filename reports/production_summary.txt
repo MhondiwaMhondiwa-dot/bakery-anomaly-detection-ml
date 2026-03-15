@@ -1,0 +1,75 @@
+==========================================================================================
+PRODUCTION DATASET - EXPLORATORY DATA ANALYSIS SUMMARY
+==========================================================================================
+
+📊 DATASET OVERVIEW
+------------------------------------------------------------------------------------------
+Total Production Batches: 15,075
+Date Range: 2025-01-01 00:00:37 to 2025-10-04 00:00:00
+Total Units Produced: 16,558,613
+Average Batch Size: 1098.4 units
+Production Lines: 5
+SKUs: 13
+Operators: 6
+Depots: 7
+
+🚨 DEFECT OVERVIEW
+------------------------------------------------------------------------------------------
+Total Defects Detected: 724,015
+Overall Defect Rate: 4.37%
+Batches with Defects: 15,075 (100.0%)
+Average Defects per Batch: 48.03
+Maximum Defects in Single Batch: 100
+
+🔴 Defect Types (Highest to Lowest):
+  - Valleys: 159,280 (22.0%)
+  - Stacked Before Robot: 136,053 (18.8%)
+  - Squashed: 112,095 (15.5%)
+  - Loose Packs: 101,860 (14.1%)
+  - Torn: 90,663 (12.5%)
+  - Undersized Small: 67,529 (9.3%)
+  - Pale Underbaked: 56,535 (7.8%)
+
+🏭 PRODUCTION LINE PERFORMANCE
+------------------------------------------------------------------------------------------
+  Line4: 3,213,897 units, 2961 batches, 4.40% defect rate
+  Line1: 3,315,162 units, 3015 batches, 4.38% defect rate
+  Line3: 3,328,868 units, 3027 batches, 4.37% defect rate
+  Line5: 3,351,309 units, 3036 batches, 4.37% defect rate
+  Line2: 3,291,731 units, 2978 batches, 4.32% defect rate
+
+🍞 SKU PERFORMANCE (Top 10 by Defect Rate)
+------------------------------------------------------------------------------------------
+  Soft Whtie: 6,301 units, 5.98% defect rate
+  SoftWhite: 12,033 units, 5.06% defect rate
+  HighEnergyBrown: 10,585 units, 4.85% defect rate
+  Whole grain Brown: 9,454 units, 4.46% defect rate
+  Seed Loaf: 2,372,422 units, 4.44% defect rate
+  Soft White: 2,242,980 units, 4.40% defect rate
+  Family Loaf: 2,390,826 units, 4.40% defect rate
+  High Energy Brown: 2,339,973 units, 4.35% defect rate
+  High Energy White: 2,423,388 units, 4.35% defect rate
+  Whole Wheat: 2,400,338 units, 4.35% defect rate
+
+👤 OPERATOR PERFORMANCE (Top 10 by Defect Rate)
+------------------------------------------------------------------------------------------
+  OP_EFFIE: 2541 batches, 4.44% defect rate
+  OP_TAFADZWA: 2467 batches, 4.41% defect rate
+  OP_RUDO: 2478 batches, 4.38% defect rate
+  OP_ANNE: 2581 batches, 4.37% defect rate
+  OP_MUNYA: 2508 batches, 4.33% defect rate
+  OP_CHIPO: 2500 batches, 4.31% defect rate
+
+⏰ TEMPORAL PATTERNS
+------------------------------------------------------------------------------------------
+Peak Production Hour: 00:00 (804,083 units)
+Worst Defect Hour: 02:00 (4.50%)
+Highest Production Day: Monday
+Highest Defect Rate Day: Thursday (4.51%)
+
+🎯 CRITICAL FINDINGS & ACTION ITEMS
+==========================================================================================
+
+==========================================================================================
+END OF REPORT
+==========================================================================================

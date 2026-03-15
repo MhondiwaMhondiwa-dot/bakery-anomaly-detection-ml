@@ -1,0 +1,5 @@
+waste_reason_code,qty_waste_sum,qty_waste_mean,qty_waste_count
+Damaged,465455,128.79,3614
+Quality Failure,446940,127.77,3498
+Expired Waste,446688,128.06,3488
+Returned Unsold,444612,128.13,3470

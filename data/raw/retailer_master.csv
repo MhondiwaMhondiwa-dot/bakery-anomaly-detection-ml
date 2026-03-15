@@ -1,0 +1,201 @@
+retailer_id,retailer_name,retailer_type,depot_id,region,location_type,store_size
+STORE_001,Retailer 001,Supermarket,Chegutu,Mashonaland West,Urban,Large
+STORE_002,Retailer 002,Mini Mart,Harare,Harare Urban,Peri-Urban,Small
+STORE_003,Retailer 003,Bakery Outlet,Chinhoyi,Mashonaland West,Peri-Urban,Large
+STORE_004,Retailer 004,Wholesale,Chinhoyi,Mashonaland West,Peri-Urban,Large
+STORE_005,Retailer 005,Bakery Outlet,Murehwa,Mashonaland East,Peri-Urban,Medium
+STORE_006,Retailer 006,Supermarket,Hatcliff,Harare Urban,Urban,Small
+STORE_007,Retailer 007,Bakery Outlet,Mutare,Manicaland,Peri-Urban,Medium
+STORE_008,Retailer 008,Wholesale,Chegutu,Mashonaland West,Urban,Large
+STORE_009,Retailer 009,Wholesale,Chegutu,Mashonaland West,Peri-Urban,Medium
+STORE_010,Retailer 010,Bakery Outlet,Chinhoyi,Mashonaland West,Urban,Medium
+STORE_011,Retailer 011,Tuckshop,Chegutu,Mashonaland West,Urban,Large
+STORE_012,Retailer 012,Bakery Outlet,Mutare,Manicaland,Peri-Urban,Medium
+STORE_013,Retailer 013,Wholesale,Murehwa,Mashonaland East,Peri-Urban,Medium
+STORE_014,Retailer 014,Wholesale,Mutare,Manicaland,Urban,Medium
+STORE_015,Retailer 015,Bakery Outlet,Bindura,Mashonaland Central,Peri-Urban,Small
+STORE_016,Retailer 016,Bakery Outlet,Mutare,Manicaland,Peri-Urban,Medium
+STORE_017,Retailer 017,Bakery Outlet,Bindura,Mashonaland Central,Peri-Urban,Small
+STORE_018,Retailer 018,Wholesale,Chinhoyi,Mashonaland West,Peri-Urban,Large
+STORE_019,Retailer 019,Wholesale,Chinhoyi,Mashonaland West,Urban,Large
+STORE_020,Retailer 020,Mini Mart,Chinhoyi,Mashonaland West,Peri-Urban,Small
+STORE_021,Retailer 021,Mini Mart,Chegutu,Mashonaland West,Peri-Urban,Large
+STORE_022,Retailer 022,Bakery Outlet,Hatcliff,Harare Urban,Urban,Large
+STORE_023,Retailer 023,Bakery Outlet,Murehwa,Mashonaland East,Peri-Urban,Medium
+STORE_024,Retailer 024,Tuckshop,Hatcliff,Harare Urban,Peri-Urban,Small
+STORE_025,Retailer 025,Mini Mart,Mutare,Manicaland,Peri-Urban,Small
+STORE_026,Retailer 026,Mini Mart,Chinhoyi,Mashonaland West,Peri-Urban,Medium
+STORE_027,Retailer 027,Mini Mart,Mutare,Manicaland,Urban,Large
+STORE_028,Retailer 028,Tuckshop,Chegutu,Mashonaland West,Urban,Large
+STORE_029,Retailer 029,Bakery Outlet,Mutare,Manicaland,Peri-Urban,Large
+STORE_030,Retailer 030,Supermarket,Harare,Harare Urban,Urban,Large
+STORE_031,Retailer 031,Tuckshop,Chinhoyi,Mashonaland West,Peri-Urban,Small
+STORE_032,Retailer 032,Mini Mart,Bindura,Mashonaland Central,Peri-Urban,Large
+STORE_033,Retailer 033,Tuckshop,Chegutu,Mashonaland West,Peri-Urban,Large
+STORE_034,Retailer 034,Mini Mart,Murehwa,Mashonaland East,Urban,Medium
+STORE_035,Retailer 035,Bakery Outlet,Chegutu,Mashonaland West,Urban,Medium
+STORE_036,Retailer 036,Mini Mart,Chegutu,Mashonaland West,Peri-Urban,Small
+STORE_037,Retailer 037,Wholesale,Hatcliff,Harare Urban,Peri-Urban,Small
+STORE_038,Retailer 038,Bakery Outlet,Chegutu,Mashonaland West,Urban,Small
+STORE_039,Retailer 039,Mini Mart,Chegutu,Mashonaland West,Peri-Urban,Large
+STORE_040,Retailer 040,Wholesale,Hatcliff,Harare Urban,Urban,Medium
+STORE_041,Retailer 041,Supermarket,Harare,Harare Urban,Peri-Urban,Large
+STORE_042,Retailer 042,Mini Mart,Bindura,Mashonaland Central,Peri-Urban,Small
+STORE_043,Retailer 043,Mini Mart,Murehwa,Mashonaland East,Urban,Small
+STORE_044,Retailer 044,Mini Mart,Chegutu,Mashonaland West,Peri-Urban,Medium
+STORE_045,Retailer 045,Wholesale,Chegutu,Mashonaland West,Peri-Urban,Medium
+STORE_046,Retailer 046,Supermarket,Chinhoyi,Mashonaland West,Urban,Large
+STORE_047,Retailer 047,Wholesale,Chegutu,Mashonaland West,Urban,Small
+STORE_048,Retailer 048,Supermarket,Harare,Harare Urban,Urban,Small
+STORE_049,Retailer 049,Bakery Outlet,Harare,Harare Urban,Peri-Urban,Large
+STORE_050,Retailer 050,Mini Mart,Mutare,Manicaland,Urban,Small
+STORE_051,Retailer 051,Bakery Outlet,Chinhoyi,Mashonaland West,Urban,Large
+STORE_052,Retailer 052,Wholesale,Harare,Harare Urban,Peri-Urban,Medium
+STORE_053,Retailer 053,Supermarket,Mutare,Manicaland,Urban,Large
+STORE_054,Retailer 054,Bakery Outlet,Harare,Harare Urban,Peri-Urban,Large
+STORE_055,Retailer 055,Mini Mart,Mutare,Manicaland,Urban,Small
+STORE_056,Retailer 056,Wholesale,Murehwa,Mashonaland East,Urban,Medium
+STORE_057,Retailer 057,Bakery Outlet,Bindura,Mashonaland Central,Peri-Urban,Small
+STORE_058,Retailer 058,Mini Mart,Hatcliff,Harare Urban,Peri-Urban,Small
+STORE_059,Retailer 059,Mini Mart,Mutare,Manicaland,Urban,Medium
+STORE_060,Retailer 060,Mini Mart,Hatcliff,Harare Urban,Peri-Urban,Medium
+STORE_061,Retailer 061,Wholesale,Murehwa,Mashonaland East,Peri-Urban,Small
+STORE_062,Retailer 062,Tuckshop,Murehwa,Mashonaland East,Peri-Urban,Small
+STORE_063,Retailer 063,Tuckshop,Mutare,Manicaland,Peri-Urban,Medium
+STORE_064,Retailer 064,Tuckshop,Chegutu,Mashonaland West,Urban,Medium
+STORE_065,Retailer 065,Wholesale,Chinhoyi,Mashonaland West,Peri-Urban,Small
+STORE_066,Retailer 066,Bakery Outlet,Bindura,Mashonaland Central,Peri-Urban,Medium
+STORE_067,Retailer 067,Supermarket,Chegutu,Mashonaland West,Urban,Small
+STORE_068,Retailer 068,Tuckshop,Mutare,Manicaland,Peri-Urban,Small
+STORE_069,Retailer 069,Bakery Outlet,Murehwa,Mashonaland East,Peri-Urban,Large
+STORE_070,Retailer 070,Supermarket,Harare,Harare Urban,Peri-Urban,Small
+STORE_071,Retailer 071,Bakery Outlet,Hatcliff,Harare Urban,Peri-Urban,Small
+STORE_072,Retailer 072,Wholesale,Hatcliff,Harare Urban,Urban,Large
+STORE_073,Retailer 073,Mini Mart,Murehwa,Mashonaland East,Peri-Urban,Small
+STORE_074,Retailer 074,Tuckshop,Bindura,Mashonaland Central,Urban,Medium
+STORE_075,Retailer 075,Wholesale,Bindura,Mashonaland Central,Peri-Urban,Small
+STORE_076,Retailer 076,Bakery Outlet,Murehwa,Mashonaland East,Peri-Urban,Large
+STORE_077,Retailer 077,Mini Mart,Hatcliff,Harare Urban,Peri-Urban,Medium
+STORE_078,Retailer 078,Wholesale,Murehwa,Mashonaland East,Urban,Large
+STORE_079,Retailer 079,Tuckshop,Harare,Harare Urban,Urban,Large
+STORE_080,Retailer 080,Wholesale,Chegutu,Mashonaland West,Peri-Urban,Medium
+STORE_081,Retailer 081,Tuckshop,Chinhoyi,Mashonaland West,Urban,Medium
+STORE_082,Retailer 082,Supermarket,Harare,Harare Urban,Urban,Small
+STORE_083,Retailer 083,Wholesale,Chinhoyi,Mashonaland West,Peri-Urban,Large
+STORE_084,Retailer 084,Bakery Outlet,Bindura,Mashonaland Central,Urban,Medium
+STORE_085,Retailer 085,Mini Mart,Chegutu,Mashonaland West,Peri-Urban,Large
+STORE_086,Retailer 086,Wholesale,Mutare,Manicaland,Peri-Urban,Small
+STORE_087,Retailer 087,Tuckshop,Chinhoyi,Mashonaland West,Peri-Urban,Large
+STORE_088,Retailer 088,Mini Mart,Chegutu,Mashonaland West,Urban,Large
+STORE_089,Retailer 089,Bakery Outlet,Bindura,Mashonaland Central,Urban,Medium
+STORE_090,Retailer 090,Wholesale,Murehwa,Mashonaland East,Peri-Urban,Medium
+STORE_091,Retailer 091,Bakery Outlet,Bindura,Mashonaland Central,Urban,Small
+STORE_092,Retailer 092,Supermarket,Chinhoyi,Mashonaland West,Peri-Urban,Small
+STORE_093,Retailer 093,Bakery Outlet,Mutare,Manicaland,Urban,Large
+STORE_094,Retailer 094,Supermarket,Murehwa,Mashonaland East,Peri-Urban,Small
+STORE_095,Retailer 095,Mini Mart,Chegutu,Mashonaland West,Urban,Small
+STORE_096,Retailer 096,Supermarket,Bindura,Mashonaland Central,Peri-Urban,Small
+STORE_097,Retailer 097,Mini Mart,Mutare,Manicaland,Urban,Large
+STORE_098,Retailer 098,Mini Mart,Chegutu,Mashonaland West,Peri-Urban,Medium
+STORE_099,Retailer 099,Mini Mart,Harare,Harare Urban,Urban,Large
+STORE_100,Retailer 100,Mini Mart,Chinhoyi,Mashonaland West,Urban,Large
+STORE_101,Retailer 101,Mini Mart,Murehwa,Mashonaland East,Peri-Urban,Medium
+STORE_102,Retailer 102,Bakery Outlet,Chegutu,Mashonaland West,Peri-Urban,Small
+STORE_103,Retailer 103,Bakery Outlet,Bindura,Mashonaland Central,Peri-Urban,Large
+STORE_104,Retailer 104,Tuckshop,Bindura,Mashonaland Central,Peri-Urban,Medium
+STORE_105,Retailer 105,Bakery Outlet,Chegutu,Mashonaland West,Urban,Small
+STORE_106,Retailer 106,Mini Mart,Chegutu,Mashonaland West,Peri-Urban,Small
+STORE_107,Retailer 107,Mini Mart,Mutare,Manicaland,Urban,Medium
+STORE_108,Retailer 108,Wholesale,Hatcliff,Harare Urban,Urban,Small
+STORE_109,Retailer 109,Tuckshop,Harare,Harare Urban,Urban,Medium
+STORE_110,Retailer 110,Wholesale,Harare,Harare Urban,Peri-Urban,Medium
+STORE_111,Retailer 111,Wholesale,Chinhoyi,Mashonaland West,Peri-Urban,Small
+STORE_112,Retailer 112,Bakery Outlet,Murehwa,Mashonaland East,Urban,Small
+STORE_113,Retailer 113,Tuckshop,Chinhoyi,Mashonaland West,Peri-Urban,Small
+STORE_114,Retailer 114,Mini Mart,Chegutu,Mashonaland West,Urban,Large
+STORE_115,Retailer 115,Supermarket,Harare,Harare Urban,Peri-Urban,Medium
+STORE_116,Retailer 116,Bakery Outlet,Hatcliff,Harare Urban,Urban,Medium
+STORE_117,Retailer 117,Supermarket,Mutare,Manicaland,Peri-Urban,Medium
+STORE_118,Retailer 118,Bakery Outlet,Mutare,Manicaland,Urban,Small
+STORE_119,Retailer 119,Tuckshop,Harare,Harare Urban,Peri-Urban,Medium
+STORE_120,Retailer 120,Tuckshop,Hatcliff,Harare Urban,Peri-Urban,Large
+STORE_121,Retailer 121,Supermarket,Hatcliff,Harare Urban,Urban,Large
+STORE_122,Retailer 122,Mini Mart,Chinhoyi,Mashonaland West,Urban,Large
+STORE_123,Retailer 123,Mini Mart,Chegutu,Mashonaland West,Urban,Small
+STORE_124,Retailer 124,Mini Mart,Chegutu,Mashonaland West,Peri-Urban,Medium
+STORE_125,Retailer 125,Supermarket,Harare,Harare Urban,Urban,Small
+STORE_126,Retailer 126,Wholesale,Harare,Harare Urban,Peri-Urban,Large
+STORE_127,Retailer 127,Supermarket,Chegutu,Mashonaland West,Peri-Urban,Large
+STORE_128,Retailer 128,Bakery Outlet,Mutare,Manicaland,Peri-Urban,Large
+STORE_129,Retailer 129,Tuckshop,Murehwa,Mashonaland East,Urban,Small
+STORE_130,Retailer 130,Mini Mart,Mutare,Manicaland,Peri-Urban,Small
+STORE_131,Retailer 131,Bakery Outlet,Harare,Harare Urban,Peri-Urban,Medium
+STORE_132,Retailer 132,Tuckshop,Murehwa,Mashonaland East,Urban,Medium
+STORE_133,Retailer 133,Tuckshop,Harare,Harare Urban,Urban,Medium
+STORE_134,Retailer 134,Wholesale,Mutare,Manicaland,Peri-Urban,Large
+STORE_135,Retailer 135,Wholesale,Mutare,Manicaland,Urban,Medium
+STORE_136,Retailer 136,Tuckshop,Bindura,Mashonaland Central,Urban,Large
+STORE_137,Retailer 137,Tuckshop,Chinhoyi,Mashonaland West,Peri-Urban,Large
+STORE_138,Retailer 138,Mini Mart,Mutare,Manicaland,Urban,Large
+STORE_139,Retailer 139,Supermarket,Hatcliff,Harare Urban,Urban,Small
+STORE_140,Retailer 140,Bakery Outlet,Hatcliff,Harare Urban,Urban,Small
+STORE_141,Retailer 141,Mini Mart,Murehwa,Mashonaland East,Peri-Urban,Large
+STORE_142,Retailer 142,Supermarket,Hatcliff,Harare Urban,Peri-Urban,Large
+STORE_143,Retailer 143,Tuckshop,Chegutu,Mashonaland West,Peri-Urban,Small
+STORE_144,Retailer 144,Bakery Outlet,Harare,Harare Urban,Peri-Urban,Large
+STORE_145,Retailer 145,Bakery Outlet,Murehwa,Mashonaland East,Peri-Urban,Small
+STORE_146,Retailer 146,Wholesale,Murehwa,Mashonaland East,Peri-Urban,Medium
+STORE_147,Retailer 147,Supermarket,Chinhoyi,Mashonaland West,Peri-Urban,Large
+STORE_148,Retailer 148,Supermarket,Murehwa,Mashonaland East,Peri-Urban,Large
+STORE_149,Retailer 149,Supermarket,Bindura,Mashonaland Central,Peri-Urban,Medium
+STORE_150,Retailer 150,Tuckshop,Murehwa,Mashonaland East,Urban,Small
+STORE_151,Retailer 151,Mini Mart,Murehwa,Mashonaland East,Peri-Urban,Small
+STORE_152,Retailer 152,Tuckshop,Bindura,Mashonaland Central,Peri-Urban,Small
+STORE_153,Retailer 153,Tuckshop,Murehwa,Mashonaland East,Peri-Urban,Large
+STORE_154,Retailer 154,Tuckshop,Murehwa,Mashonaland East,Urban,Small
+STORE_155,Retailer 155,Supermarket,Chinhoyi,Mashonaland West,Urban,Large
+STORE_156,Retailer 156,Bakery Outlet,Mutare,Manicaland,Peri-Urban,Large
+STORE_157,Retailer 157,Mini Mart,Hatcliff,Harare Urban,Urban,Large
+STORE_158,Retailer 158,Tuckshop,Harare,Harare Urban,Urban,Large
+STORE_159,Retailer 159,Bakery Outlet,Murehwa,Mashonaland East,Urban,Large
+STORE_160,Retailer 160,Wholesale,Mutare,Manicaland,Peri-Urban,Medium
+STORE_161,Retailer 161,Mini Mart,Chinhoyi,Mashonaland West,Urban,Small
+STORE_162,Retailer 162,Mini Mart,Mutare,Manicaland,Peri-Urban,Large
+STORE_163,Retailer 163,Tuckshop,Harare,Harare Urban,Peri-Urban,Medium
+STORE_164,Retailer 164,Tuckshop,Harare,Harare Urban,Urban,Medium
+STORE_165,Retailer 165,Wholesale,Mutare,Manicaland,Peri-Urban,Large
+STORE_166,Retailer 166,Tuckshop,Chinhoyi,Mashonaland West,Urban,Medium
+STORE_167,Retailer 167,Supermarket,Harare,Harare Urban,Peri-Urban,Small
+STORE_168,Retailer 168,Wholesale,Harare,Harare Urban,Urban,Large
+STORE_169,Retailer 169,Mini Mart,Chinhoyi,Mashonaland West,Urban,Medium
+STORE_170,Retailer 170,Supermarket,Harare,Harare Urban,Peri-Urban,Large
+STORE_171,Retailer 171,Mini Mart,Chinhoyi,Mashonaland West,Urban,Small
+STORE_172,Retailer 172,Tuckshop,Mutare,Manicaland,Urban,Medium
+STORE_173,Retailer 173,Tuckshop,Chegutu,Mashonaland West,Urban,Small
+STORE_174,Retailer 174,Mini Mart,Hatcliff,Harare Urban,Urban,Small
+STORE_175,Retailer 175,Bakery Outlet,Hatcliff,Harare Urban,Urban,Small
+STORE_176,Retailer 176,Bakery Outlet,Hatcliff,Harare Urban,Urban,Small
+STORE_177,Retailer 177,Supermarket,Bindura,Mashonaland Central,Urban,Medium
+STORE_178,Retailer 178,Tuckshop,Bindura,Mashonaland Central,Peri-Urban,Large
+STORE_179,Retailer 179,Tuckshop,Chinhoyi,Mashonaland West,Peri-Urban,Large
+STORE_180,Retailer 180,Tuckshop,Chegutu,Mashonaland West,Urban,Small
+STORE_181,Retailer 181,Bakery Outlet,Hatcliff,Harare Urban,Peri-Urban,Large
+STORE_182,Retailer 182,Wholesale,Chinhoyi,Mashonaland West,Urban,Small
+STORE_183,Retailer 183,Supermarket,Chegutu,Mashonaland West,Urban,Small
+STORE_184,Retailer 184,Wholesale,Murehwa,Mashonaland East,Urban,Large
+STORE_185,Retailer 185,Mini Mart,Chegutu,Mashonaland West,Peri-Urban,Small
+STORE_186,Retailer 186,Tuckshop,Mutare,Manicaland,Peri-Urban,Large
+STORE_187,Retailer 187,Wholesale,Bindura,Mashonaland Central,Urban,Small
+STORE_188,Retailer 188,Bakery Outlet,Hatcliff,Harare Urban,Urban,Small
+STORE_189,Retailer 189,Mini Mart,Harare,Harare Urban,Urban,Large
+STORE_190,Retailer 190,Supermarket,Chinhoyi,Mashonaland West,Peri-Urban,Medium
+STORE_191,Retailer 191,Mini Mart,Chegutu,Mashonaland West,Peri-Urban,Medium
+STORE_192,Retailer 192,Bakery Outlet,Mutare,Manicaland,Peri-Urban,Large
+STORE_193,Retailer 193,Tuckshop,Bindura,Mashonaland Central,Urban,Small
+STORE_194,Retailer 194,Mini Mart,Bindura,Mashonaland Central,Urban,Medium
+STORE_195,Retailer 195,Wholesale,Harare,Harare Urban,Peri-Urban,Large
+STORE_196,Retailer 196,Supermarket,Bindura,Mashonaland Central,Peri-Urban,Small
+STORE_197,Retailer 197,Supermarket,Harare,Harare Urban,Urban,Large
+STORE_198,Retailer 198,Supermarket,Harare,Harare Urban,Urban,Large
+STORE_199,Retailer 199,Mini Mart,Bindura,Mashonaland Central,Urban,Small
+STORE_200,Retailer 200,Wholesale,Murehwa,Mashonaland East,Peri-Urban,Large

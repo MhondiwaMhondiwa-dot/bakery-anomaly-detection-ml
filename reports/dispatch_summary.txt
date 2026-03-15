@@ -1,0 +1,53 @@
+======================================================================
+DISPATCH DATASET SUMMARY
+======================================================================
+Dataset Shape: 9,156 rows × 21 columns
+Date Range: 2025-01-01 → 2025-07-31
+
+DISPATCH VOLUME OVERVIEW
+----------------------------------------------------------------------
+Total Dispatch Events: 9,156
+Total Units Dispatched: 27,438,162
+Mean Units per Dispatch: 2996.7
+Plants Dispatching: 1
+  - Shepperton_Plant: 9,156 dispatches (100.0%)
+Depots Served: 7
+Top Depots by Dispatch Count:
+  - Mutare: 1,355 dispatches (14.8%)
+  - Murehwa: 1,341 dispatches (14.6%)
+  - Chinhoyi: 1,322 dispatches (14.4%)
+  - Harare: 1,314 dispatches (14.4%)
+  - Hatcliff: 1,282 dispatches (14.0%)
+Vehicles Used: 150
+
+Top SKUs by Quantity:
+  - soft_white: 14,411,650 units
+  - low_gi_seed_loaf: 4,404,344 units
+  - whole_grain_loaf: 4,389,376 units
+  - high_energy_brown: 4,232,792 units
+
+ON-TIME DELIVERY PERFORMANCE
+----------------------------------------------------------------------
+Mean Delay: 11.6 min
+Median Delay: 8.0 min
+95th Percentile Delay: 41.0 min
+On-Time Rate (±30 min): 84.35%
+⚠️  Warning: below 90% target
+
+TIME PATTERNS
+----------------------------------------------------------------------
+Mean Delay by Hour:
+  - 02: 11.7 min
+  - 03: 11.7 min
+  - 04: 11.7 min
+  - 05: 11.4 min
+  - 06: 11.3 min
+  - Monday: 11.3 min
+  - Tuesday: 11.5 min
+  - Wednesday: 11.4 min
+  - Thursday: 12.2 min
+  - Friday: 11.0 min
+  - Saturday: 12.1 min
+  - Sunday: 11.4 min
+
+======================================================================

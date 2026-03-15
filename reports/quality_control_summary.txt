@@ -1,0 +1,78 @@
+==========================================================================================
+QUALITY CONTROL DATASET - EXPLORATORY DATA ANALYSIS SUMMARY
+==========================================================================================
+
+📊 DATASET OVERVIEW
+------------------------------------------------------------------------------------------
+Total QC Tests: 6,000
+Date Range: 2025-01-01 00:00:00 to 2025-07-28 00:00:00
+Unique Batches: 3828
+Unique SKUs: 4
+Unique Test Parameters: 4
+
+✅ PASS/FAIL SUMMARY
+------------------------------------------------------------------------------------------
+Tests Passed: 3,711 (61.85%)
+Tests Failed: 2,289 (38.15%)
+Tests Passed / Tests Failed Ratio: 1.62x
+
+🔬 QUALITY TEST PARAMETERS ANALYSIS
+------------------------------------------------------------------------------------------
+Top 10 Failing Parameters:
+  seal_strength:
+    - Total Tests: 1,433
+    - Pass Rate: 60.99%
+    - Failures: 559
+  temperature:
+    - Total Tests: 1,543
+    - Pass Rate: 61.70%
+    - Failures: 591
+  moisture:
+    - Total Tests: 1,565
+    - Pass Rate: 62.04%
+    - Failures: 594
+  weight:
+    - Total Tests: 1,459
+    - Pass Rate: 62.65%
+    - Failures: 545
+
+🍞 SKU QUALITY METRICS (Top 10 by Fail Rate)
+------------------------------------------------------------------------------------------
+  High Energy Brown: 61.12% pass rate (596 failures)
+  Low GI Seed loaf: 61.60% pass rate (568 failures)
+  Soft white: 61.86% pass rate (582 failures)
+  Whole grain loaf: 62.86% pass rate (543 failures)
+
+📦 BATCH QUALITY ANALYSIS
+------------------------------------------------------------------------------------------
+Total Batches Tested: 3,828
+Perfect Batches (100% Pass): 1,930 (50.4%)
+Batches with Failures: 1,898 (49.6%)
+Complete Failures (0% Pass): 1,063
+
+⏰ TEMPORAL PATTERNS
+------------------------------------------------------------------------------------------
+Worst QC Hour: 00:00 (61.85% pass rate)
+Best QC Hour: 00:00 (61.85% pass rate)
+Day with Lowest Pass Rate: Tuesday (59.69%)
+
+🎯 CRITICAL FINDINGS & ACTION ITEMS
+==========================================================================================
+
+1. 🚨 CRITICAL PARAMETER FAILURES (4 identified):
+   → seal_strength: 39.01% failure rate (559 failures)
+   → temperature: 38.30% failure rate (591 failures)
+   → moisture: 37.96% failure rate (594 failures)
+   → weight: 37.35% failure rate (545 failures)
+   ACTION: Investigate test procedure, check calibration, review measurement standards
+
+2. 📦 SKU QUALITY CONCERNS (4 identified):
+   → High Energy Brown: 38.88% failure rate
+   → Low GI Seed loaf: 38.40% failure rate
+   → Soft white: 38.14% failure rate
+   → Whole grain loaf: 37.14% failure rate
+   ACTION: Review production recipe, increase QC sampling, audit production line
+
+==========================================================================================
+END OF REPORT
+==========================================================================================

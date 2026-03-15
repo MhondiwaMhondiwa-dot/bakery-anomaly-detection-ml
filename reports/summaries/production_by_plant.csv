@@ -1,0 +1,2 @@
+plant,quantity_produced_count,quantity_produced_sum,quantity_produced_mean,quantity_produced_std,stacked_before_robot_sum,squashed_sum,torn_sum,undersized_small_sum,valleys_sum,loose_packs_sum,pale_underbaked_sum,total_defects,defect_rate_%
+Shepperton,15075,16558613,1098.415456053068,529.158366484865,67742,52667,38148,82624,68160,97374,37732,0,0.0

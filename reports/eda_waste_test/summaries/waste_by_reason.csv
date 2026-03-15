@@ -1,0 +1,6 @@
+waste_reason,waste_count,total_waste_qty,mean_qty
+Delayed offloading,0,0.0,
+Good,0,0.0,
+Overloaded crates,0,0.0,
+Poor stacking,0,0.0,
+Rough handling,0,0.0,

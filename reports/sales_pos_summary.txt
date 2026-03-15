@@ -1,0 +1,131 @@
+================================================================================
+SALES / RETAIL POS DATASET - EXPLORATORY DATA ANALYSIS
+================================================================================
+
+📊 DATASET OVERVIEW
+--------------------------------------------------------------------------------
+Total Sales Transactions: 5,019
+Date Range: 2025-01-01 07:00:00 to 2025-06-30 17:00:00
+Total Units Sold: 314,710
+Total Revenue: $292,680.30
+Average Transaction Size: 62.7 units
+Average Price: $0.93
+Unique Retailers: 0
+Regions: 5 - Harare Urban, Manicaland, Mashonaland Central, Mashonaland East, Mashonaland West
+Multi-SKU columns: soft_white, high_energy_brown, whole_grain_loaf, low_gi_seed_loaf
+
+🎯 PROMOTION OVERVIEW
+--------------------------------------------------------------------------------
+Sales with Promotions: 1,256 (25.0%)
+Sales without Promotions: 3,763 (75.0%)
+Unique Promotions: 4
+
+Promotion vs Non-Promotion Performance:
+               quantity_sold           revenue        bakers_inn_price
+                         sum   mean        sum   mean             mean
+promotion_flag                                                        
+0                     236371  62.81  219825.03  58.42             0.93
+1                      78339  62.37   72855.27  58.01             0.93
+
+⚠️ WARNING: Promotions showing NEGATIVE uplift: -0.7% quantity
+
+Top Promotions by Sales Volume:
+                        Units Sold   Revenue  Transactions
+promotion_name                                            
+Independence Day Promo       21343  19848.99           341
+Easter Promo                 19811  18424.23           318
+Heroes Day Promo             18894  17571.42           304
+Christmas Promo              18291  17010.63           293
+
+🌍 REGIONAL DEMAND ANALYSIS
+--------------------------------------------------------------------------------
+                     Units Sold  ...  Avg Revenue/Transaction
+region                           ...                         
+Mashonaland West         106721  ...                    58.52
+Harare Urban              73451  ...                    57.69
+Mashonaland Central       52122  ...                    57.50
+Mashonaland East          50834  ...                    59.62
+Manicaland                31582  ...                    58.39
+
+[5 rows x 6 columns]
+
+🍞 SKU PERFORMANCE ANALYSIS
+--------------------------------------------------------------------------------
+                 SKU  Units Sold   Revenue  Transactions  % of Total Units
+1  High Energy Brown       81101  75423.93          3751         25.770074
+3   Low Gi Seed Loaf       78091  72624.63          3702         24.813638
+2   Whole Grain Loaf       77880  72428.40          3676         24.746592
+0         Soft White       77638  72203.34          3676         24.669696
+
+⏰ TEMPORAL DEMAND PATTERNS
+--------------------------------------------------------------------------------
+Sales by Day of Week:
+           Units   Revenue  Transactions
+day_name                                
+Monday     43944  40867.92           707
+Tuesday    40302  37480.86           646
+Wednesday  45127  41968.11           706
+Thursday   45922  42707.46           738
+Friday     43454  40412.22           699
+Saturday   48266  44887.38           763
+Sunday     47695  44356.35           760
+
+Weekday vs Weekend:
+        quantity_sold           revenue       
+                  sum   mean        sum   mean
+Weekday        218749  62.57  203436.57  58.19
+Weekend         95961  63.01   89243.73  58.60
+
+Hourly Sales Summary:
+      Total Units  Avg Units/Sale  Transactions
+hour                                           
+7           32054            65.2           492
+8           31100            64.9           479
+9           29121            62.2           468
+10          30233            65.0           465
+11          29925            63.7           470
+12          30759            61.0           504
+13          33828            64.1           528
+14          30860            62.2           496
+15          33235            62.2           534
+16          31215            62.7           498
+17            657            27.4            24
+18            873            31.2            28
+19            549            26.1            21
+20            226            25.1             9
+21             75            25.0             3
+
+Peak Sales Hour: 13:00 (33828 units)
+Lowest Sales Hour: 21:00 (75 units)
+
+💲 PRICE ANALYSIS
+--------------------------------------------------------------------------------
+Price Statistics by Retailer (Top 10):
+Empty DataFrame
+Columns: [Min Price, Avg Price, Max Price, Std Dev]
+Index: []
+
+🏪 TOP RETAILERS BY SALES VOLUME
+--------------------------------------------------------------------------------
+Empty DataFrame
+Columns: [Units Sold, Revenue, Transactions, Avg Units/Transaction]
+Index: []
+
+🎯 KEY INSIGHTS & ACTION ITEMS
+================================================================================
+1. ⚠️ Retailers with very low sales
+   Action: Investigate stock-outs, poor locations, or dispatch issues
+
+2. Check for retailers receiving dispatch but showing zero/low sales
+   Action: Cross-reference with dispatch_dataset to identify overstock situations
+
+3. Promotion Impact: Review promotion strategy and effectiveness
+
+4. Multi-SKU Performance: Track demand variations across soft_white, high_energy_brown, whole_grain_loaf, low_gi_seed_loaf
+   Action: Focus on high-demand SKUs; consider discontinuing low-demand products
+
+5. Regional expansion opportunities
+   Action: Identify high-demand regions and expand retailer network
+
+================================================================================
+✅ Sales POS summary complete!

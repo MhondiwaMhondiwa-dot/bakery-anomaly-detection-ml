@@ -1,0 +1,6 @@
+# Project configuration
+paths:
+  raw_data: data/raw
+  processed_data: data/processed
+  notebooks: notebooks
+  logs: reports/logs

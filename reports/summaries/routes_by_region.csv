@@ -1,0 +1,6 @@
+region,num_routes,avg_distance_km,total_distance_km,avg_time_min,avg_stops,total_stops,avg_capacity_kg,avg_risk_score
+Harare Urban,5,216.8,9973,193.98,11.96,550,10318.65,0.85
+Mashonaland West,4,224.16,10087,164.07,10.82,487,10405.56,0.86
+Manicaland,2,229.33,5504,133.08,10.46,251,9604.17,0.87
+Mashonaland Central,1,301.0,5418,179.0,10.06,181,10000.0,1.07
+Mashonaland East,1,295.06,5016,137.06,14.06,239,12333.06,1.12

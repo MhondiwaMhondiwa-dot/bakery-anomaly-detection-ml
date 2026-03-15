@@ -1,0 +1,6 @@
+handling_condition,qty_returned_sum,qty_returned_mean,qty_returned_count,temperature_at_return_mean
+Temperature Abuse,160239,61.18,2619,24.44
+Normal,159758,60.31,2649,24.43
+Condensation,159170,60.34,2638,24.41
+Exposure to Sun,159137,61.0,2609,24.37
+Poor Handling,152739,59.9,2550,24.64

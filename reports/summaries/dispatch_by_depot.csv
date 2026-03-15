@@ -1,0 +1,8 @@
+depot_id,total_dispatches,total_qty,mean_qty_per_dispatch,mean_delay_min,median_delay_min,on_time_rate,unique_plants,unique_vehicles,on_time_pct
+Hatcliff,1282,3828472,2986.33,12.24,9.0,0.83,1,150,83.0
+Harare,1314,3917740,2981.54,11.83,7.0,0.83,1,150,83.0
+Bindura,1276,3805413,2982.3,11.57,8.0,0.85,1,150,85.0
+Murehwa,1341,4024662,3001.24,11.55,8.0,0.85,1,150,85.0
+Chegutu,1266,3799275,3001.01,11.35,8.0,0.85,1,150,85.0
+Mutare,1355,4058972,2995.55,11.3,7.0,0.84,1,150,84.0
+Chinhoyi,1322,4003628,3028.46,11.11,7.0,0.86,1,150,86.0

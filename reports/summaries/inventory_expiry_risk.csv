@@ -1,0 +1,5 @@
+expiry_risk,Records,Qty_In,Qty_Out,SKUs_Affected
+Critical (0-2 days),160,39027,35438,4
+Expired,4794,1111952,1137225,4
+Safe,4911,1138650,1154497,4
+Warning (3-5 days),135,30834,32266,4

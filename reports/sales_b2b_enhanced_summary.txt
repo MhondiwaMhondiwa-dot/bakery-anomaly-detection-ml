@@ -1,0 +1,161 @@
+================================================================================
+SALES DATASET (B2B CHANNEL) - ENHANCED SUMMARY REPORT
+Analysis Period: Wholesale/Depot Distribution to Stores
+================================================================================
+
+================================================================================
+1. OVERALL B2B SALES METRICS
+================================================================================
+Total B2B Orders: 6,000
+Total Units Distributed: 7,509,084
+Total Revenue (Wholesale): $6,983,448.12
+Average Wholesale Price: $0.93/unit
+
+================================================================================
+2. DEPOT DISTRIBUTION PERFORMANCE
+================================================================================
+
+Top 5 Depots by Volume:
+1. Chinhoyi:
+   - Units Distributed: 1,111,058 (14.8%)
+   - Revenue: $1,033,283.94 (14.8%)
+   - Avg Order Size: 1262.6 units
+2. Chegutu:
+   - Units Distributed: 1,086,409 (14.5%)
+   - Revenue: $1,010,360.37 (14.5%)
+   - Avg Order Size: 1272.1 units
+3. Murehwa:
+   - Units Distributed: 1,081,927 (14.4%)
+   - Revenue: $1,006,192.11 (14.4%)
+   - Avg Order Size: 1269.9 units
+4. Hatcliff:
+   - Units Distributed: 1,077,982 (14.4%)
+   - Revenue: $1,002,523.26 (14.4%)
+   - Avg Order Size: 1215.3 units
+5. Harare:
+   - Units Distributed: 1,073,135 (14.3%)
+   - Revenue: $998,015.55 (14.3%)
+   - Avg Order Size: 1256.6 units
+
+📊 Depot Concentration: Top 3 depots = 43.7% of volume
+   ✅ BALANCED: Healthy distribution across depot network
+
+================================================================================
+3. STORE ORDERING PATTERNS
+================================================================================
+
+Depot-focused view only (store granularity not available in aggregated dataset).
+================================================================================
+4. DISTRIBUTION ROUTE EFFICIENCY
+================================================================================
+================================================================================
+5. SKU DEMAND IN B2B CHANNEL
+================================================================================
+
+Top 10 SKUs by B2B Volume:
+1. Whole grain loaf:
+   - Units: 1,912,566 (25.5%)
+   - Revenue: $1,778,686.38
+   - Avg Wholesale Price: $0.93/unit
+   - Depots Stocking: 7
+2. Soft white:
+   - Units: 1,884,901 (25.1%)
+   - Revenue: $1,752,957.93
+   - Avg Wholesale Price: $0.93/unit
+   - Depots Stocking: 7
+3. High Energy Brown:
+   - Units: 1,875,848 (25.0%)
+   - Revenue: $1,744,538.64
+   - Avg Wholesale Price: $0.93/unit
+   - Depots Stocking: 7
+4. Low GI Seed loaf:
+   - Units: 1,835,769 (24.4%)
+   - Revenue: $1,707,265.17
+   - Avg Wholesale Price: $0.93/unit
+   - Depots Stocking: 7
+
+📊 SKU Portfolio:
+   - Total SKUs: 4
+   - Top 5 SKUs: 100.0% of volume
+   - Top 10 SKUs: 100.0% of volume
+
+================================================================================
+6. WHOLESALE PRICING STRUCTURE
+================================================================================
+
+SKU Pricing (Wholesale):
+Overall Average Wholesale Price: $0.93/unit
+Price Range: $0.93 - $0.93
+
+Top 5 Most Expensive SKUs (Wholesale):
+1. High Energy Brown: $0.93 avg ($0.93-$0.93)
+2. Low GI Seed loaf: $0.93 avg ($0.93-$0.93)
+3. Soft white: $0.93 avg ($0.93-$0.93)
+4. Whole grain loaf: $0.93 avg ($0.93-$0.93)
+
+💰 Pricing Insights:
+   - Wholesale avg: $0.93/unit
+   - Price variability: Std Dev = $0.00
+   ℹ️  Compare with Sales POS (retail) to validate margin structure
+
+================================================================================
+7. TEMPORAL ORDERING PATTERNS (B2B)
+================================================================================
+
+📅 Daily Metrics:
+   - Average daily volume: 38312 units
+   - Active depots per day: 6.9
+   - Peak day volume: 57,909 units
+   - Lowest day volume: 16,933 units
+
+📊 Day of Week Patterns:
+   - Highest volume day: Sunday (1,127,008 units)
+   - Lowest volume day: Monday (1,021,029 units)
+
+================================================================================
+8. B2B CHANNEL CHARACTERISTICS
+================================================================================
+
+📦 B2B Order Profile:
+   - Average B2B order size: 1251.5 units
+   - Median B2B order size: 1253 units
+   - 75th percentile: 1741 units
+   - 95th percentile: 2104 units
+   ℹ️  Compare with Sales POS avg order size (~31 units) for B2B vs B2C validation
+   ℹ️  B2B orders should be 3-5x larger (depot→store vs store→consumer)
+
+🔗 Network Structure:
+   - Active depots: 7
+
+================================================================================
+9. DEPOT-SPECIFIC SKU DEMAND
+================================================================================
+
+Depot-SKU Matrix Summary:
+   - Total depot-SKU combinations: 28
+   - Bindura top SKU: Whole grain loaf (276,408 units)
+   - Chegutu top SKU: High Energy Brown (296,109 units)
+   - Chinhoyi top SKU: Low GI Seed loaf (284,807 units)
+   - Harare top SKU: Whole grain loaf (302,146 units)
+   - Hatcliff top SKU: Soft white (286,542 units)
+
+================================================================================
+10. KEY INSIGHTS & ACTION ITEMS
+================================================================================
+
+🎯 Critical Findings:
+
+1. BALANCED DEPOT NETWORK (43.7%)
+   → Strength: No single-point-of-failure in depot network
+   → Action: Maintain balanced load distribution
+
+2. HEALTHY B2B ORDER SIZES (1251.5 units)
+   → Strength: Bulk ordering reduces distribution frequency/cost
+   → Action: Maintain MOQ policies, volume discounts
+
+3. SKU COVERAGE ACROSS DEPOTS: 100.0%
+   → Strength: Good SKU availability network-wide
+
+================================================================================
+END OF REPORT
+================================================================================

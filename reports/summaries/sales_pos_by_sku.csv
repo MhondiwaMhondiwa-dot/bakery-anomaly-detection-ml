@@ -1,0 +1,11 @@
+sku,quantity_sold_sum,quantity_sold_mean,quantity_sold_count,revenue_sum,revenue_mean,price_min,price_mean,price_max,promotion_flag_sum
+Whole Wheat,69378,31.07,2233,101071.16,45.26,1.28,1.46,1.5,44
+High Energy White,69317,31.57,2196,90574.37,41.25,1.14,1.31,1.35,38
+Family Loaf,67483,31.3,2156,148655.6,68.95,1.95,2.2,2.25,52
+Seed Loaf,65559,31.31,2094,98857.06,47.21,1.32,1.51,1.55,36
+Wholegrain Brown,65108,30.21,2155,91512.79,42.47,1.23,1.41,1.45,44
+Soft White,64129,30.6,2096,77283.38,36.87,1.05,1.21,1.25,49
+High Energy Brown,63390,30.92,2050,82826.89,40.4,1.14,1.31,1.35,30
+WholegrainBrown,208,34.67,6,295.93,49.32,1.37,1.42,1.45,0
+HighEnergyBrown,165,18.33,9,215.35,23.93,1.27,1.3,1.34,0
+SoftWhite,56,11.2,5,67.17,13.43,1.18,1.2,1.22,0

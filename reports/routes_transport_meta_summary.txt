@@ -1,0 +1,193 @@
+================================================================================
+ROUTE & TRANSPORT METADATA - ENHANCED SUMMARY REPORT
+================================================================================
+
+1. OVERVIEW - LOGISTICS NETWORK STRUCTURE
+--------------------------------------------------------------------------------
+Total Route Configurations: 150
+Unique Routes: 13
+Unique Vehicles: 150
+Unique Drivers: 150 (Missing: 0)
+Regions Covered: 5
+
+Note: 216 configurations = multiple vehicle/driver assignments per route
+      (Same route can be served by different vehicles on different days)
+
+2. ROUTE CHARACTERISTICS - DISTANCE, TIME, STOPS
+--------------------------------------------------------------------------------
+Distance (km):
+  - Mean: 240.0 km
+  - Median: 239.0 km
+  - Range: 40.0 - 445.0 km
+  - Std Dev: 91.2 km (high variance)
+
+Estimated Time (minutes):
+  - Mean: 167 min (2.8 hours)
+  - Median: 166 min (2.8 hours)
+  - Range: 74 - 298 min
+  - Longest route: 5.0 hours
+
+Stops per Route:
+  - Mean: 11.4 stores
+  - Median: 11 stores
+  - Range: 8 - 15 stores
+  - Total unique stores served: 8 (estimated)
+
+3. EFFICIENCY METRICS - ROUTE PERFORMANCE
+--------------------------------------------------------------------------------
+Speed (km per minute):
+  - Mean: 1.55 km/min (93.2 km/h)
+  - Median: 1.34 km/min (80.4 km/h)
+  - Interpretation: Avg 93.2 km/h includes stop time
+
+Stops Density (stops per km):
+  - Mean: 0.06 stops/km
+  - Median: 0.05 stops/km
+  - High density (>0.5): 0 routes (urban)
+  - Low density (<0.2): 147 routes (rural)
+
+Average Distance per Stop:
+  - Mean: 21.4 km/stop
+  - Median: 21.1 km/stop
+  - Interpretation: Shorter = clustered stores (efficient), Longer = spread out (delays)
+
+4. ROUTE TYPE DISTRIBUTION (BY DISTANCE)
+--------------------------------------------------------------------------------
+Rural         25 routes ( 16.7%) | Avg Time: 122 min | Avg Stops: 10.2
+Suburban       4 routes (  2.7%) | Avg Time: 206 min | Avg Stops: 11.0
+Urban          0 routes (  0.0%) | Avg Time: nan min | Avg Stops:  nan
+
+Urban routes (<30km): Short, many stops, traffic risk
+Suburban routes (30-60km): Medium length, moderate stops
+Rural routes (>60km): Long, fewer stops, freshness risk
+
+5. VEHICLE CAPACITY ANALYSIS
+--------------------------------------------------------------------------------
+Capacity Distribution:
+  8,000 kg:  32 routes ( 21.3%) | Avg Stops: 10.6
+  9,000 kg:  15 routes ( 10.0%) | Avg Stops: 10.0
+  10,000 kg:  25 routes ( 16.7%) | Avg Stops: 10.5
+  10,250 kg:   9 routes (  6.0%) | Avg Stops: 11.0
+  11,000 kg:   8 routes (  5.3%) | Avg Stops: 11.0
+  11,333 kg:   8 routes (  5.3%) | Avg Stops: 14.0
+  11,500 kg:  17 routes ( 11.3%) | Avg Stops: 11.5
+  11,666 kg:   9 routes (  6.0%) | Avg Stops: 11.0
+  12,000 kg:   4 routes (  2.7%) | Avg Stops: 13.2
+  12,333 kg:  14 routes (  9.3%) | Avg Stops: 14.0
+  12,500 kg:   2 routes (  1.3%) | Avg Stops: 12.0
+  15,000 kg:   7 routes (  4.7%) | Avg Stops: 12.6
+
+Capacity Utilization (Estimated):
+  - Avg Load (50kg/stop assumption): 569 kg
+  - Avg Capacity Strain: 5.6%
+  - Overloaded routes (>100% strain): 0
+  - Underutilized routes (<50% strain): 150
+
+Note: Overloading → damage (squashed loaves), safety risk
+      Underutilization → inefficient vehicle usage
+
+6. REGIONAL DISTRIBUTION
+--------------------------------------------------------------------------------
+Harare Urban     46 routes ( 30.7%) | 216.8 km | 12.0 stops |  3.2 hrs
+Mashonaland West  45 routes ( 30.0%) | 224.2 km | 10.8 stops |  2.7 hrs
+Manicaland       24 routes ( 16.0%) | 229.3 km | 10.5 stops |  2.2 hrs
+Mashonaland Central  18 routes ( 12.0%) | 301.0 km | 10.1 stops |  3.0 hrs
+Mashonaland East  17 routes ( 11.3%) | 295.1 km | 14.1 stops |  2.3 hrs
+
+Regional Insights:
+  - Bindura (most routes): 46 configurations
+  - Coverage: 9 regions = comprehensive national network
+  - Balanced distribution = no single region overloaded
+
+7. TRIP TIMING WINDOWS
+--------------------------------------------------------------------------------
+Departure Time Windows:
+  03:00-05:00:  67 routes ( 44.7%) | Avg Trip Duration: 2.9 hrs
+  04:00-06:00:  43 routes ( 28.7%) | Avg Trip Duration: 2.7 hrs
+  02:00-04:00:  40 routes ( 26.7%) | Avg Trip Duration: 2.6 hrs
+
+Trip End Window: 07:00-10:00
+
+Timing Strategy:
+  - Early departure (03:00-05:00): Avoid traffic, maximize freshness window
+  - Same-day return: Efficient vehicle utilization
+  - Avg trip duration: 2.8 hours (out + back)
+
+8. ROUTE COMPLEXITY & RISK ANALYSIS
+--------------------------------------------------------------------------------
+Complexity Score (distance × stops / time):
+  - Mean: 18.0
+  - Median: 16.8
+  - High complexity (>10): 121 routes
+
+Risk Score (0-1 scale, higher = riskier):
+  - Mean: 0.91
+  - Median: 0.95
+  - High risk (>0.7): 111 routes
+  - Low risk (<0.3): 1 routes
+
+TOP 10 HIGHEST RISK ROUTES:
+  RT_MUR_01: Murehwa                        | 431.0km, 13 stops,  1.4h | Risk: 1.51
+  RT_MUT_02: Mutare                         | 441.0km, 10 stops,  3.8h | Risk: 1.50
+  RT_HAT_02: Hatcliff                       | 420.0km, 13 stops,  3.7h | Risk: 1.49
+  RT_CHI_02: Chinhoyi                       | 445.0km,  8 stops,  3.3h | Risk: 1.47
+  RT_BIN_01: Bindura                        | 431.0km, 10 stops,  3.4h | Risk: 1.46
+  RT_CHE_01: Chegutu                        | 389.0km, 15 stops,  2.3h | Risk: 1.41
+  RT_HAT_02: Hatcliff                       | 398.0km,  8 stops,  2.7h | Risk: 1.33
+  RT_MUR_01: Murehwa                        | 359.0km, 15 stops,  2.0h | Risk: 1.33
+  RT_HAR_03: Harare                         | 348.0km, 12 stops,  4.4h | Risk: 1.25
+  RT_HAR_02: Harare                         | 328.0km, 15 stops,  1.2h | Risk: 1.24
+
+Risk Factors:
+  - Long distance → freshness degradation
+  - Many stops → delay accumulation
+  - High capacity strain → damage risk
+
+9. DRIVER & VEHICLE ASSIGNMENT PATTERNS
+--------------------------------------------------------------------------------
+Vehicle Utilization:
+  - Total vehicles: 150
+  - Avg routes per vehicle: 1.0
+  - Max routes per vehicle: 1
+  - Min routes per vehicle: 1
+
+Driver Assignment:
+  - Total drivers: 150
+  - Unassigned routes: 0
+  - Avg routes per driver: 1.0
+  - Max routes per driver: 1
+  - Some vehicles shared across drivers = flexibility
+
+10. OPTIMIZATION OPPORTUNITIES & RECOMMENDATIONS
+--------------------------------------------------------------------------------
+💡 UNDERUTILIZED VEHICLES: 150 routes (<50% capacity)
+   Action: Consolidate routes, downsize vehicles
+   Impact: Reduce fuel costs, improve efficiency
+
+⏰ LONG RURAL ROUTES: 3 routes (>3 hours)
+   Action: Establish regional hubs, stagger dispatch
+   Impact: Reduce freshness risk, improve delivery reliability
+
+🏙️ HIGH-DENSITY URBAN ROUTES: 0 routes
+   Action: Optimize stop sequencing, avoid peak traffic
+   Impact: Reduce delays, improve on-time delivery
+
+KEY RECOMMENDATIONS:
+1. DELAY NORMALIZATION: Use estimated_time_min as baseline for anomaly detection
+   normalized_delay = (actual - estimated) / estimated
+
+2. ROUTE RISK SCORING: Integrate risk_score with dispatch/waste data
+   High-risk routes should have priority monitoring
+
+3. VEHICLE OPTIMIZATION: Match vehicle capacity to route demand
+   Reduce overloading (damage) and underutilization (cost)
+
+4. REGIONAL HUBS: For long rural routes, consider intermediate storage
+   Reduces freshness degradation on 3+ hour routes
+
+5. DRIVER PERFORMANCE: Link driver_id to dispatch outcomes
+   Identify training needs, reward high performers
+
+================================================================================
+END OF ROUTE & TRANSPORT METADATA SUMMARY
+================================================================================
