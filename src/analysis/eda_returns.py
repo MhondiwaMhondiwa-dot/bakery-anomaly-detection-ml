@@ -97,11 +97,21 @@ def grouped_summaries(df: pd.DataFrame, out_dir: Path):
     
     # by retailer
     if 'retailer_id' in df.columns and qty_col:
-        by_retailer = df.groupby('retailer_id')[qty_col].agg(['count', 'sum', 'mean']).reset_index()
-        by_retailer.columns = ['retailer_id', 'return_count', 'total_qty_returned', 'mean_qty']
-        by_retailer = by_retailer.sort_values('total_qty_returned', ascending=False)
-        by_retailer.to_csv(summaries_dir / 'returns_by_retailer.csv', index=False)
-        logger.info(f'Wrote returns_by_retailer.csv')
+        retailer_series = df['retailer_id']
+        if pd.api.types.is_string_dtype(retailer_series) or retailer_series.dtype == object:
+            valid = retailer_series.notna() & (retailer_series.astype(str).str.strip() != '')
+        else:
+            valid = retailer_series.notna()
+
+        retailer_df = df.loc[valid, ['retailer_id', qty_col]]
+        if retailer_df.empty:
+            logger.warning('Skipping returns_by_retailer.csv: retailer_id has no valid values')
+        else:
+            by_retailer = retailer_df.groupby('retailer_id')[qty_col].agg(['count', 'sum', 'mean']).reset_index()
+            by_retailer.columns = ['retailer_id', 'return_count', 'total_qty_returned', 'mean_qty']
+            by_retailer = by_retailer.sort_values('total_qty_returned', ascending=False)
+            by_retailer.to_csv(summaries_dir / 'returns_by_retailer.csv', index=False)
+            logger.info(f'Wrote returns_by_retailer.csv')
     
     # by SKU
     if 'sku' in df.columns and qty_col:
@@ -135,6 +145,24 @@ def visualizations(df: pd.DataFrame, out_dir: Path):
         fig.text(0.5, 0.01, text, ha='center', va='bottom', fontsize=9, color='dimgray')
     
     qty_col = 'qty_returned' if 'qty_returned' in df.columns else None
+
+    def non_empty_group_sum(frame: pd.DataFrame, key_col: str, value_col: str) -> pd.Series:
+        """Return grouped sum excluding null/blank keys; empty Series if no valid keys."""
+        if key_col not in frame.columns or value_col not in frame.columns:
+            return pd.Series(dtype=float)
+
+        key_series = frame[key_col]
+        # Handle both numeric and string-like identifiers robustly.
+        if pd.api.types.is_string_dtype(key_series) or key_series.dtype == object:
+            valid = key_series.notna() & (key_series.astype(str).str.strip() != '')
+        else:
+            valid = key_series.notna()
+
+        filtered = frame.loc[valid, [key_col, value_col]]
+        if filtered.empty:
+            return pd.Series(dtype=float)
+
+        return filtered.groupby(key_col)[value_col].sum()
     
     # 1. Return quantity distribution
     if qty_col:
@@ -210,43 +238,52 @@ def visualizations(df: pd.DataFrame, out_dir: Path):
 
     # 6. Returns by route (top 15)
     if 'route_id' in df.columns and qty_col:
-        fig, ax = plt.subplots(figsize=(12, 6))
-        by_route = df.groupby('route_id')[qty_col].sum().sort_values(ascending=True).tail(15)
-        by_route.plot(kind='barh', ax=ax, color='slateblue')
-        ax.set_xlabel('Total Quantity Returned')
-        ax.set_title('Top 15 Routes by Return Volume')
-        add_caption(fig, 'Highlights routes with the highest return volumes for investigation.')
-        plt.tight_layout()
-        plt.savefig(figs_dir / 'returns_by_route_top15.png', dpi=150)
-        plt.close()
-        logger.info('Saved returns_by_route_top15.png')
+        by_route = non_empty_group_sum(df, 'route_id', qty_col).sort_values(ascending=True).tail(15)
+        if by_route.empty:
+            logger.warning('Skipping returns_by_route_top15.png: route_id has no valid values')
+        else:
+            fig, ax = plt.subplots(figsize=(12, 6))
+            by_route.plot(kind='barh', ax=ax, color='slateblue')
+            ax.set_xlabel('Total Quantity Returned')
+            ax.set_title('Top 15 Routes by Return Volume')
+            add_caption(fig, 'Highlights routes with the highest return volumes for investigation.')
+            plt.tight_layout()
+            plt.savefig(figs_dir / 'returns_by_route_top15.png', dpi=150)
+            plt.close()
+            logger.info('Saved returns_by_route_top15.png')
 
     # 7. Returns by retailer (top 15)
     if 'retailer_id' in df.columns and qty_col:
-        fig, ax = plt.subplots(figsize=(12, 6))
-        by_retailer = df.groupby('retailer_id')[qty_col].sum().sort_values(ascending=True).tail(15)
-        by_retailer.plot(kind='barh', ax=ax, color='teal')
-        ax.set_xlabel('Total Quantity Returned')
-        ax.set_title('Top 15 Retailers by Return Volume')
-        add_caption(fig, 'Shows retailers with unusually high return volumes.')
-        plt.tight_layout()
-        plt.savefig(figs_dir / 'returns_by_retailer_top15.png', dpi=150)
-        plt.close()
-        logger.info('Saved returns_by_retailer_top15.png')
+        by_retailer = non_empty_group_sum(df, 'retailer_id', qty_col).sort_values(ascending=True).tail(15)
+        if by_retailer.empty:
+            logger.warning('Skipping returns_by_retailer_top15.png: retailer_id has no valid values')
+        else:
+            fig, ax = plt.subplots(figsize=(12, 6))
+            by_retailer.plot(kind='barh', ax=ax, color='teal')
+            ax.set_xlabel('Total Quantity Returned')
+            ax.set_title('Top 15 Retailers by Return Volume')
+            add_caption(fig, 'Shows retailers with unusually high return volumes.')
+            plt.tight_layout()
+            plt.savefig(figs_dir / 'returns_by_retailer_top15.png', dpi=150)
+            plt.close()
+            logger.info('Saved returns_by_retailer_top15.png')
 
     # 8. Returns by reason (quantity)
     reason_col = 'return_reason' if 'return_reason' in df.columns else ('reason_code' if 'reason_code' in df.columns else None)
     if reason_col and qty_col:
-        fig, ax = plt.subplots(figsize=(12, 6))
-        by_reason_qty = df.groupby(reason_col)[qty_col].sum().sort_values(ascending=True).tail(15)
-        by_reason_qty.plot(kind='barh', ax=ax, color='darkorange')
-        ax.set_xlabel('Total Quantity Returned')
-        ax.set_title('Top Return Reasons by Quantity')
-        add_caption(fig, 'Ranks reasons by total units returned, not just count of cases.')
-        plt.tight_layout()
-        plt.savefig(figs_dir / 'returns_by_reason_qty.png', dpi=150)
-        plt.close()
-        logger.info('Saved returns_by_reason_qty.png')
+        by_reason_qty = non_empty_group_sum(df, reason_col, qty_col).sort_values(ascending=True).tail(15)
+        if by_reason_qty.empty:
+            logger.warning('Skipping returns_by_reason_qty.png: reason column has no valid values')
+        else:
+            fig, ax = plt.subplots(figsize=(12, 6))
+            by_reason_qty.plot(kind='barh', ax=ax, color='darkorange')
+            ax.set_xlabel('Total Quantity Returned')
+            ax.set_title('Top Return Reasons by Quantity')
+            add_caption(fig, 'Ranks reasons by total units returned, not just count of cases.')
+            plt.tight_layout()
+            plt.savefig(figs_dir / 'returns_by_reason_qty.png', dpi=150)
+            plt.close()
+            logger.info('Saved returns_by_reason_qty.png')
 
     # 9. Return quantity by reason (boxplot)
     if reason_col and qty_col:
@@ -267,16 +304,19 @@ def visualizations(df: pd.DataFrame, out_dir: Path):
 
     # 10. Returns by SKU (quantity)
     if 'sku' in df.columns and qty_col:
-        fig, ax = plt.subplots(figsize=(12, 6))
-        by_sku = df.groupby('sku')[qty_col].sum().sort_values(ascending=True).tail(15)
-        by_sku.plot(kind='barh', ax=ax, color='mediumseagreen')
-        ax.set_xlabel('Total Quantity Returned')
-        ax.set_title('Top 15 SKUs by Return Volume')
-        add_caption(fig, 'Highlights SKUs with the greatest return impact.')
-        plt.tight_layout()
-        plt.savefig(figs_dir / 'returns_by_sku_top15.png', dpi=150)
-        plt.close()
-        logger.info('Saved returns_by_sku_top15.png')
+        by_sku = non_empty_group_sum(df, 'sku', qty_col).sort_values(ascending=True).tail(15)
+        if by_sku.empty:
+            logger.warning('Skipping returns_by_sku_top15.png: sku has no valid values')
+        else:
+            fig, ax = plt.subplots(figsize=(12, 6))
+            by_sku.plot(kind='barh', ax=ax, color='mediumseagreen')
+            ax.set_xlabel('Total Quantity Returned')
+            ax.set_title('Top 15 SKUs by Return Volume')
+            add_caption(fig, 'Highlights SKUs with the greatest return impact.')
+            plt.tight_layout()
+            plt.savefig(figs_dir / 'returns_by_sku_top15.png', dpi=150)
+            plt.close()
+            logger.info('Saved returns_by_sku_top15.png')
 
     # 11. Rolling 7-day return trend
     if 'timestamp' in df.columns and qty_col:

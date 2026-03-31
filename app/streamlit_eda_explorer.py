@@ -18,6 +18,228 @@ from PIL import Image
 
 st.set_page_config(page_title="EDA Explorer", layout="wide", initial_sidebar_state="expanded")
 
+
+def inject_ui_styles():
+    st.markdown(
+        """
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Source+Sans+3:wght@400;600&display=swap');
+
+        /* ── Design tokens ── */
+        :root {
+            --bg:           #f4f7f3;
+            --surface:      #ffffff;
+            --surface-soft: #f0f5ed;
+            --ink:          #152018;
+            --muted:        #5d7165;
+            --brand:        #1e8a4b;
+            --brand-dark:   #145c32;
+            --brand-light:  #d6f0e0;
+            --border:       #d8e4d6;
+            --shadow-xs:    0 1px 4px rgba(18,38,26,.05);
+            --shadow-sm:    0 2px 10px rgba(18,38,26,.07);
+            --shadow:       0 6px 24px rgba(18,38,26,.10);
+            --shadow-lg:    0 18px 52px rgba(10,28,18,.16);
+        }
+
+        /* ── Page background ── */
+        .stApp {
+            background:
+                radial-gradient(ellipse 1200px 420px at 4%  -8%, #d8f2bc 0%, transparent 62%),
+                radial-gradient(ellipse  820px 300px at 97%  3%, #cce9e3 0%, transparent 58%),
+                var(--bg);
+            color: var(--ink);
+            font-family: 'Source Sans 3', sans-serif;
+        }
+
+        /* ── Sidebar shell ── */
+        [data-testid="stSidebar"] {
+            background: linear-gradient(158deg, #0a2415 0%, #143822 52%, #1c4f2e 100%);
+            border-right: 1px solid rgba(255,255,255,0.07);
+        }
+        [data-testid="stSidebar"] * { color: #ebf9ee !important; font-family: 'Space Grotesk', sans-serif; }
+        [data-testid="stSidebar"] hr { border-color: rgba(255,255,255,0.13) !important; }
+
+        /* Sidebar select box */
+        [data-testid="stSidebar"] [data-baseweb="select"] > div {
+            background: rgba(255,255,255,0.09) !important;
+            border: 1px solid rgba(255,255,255,0.22) !important;
+            border-radius: 10px !important;
+        }
+        [data-testid="stSidebar"] [data-baseweb="select"] svg { fill: #8fd4a2 !important; }
+
+        /* Sidebar radio → pill-style */
+        [data-testid="stSidebar"] [data-testid="stRadio"] > div { gap: 0.3rem; }
+        [data-testid="stSidebar"] [data-testid="stRadio"] label {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.13);
+            border-radius: 10px;
+            padding: 0.42rem 0.9rem !important;
+            margin-bottom: 0.1rem !important;
+            transition: background 0.15s, border-color 0.15s;
+        }
+        [data-testid="stSidebar"] [data-testid="stRadio"] label:has(input:checked) {
+            background: rgba(55,195,100,0.22) !important;
+            border-color: rgba(55,195,100,0.48) !important;
+        }
+
+        /* ── Main container ── */
+        .main .block-container {
+            padding-top: 1.25rem;
+            padding-bottom: 3rem;
+            max-width: 1340px;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Space Grotesk', sans-serif !important;
+            letter-spacing: -0.025em;
+            color: var(--ink);
+        }
+
+        /* ── Hero banner ── */
+        .hero-wrap {
+            background: linear-gradient(132deg, #0d2719 0%, #1a5c33 52%, #257040 100%);
+            border-radius: 22px;
+            padding: 1.85rem 2.1rem 1.75rem;
+            border: 1px solid rgba(255,255,255,0.11);
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-wrap::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='52' height='52' viewBox='0 0 52 52' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='2' cy='2' r='1.5' fill='rgba(255,255,255,0.035)'/%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+        .hero-wrap::after {
+            content: '';
+            position: absolute; right: -50px; top: -50px;
+            width: 280px; height: 280px; border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 68%);
+            pointer-events: none;
+        }
+        .hero-kicker {
+            display: inline-flex; align-items: center; gap: 0.38rem;
+            font-family: 'Space Grotesk', sans-serif;
+            color: #4cd180;
+            font-size: 0.695rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700;
+            border: 1px solid rgba(76,209,128,0.38); background: rgba(76,209,128,0.1);
+            padding: 0.22rem 0.7rem; border-radius: 999px;
+            margin: 0 0 0.6rem;
+        }
+        .hero-kicker::before { content: '●'; font-size: 0.44rem; color: #4cd180; }
+        .hero-title {
+            font-family: 'Space Grotesk', sans-serif;
+            color: #f0fff3;
+            margin: 0 0 0.55rem;
+            font-size: 2.25rem; font-weight: 800; line-height: 1.1; letter-spacing: -0.035em;
+        }
+        .hero-sub {
+            color: rgba(214,242,222,0.88);
+            margin: 0; font-size: 0.97rem; line-height: 1.52; max-width: 700px;
+        }
+
+        /* ── Metric cards row ── */
+        .metric-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.85rem;
+            margin: 0.6rem 0 0.55rem;
+        }
+        .metric-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-top: 3px solid var(--brand);
+            border-radius: 14px;
+            padding: 1.05rem 1.2rem 0.95rem;
+            box-shadow: var(--shadow-sm);
+            position: relative; overflow: hidden;
+        }
+        .metric-card::after {
+            content: '';
+            position: absolute; top: 0; right: 0;
+            width: 72px; height: 72px;
+            background: radial-gradient(circle at top right, rgba(30,138,75,0.07) 0%, transparent 70%);
+        }
+        .mc-label {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.68rem; color: var(--muted);
+            text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700;
+            margin: 0 0 0.32rem;
+        }
+        .mc-value {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.65rem; font-weight: 700; color: var(--ink);
+            margin: 0; line-height: 1.1;
+        }
+        .mc-value.small { font-size: 1.05rem; line-height: 1.4; font-weight: 600; }
+
+        /* ── Meta chips ── */
+        .meta-chips { margin: 0.5rem 0 0.9rem; }
+        .meta-chip {
+            display: inline-flex; align-items: center; gap: 0.36rem;
+            font-family: 'Space Grotesk', sans-serif;
+            border: 1px solid #c3d9c1; background: #edf7ea;
+            color: #1b3d26; border-radius: 999px;
+            padding: 0.27rem 0.82rem;
+            margin: 0 0.4rem 0 0;
+            font-size: 0.79rem; font-weight: 600;
+        }
+        .meta-chip::before { content: '◆'; font-size: 0.42rem; color: var(--brand); }
+
+        /* ── Section headers ── */
+        .section-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--brand);
+            border-radius: 0 12px 12px 0;
+            padding: 0.72rem 1.1rem;
+            box-shadow: var(--shadow-xs);
+            margin: 1.45rem 0 0.7rem;
+            display: flex; align-items: center; gap: 0.5rem;
+        }
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem; margin: 0;
+            color: #132c1e; font-weight: 700; letter-spacing: 0.005em;
+        }
+
+        /* ── Tabs ── */
+        .stTabs [data-baseweb="tab-list"] { gap: 0.35rem; margin-bottom: 0.75rem; }
+        .stTabs [data-baseweb="tab"] {
+            background: #ebf4e6; border: 1px solid #ccddc6;
+            border-radius: 10px; padding: 0.42rem 0.9rem;
+            font-family: 'Space Grotesk', sans-serif; font-weight: 600; color: #253f30;
+        }
+        .stTabs [aria-selected="true"] {
+            background: linear-gradient(120deg, #1e8a4b 0%, #15643a 100%) !important;
+            color: #f2fff5 !important; border-color: #176b3e !important;
+        }
+
+        /* ── Data table ── */
+        .stDataFrame, .stTable { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+
+        /* ── Download button ── */
+        .stDownloadButton button {
+            border-radius: 10px; border: 1px solid #187840;
+            background: linear-gradient(118deg, #1e8d4d 0%, #14613a 100%);
+            color: #f0fff4; font-weight: 600; font-family: 'Space Grotesk', sans-serif;
+        }
+        .stDownloadButton button:hover {
+            background: linear-gradient(118deg, #23a35a 0%, #187645 100%) !important;
+            border-color: #1a8a48 !important;
+        }
+
+        /* ── Misc ── */
+        .stAlert { border-radius: 12px; }
+        .viz-caption { color: var(--muted); font-size: 0.84rem; margin-top: -0.1rem; margin-bottom: 0.4rem; }
+
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
 DATA_DIR = Path('data/processed')
 REPORTS_DIR = Path('reports')
 FIGURES_DIR = REPORTS_DIR / 'figures'
@@ -827,9 +1049,16 @@ def load_dataset(file_path: Path):
 
 
 def show_dataset_eda(dataset_name: str, config: dict):
-    st.header(f"📊 {dataset_name} - Exploratory Data Analysis")
-    st.markdown(config['description'])
-    st.markdown('---')
+    st.markdown(
+        f"""
+        <div class="hero-wrap">
+            <p class="hero-kicker">Operational Intelligence Workspace</p>
+            <h1 class="hero-title">{dataset_name} Dataset Explorer</h1>
+            <p class="hero-sub">{config['description'].replace('**', '')}</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
     
     # Load data
     data_path = DATA_DIR / config['file']
@@ -840,23 +1069,56 @@ def show_dataset_eda(dataset_name: str, config: dict):
         st.info("Run the cleaning pipeline first: `python src/data/prepare_data.py`")
         return
     
-    # Dataset overview
-    col1, col2, col3, col4 = st.columns(4)
-    col1.metric("Rows", f"{len(df):,}")
-    col2.metric("Columns", df.shape[1])
-    col3.metric("Memory", f"{df.memory_usage(deep=True).sum() / 1024**2:.1f} MB")
-    
-    # Date range - handle timestamp parsing carefully
+    # Compute overview metrics
+    mem_mb = df.memory_usage(deep=True).sum() / 1024 ** 2
     date_range = "N/A"
     if 'timestamp' in df.columns:
         try:
             ts_col = pd.to_datetime(df['timestamp'], errors='coerce')
             valid_ts = ts_col.dropna()
             if len(valid_ts) > 0:
-                date_range = f"{valid_ts.min().date()} to {valid_ts.max().date()}"
+                date_range = f"{valid_ts.min().date()} – {valid_ts.max().date()}"
         except:
             pass
-    col4.metric("Date Range", date_range)
+    date_cls = "small" if date_range != "N/A" else ""
+
+    # Dataset overview cards (custom HTML to avoid truncation in st.metric)
+    st.markdown(
+        f"""
+        <div class="metric-row">
+            <div class="metric-card">
+                <p class="mc-label">Rows</p>
+                <p class="mc-value">{len(df):,}</p>
+            </div>
+            <div class="metric-card">
+                <p class="mc-label">Columns</p>
+                <p class="mc-value">{df.shape[1]}</p>
+            </div>
+            <div class="metric-card">
+                <p class="mc-label">Memory</p>
+                <p class="mc-value">{mem_mb:.1f}&thinsp;<span style="font-size:.85rem;font-weight:500;color:#5d7165">MB</span></p>
+            </div>
+            <div class="metric-card">
+                <p class="mc-label">Date Range</p>
+                <p class="mc-value {date_cls}">{date_range}</p>
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    available_figs_count = len([f for f in config.get('figures', []) if (FIGURES_DIR / f).exists()])
+    available_summaries_count = len([s for s in config.get('summaries', []) if (SUMMARIES_DIR / s).exists()])
+    st.markdown(
+        f"""
+        <div class="meta-chips">
+            <span class="meta-chip">{available_figs_count} visualizations available</span>
+            <span class="meta-chip">{available_summaries_count} grouped summary tables</span>
+            <span class="meta-chip">Source file: {config['file']}</span>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
     
     # Sample data - convert timestamp columns to string to avoid Arrow serialization issues
     df_sample = df.head(100).copy()
@@ -864,7 +1126,7 @@ def show_dataset_eda(dataset_name: str, config: dict):
         if pd.api.types.is_datetime64_any_dtype(df_sample[col]):
             df_sample[col] = df_sample[col].astype(str)
     
-    st.subheader("📋 Sample Data (first 100 rows)")
+    st.markdown('<div class="section-card"><p class="section-title">📋 Sample Data (First 100 Rows)</p></div>', unsafe_allow_html=True)
     st.dataframe(df_sample, width='stretch')
     
     # Download raw data
@@ -872,10 +1134,10 @@ def show_dataset_eda(dataset_name: str, config: dict):
     st.download_button(f'Download {dataset_name} sample (1000 rows, CSV)', csv_bytes, 
                       file_name=f'{dataset_name.lower()}_sample.csv', mime='text/csv')
     
-    st.markdown('---')
+    st.markdown('')
     
     # Summary statistics
-    st.subheader("📈 Summary Statistics")
+    st.markdown('<div class="section-card"><p class="section-title">📈 Summary Statistics</p></div>', unsafe_allow_html=True)
     summary_path = REPORTS_DIR / config['summary_file']
     if summary_path.exists():
         summary_text = summary_path.read_text(encoding='utf-8')
@@ -884,10 +1146,10 @@ def show_dataset_eda(dataset_name: str, config: dict):
         st.info(f"Summary not found. Run: `python src/analysis/eda_{dataset_name.lower()}.py`")
         st.dataframe(df.describe(include='all'))
     
-    st.markdown('---')
+    st.markdown('')
     
     # Grouped summaries
-    st.subheader("📊 Grouped Summaries")
+    st.markdown('<div class="section-card"><p class="section-title">📊 Grouped Summaries</p></div>', unsafe_allow_html=True)
     available_summaries = []
     for summ_file in config.get('summaries', []):
         summ_path = SUMMARIES_DIR / summ_file
@@ -905,10 +1167,10 @@ def show_dataset_eda(dataset_name: str, config: dict):
     else:
         st.info("No summary files found. Run the EDA script to generate them.")
     
-    st.markdown('---')
+    st.markdown('')
     
     # Visualizations with explanations
-    st.subheader("📉 Key Visualizations")
+    st.markdown('<div class="section-card"><p class="section-title">📉 Key Visualizations</p></div>', unsafe_allow_html=True)
     available_figs = []
     for fig_file in config.get('figures', []):
         fig_path = FIGURES_DIR / fig_file
@@ -925,6 +1187,11 @@ def show_dataset_eda(dataset_name: str, config: dict):
                 st.markdown(f"### {viz_info['title']}")
             else:
                 st.markdown(f"### {fig_file.replace('.png', '').replace('_', ' ').title()}")
+
+            st.markdown(
+                f"<p class='viz-caption'>Figure file: {fig_file}</p>",
+                unsafe_allow_html=True,
+            )
             
             # Display explanation
             if viz_info.get('explanation'):
@@ -945,21 +1212,24 @@ def show_dataset_eda(dataset_name: str, config: dict):
 
 
 def main():
-    st.sidebar.title("🔍 Analytics Dashboard")
-    st.sidebar.markdown("Navigate between project phases")
+    inject_ui_styles()
+
+    st.sidebar.markdown("## 🍞 Bakery Intelligence")
+    st.sidebar.markdown("### Control Center")
+    st.sidebar.caption("Navigate across EDA and model evaluation layers")
     
     # Add Phase selection
     phase = st.sidebar.radio(
-        "Select Phase:",
-        options=["Phase 1-3: EDA", "Phase 4: ML Models"],
+        "Workspace",
+        options=["EDA Explorer", "ML Results"],
         index=0
     )
     
     st.sidebar.markdown("---")
     
-    if phase == "Phase 1-3: EDA":
+    if phase == "EDA Explorer":
         st.sidebar.markdown("**📊 Exploratory Data Analysis**")
-        st.sidebar.markdown("Select a dataset to explore")
+        st.sidebar.markdown("Select one dataset to open its insight board")
         
         dataset = st.sidebar.selectbox("Dataset", list(DATASETS.keys()))
         
@@ -968,11 +1238,11 @@ def main():
             show_dataset_eda(dataset, config)
         
         st.sidebar.markdown('---')
-        st.sidebar.caption('💡 Tip: Run EDA scripts first to generate reports:\n`python src/analysis/eda_<dataset>.py`')
+        st.sidebar.caption('Tip: run EDA scripts first to generate reports.\npython src/analysis/eda_<dataset>.py')
     
-    elif phase == "Phase 4: ML Models":
+    elif phase == "ML Results":
         st.sidebar.markdown("**🤖 Machine Learning Results**")
-        st.sidebar.markdown("Anomaly detection model performance and insights")
+        st.sidebar.markdown("Anomaly detection model performance and operational risk insights")
         
         # Import and render Phase 4 visualizations
         try:
@@ -985,7 +1255,7 @@ def main():
             st.error(f"⚠️ Error rendering Phase 4: {e}")
         
         st.sidebar.markdown('---')
-        st.sidebar.caption('💡 Tip: Train models first:\n`python src/models/train_anomaly_baseline.py`')
+        st.sidebar.caption('Tip: train models first.\npython src/models/train_anomaly_baseline.py')
 
 
 if __name__ == '__main__':

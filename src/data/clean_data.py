@@ -49,10 +49,17 @@ def make_columns_unique(df: pd.DataFrame) -> pd.DataFrame:
 
 def parse_timestamps(df: pd.DataFrame) -> pd.DataFrame:
     df = df.copy()
-    # Try to identify common timestamp-like column names
-    # include arrival/departure/eta/etd keywords so arrival columns are parsed
-    time_keywords = ('time', 'timestamp', 'date', 'arrival', 'depart', 'eta', 'etd')
-    time_cols = [c for c in df.columns if any(k in c for k in time_keywords)]
+    # Try to identify common timestamp-like column names.
+    # Match keywords as WHOLE underscore-separated segments only, NOT as substrings,
+    # to prevent false positives like 'eta' matching inside 'retailer_id'.
+    time_keywords = {'time', 'timestamp', 'date', 'arrival', 'depart', 'departures',
+                     'departure', 'eta', 'etd', 'created', 'updated', 'received',
+                     'dispatched', 'scheduled'}
+    def _has_time_kw(col: str) -> bool:
+        segments = set(col.lower().split('_'))
+        # also allow full-column match (e.g. "timestamp", "date", "eta")
+        return bool(segments & time_keywords) or col.lower() in time_keywords
+    time_cols = [c for c in df.columns if _has_time_kw(c)]
     for c in time_cols:
         try:
             parsed = pd.to_datetime(df[c], errors='coerce')

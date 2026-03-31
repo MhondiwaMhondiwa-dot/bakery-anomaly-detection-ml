@@ -1,23 +1,24 @@
 Returns Dataset Summary
 ============================================================
-Shape: 13065 rows × 16 columns
+Shape: 13065 rows × 18 columns
 
-Columns: return_id, timestamp, plant_id, depot_id, route_id, retailer_id, reason_code, notes, soft_white, high_energy_brown, whole_grain_loaf, low_gi_seed_loaf, hour, dayofweek, date, is_weekend
+Columns: return_id, timestamp, plant_id, depot_id, route_id, retailer_id, reason_code, notes, soft_white, high_energy_brown, whole_grain_loaf, low_gi_seed_loaf, batch_id, batch_match_quality, hour, dayofweek, date, is_weekend
 
 Data types:
-object            9
-int64             4
-datetime64[ns]    1
-float64           1
-bool              1
+str               10
+int64              4
+datetime64[us]     1
+float64            1
+object             1
+bool               1
 Name: count, dtype: int64
 
 Missing values:
-timestamp      65
+timestamp      53
 notes        4483
-hour           65
-dayofweek      65
-date           65
+hour           53
+dayofweek      53
+date           53
 dtype: int64
 
 Return Quantity Stats:
