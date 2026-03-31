@@ -209,19 +209,35 @@ def inject_ui_styles():
         }
         [data-testid="stSidebar"] [data-baseweb="select"] svg { fill: #94a3b8 !important; }
 
-        /* Radio pills */
-        [data-testid="stSidebar"] [data-testid="stRadio"] > div {
+        /* Radio pills — full width matching the Dataset selectbox */
+        /* Force every wrapper in the chain to be full width */
+        [data-testid="stSidebar"] [data-testid="stRadio"],
+        [data-testid="stSidebar"] [data-testid="stRadio"] > div,
+        [data-testid="stSidebar"] [data-testid="stRadio"] > div > div,
+        [data-testid="stSidebar"] [data-baseweb="radio-group"] {
+            width: 100% !important;
+            display: flex !important;
+            flex-direction: column !important;
             gap: 0.25rem !important;
+            box-sizing: border-box !important;
         }
+        /* Each individual option label */
         [data-testid="stSidebar"] [data-testid="stRadio"] label {
             background: rgba(255,255,255,0.04) !important;
             border: 1px solid rgba(255,255,255,0.10) !important;
             border-radius: var(--radius) !important;
             padding: 0.55rem 1rem !important;
-            margin-bottom: 0 !important;
+            margin: 0 !important;
+            width: 100% !important;
+            min-width: 0 !important;
+            flex: 1 1 100% !important;
+            display: flex !important;
+            align-items: center !important;
+            box-sizing: border-box !important;
             transition: background 0.12s, border-color 0.12s !important;
-            font-size: 0.9375rem !important;   /* 15px */
+            font-size: 0.9375rem !important;
             font-weight: 500 !important;
+            cursor: pointer !important;
         }
         [data-testid="stSidebar"] [data-testid="stRadio"] label:has(input:checked) {
             background: var(--sidebar-2bg) !important;
@@ -231,6 +247,7 @@ def inject_ui_styles():
         [data-testid="stSidebar"] [data-testid="stRadio"] label p {
             font-size: 0.9375rem !important;
             color: #cbd5e1 !important;
+            margin: 0 !important;
         }
         [data-testid="stSidebar"] [data-testid="stRadio"] label:has(input:checked) p {
             color: #f1f5f9 !important;
