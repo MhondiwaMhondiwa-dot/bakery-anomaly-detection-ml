@@ -23,217 +23,493 @@ def inject_ui_styles():
     st.markdown(
         """
         <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Source+Sans+3:wght@400;600&display=swap');
+        /* ── Fonts ── */
+        @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap');
+        /* Explicitly load Material Symbols so ligatures always render */
+        @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block');
+        @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block');
 
-        /* ── Design tokens ── */
+        /* ════════════════════════════════════════════════
+           DESIGN TOKENS — echarts.streamlit.app system
+           Font   : Work Sans 300/400/500/600/700
+           Radius : 12px (baseRadius)
+           Sidebar: #1e293b · text #f1f5f9 · secondary #334155
+           Page   : #f0f2f6 bg · #ffffff surface · #31333F ink
+           Accent : #1e293b (sidebar slate) for structural chrome
+                    #ff4b4b (Streamlit primary) for interactive CTA
+           ════════════════════════════════════════════════ */
         :root {
-            --bg:           #f4f7f3;
+            --font:         'Work Sans', sans-serif;
+
+            /* page */
+            --bg:           #f0f2f6;
             --surface:      #ffffff;
-            --surface-soft: #f0f5ed;
-            --ink:          #152018;
-            --muted:        #5d7165;
-            --brand:        #1e8a4b;
-            --brand-dark:   #145c32;
-            --brand-light:  #d6f0e0;
-            --border:       #d8e4d6;
-            --shadow-xs:    0 1px 4px rgba(18,38,26,.05);
-            --shadow-sm:    0 2px 10px rgba(18,38,26,.07);
-            --shadow:       0 6px 24px rgba(18,38,26,.10);
-            --shadow-lg:    0 18px 52px rgba(10,28,18,.16);
+
+            /* typography — matches Streamlit light theme defaults */
+            --ink:          #31333f;
+            --muted:        #6b7280;
+
+            /* sidebar palette (from config.toml) */
+            --sidebar-bg:   #1e293b;
+            --sidebar-text: #f1f5f9;
+            --sidebar-2bg:  #334155;
+
+            /* accent — use sidebar slate as primary structural chrome */
+            --accent:       #1e293b;
+            --accent-soft:  #f1f5f9;
+            --accent-mid:   #334155;
+
+            /* Streamlit primary red — only for CTA / download button */
+            --primary:      #ff4b4b;
+            --primary-soft: #fff0f0;
+            --primary-dark: #cc3c3c;
+
+            /* borders & depth */
+            --border:       #e2e5ea;
+            --radius:       12px;
+            --shadow-xs:    0 1px 3px rgba(0,0,0,.05);
+            --shadow-sm:    0 2px 8px  rgba(0,0,0,.07);
+            --shadow:       0 4px 16px rgba(0,0,0,.09);
+            --shadow-lg:    0 10px 36px rgba(0,0,0,.11);
         }
+
+        /* ── Work Sans — applied to text-holding elements only, never div/span ── */
+        html, body,
+        p, li, td, th, label, input, select, textarea, a,
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font) !important;
+        }
+        /* Streamlit's own text containers */
+        [data-testid="stMarkdownContainer"],
+        [data-testid="stText"],
+        [data-testid="stHeadingWithActionElements"],
+        [data-testid="stMetricLabel"],
+        [data-testid="stMetricValue"],
+        [data-testid="stMetricDelta"],
+        [data-testid="stWidgetLabel"],
+        [data-testid="stCaptionContainer"],
+        [class*="stAlert"],
+        .stTabs [data-baseweb="tab"] {
+            font-family: var(--font) !important;
+        }
+
+        /* ── Material Symbols placeholder — real restore block is at end of stylesheet ── */
 
         /* ── Page background ── */
         .stApp {
-            background:
-                radial-gradient(ellipse 1200px 420px at 4%  -8%, #d8f2bc 0%, transparent 62%),
-                radial-gradient(ellipse  820px 300px at 97%  3%, #cce9e3 0%, transparent 58%),
-                var(--bg);
+            background: var(--bg);
             color: var(--ink);
-            font-family: 'Source Sans 3', sans-serif;
         }
 
-        /* ── Sidebar shell ── */
+        /* ══════════════════════════════════════════════════
+           SIDEBAR — spacing & design matching reference app
+           ══════════════════════════════════════════════════ */
         [data-testid="stSidebar"] {
-            background: linear-gradient(158deg, #0a2415 0%, #143822 52%, #1c4f2e 100%);
-            border-right: 1px solid rgba(255,255,255,0.07);
+            background-color: var(--sidebar-bg) !important;
+            border-right: 1px solid rgba(255,255,255,0.06);
         }
-        [data-testid="stSidebar"] * { color: #ebf9ee !important; font-family: 'Space Grotesk', sans-serif; }
-        [data-testid="stSidebar"] hr { border-color: rgba(255,255,255,0.13) !important; }
+        /* All text inside sidebar — target structural elements only, never bare spans */
+        [data-testid="stSidebar"] p,
+        [data-testid="stSidebar"] li,
+        [data-testid="stSidebar"] label,
+        [data-testid="stSidebar"] input,
+        [data-testid="stSidebar"] select {
+            color: var(--sidebar-text) !important;
+            font-family: var(--font) !important;
+        }
+        [data-testid="stSidebar"] h1,
+        [data-testid="stSidebar"] h2,
+        [data-testid="stSidebar"] h3,
+        [data-testid="stSidebar"] strong {
+            color: #ffffff !important;
+            font-weight: 600 !important;
+            font-family: var(--font) !important;
+        }
+        [data-testid="stSidebar"] hr {
+            border-color: rgba(255,255,255,0.10) !important;
+            margin: 1rem 0 !important;
+        }
 
-        /* Sidebar select box */
+        /* Sidebar inner padding — matches reference 20px horizontal */
+        [data-testid="stSidebar"] > div:first-child {
+            padding-top: 1.5rem !important;
+        }
+
+        /* Nav page links (top section) */
+        [data-testid="stSidebarNav"] {
+            padding: 0 !important;
+        }
+        [data-testid="stSidebarNav"] a {
+            padding: 0.6rem 1rem !important;
+            border-radius: var(--radius) !important;
+            font-size: 0.9375rem !important;   /* 15px */
+            font-weight: 500 !important;
+            color: #cbd5e1 !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 0.5rem !important;
+            transition: background 0.12s !important;
+        }
+        [data-testid="stSidebarNav"] a:hover {
+            background: rgba(255,255,255,0.06) !important;
+            color: #f1f5f9 !important;
+        }
+        [data-testid="stSidebarNav"] a[aria-selected="true"],
+        [data-testid="stSidebarNav"] a[aria-current="page"] {
+            background: var(--sidebar-2bg) !important;
+            color: #f8fafc !important;
+            font-weight: 600 !important;
+        }
+        /* Nav item icon colour */
+        [data-testid="stSidebarNav"] a span {
+            color: #94a3b8 !important;
+        }
+        [data-testid="stSidebarNav"] a[aria-current="page"] span {
+            color: #e2e8f0 !important;
+        }
+
+        /* Widget (selectbox / radio) label text — muted like reference */
+        [data-testid="stSidebar"] .stSelectbox label p,
+        [data-testid="stSidebar"] .stMultiselect label p,
+        [data-testid="stSidebar"] .stRadio label p,
+        [data-testid="stSidebar"] [data-testid="stWidgetLabel"] p {
+            font-size: 0.8125rem !important;   /* 13px */
+            font-weight: 500 !important;
+            color: #94a3b8 !important;
+            letter-spacing: 0.01em !important;
+        }
+
+        /* Vertical spacing between sidebar widgets */
+        [data-testid="stSidebar"] [data-testid="stSelectbox"],
+        [data-testid="stSidebar"] [data-testid="stMultiselect"] {
+            margin-bottom: 0.9rem !important;
+        }
+
+        /* Selectbox — #334155 bg, rounded, properly padded */
         [data-testid="stSidebar"] [data-baseweb="select"] > div {
-            background: rgba(255,255,255,0.09) !important;
-            border: 1px solid rgba(255,255,255,0.22) !important;
-            border-radius: 10px !important;
+            background: var(--sidebar-2bg) !important;
+            border: 1px solid rgba(255,255,255,0.18) !important;
+            border-radius: var(--radius) !important;
+            min-height: 2.625rem !important;   /* 42px */
+            padding: 0 0.75rem !important;
         }
-        [data-testid="stSidebar"] [data-baseweb="select"] svg { fill: #8fd4a2 !important; }
+        /* Selected value text — covers BaseUI value span, markdown p, and any other child */
+        [data-testid="stSidebar"] [data-baseweb="select"] span,
+        [data-testid="stSidebar"] [data-baseweb="select"] div,
+        [data-testid="stSidebar"] [data-baseweb="select"] p,
+        [data-testid="stSidebar"] [data-baseweb="select"] [data-baseweb="value"],
+        [data-testid="stSidebar"] [data-baseweb="select"] [data-baseweb="select-option"] {
+            color: #e2e8f0 !important;
+            font-size: 0.9375rem !important;
+            font-weight: 400 !important;
+        }
+        /* Placeholder text — slightly muted */
+        [data-testid="stSidebar"] [data-baseweb="select"] [data-baseweb="placeholder"] {
+            color: #64748b !important;
+        }
+        [data-testid="stSidebar"] [data-baseweb="select"] svg { fill: #94a3b8 !important; }
 
-        /* Sidebar radio → pill-style */
-        [data-testid="stSidebar"] [data-testid="stRadio"] > div { gap: 0.3rem; }
+        /* Radio pills */
+        [data-testid="stSidebar"] [data-testid="stRadio"] > div {
+            gap: 0.25rem !important;
+        }
         [data-testid="stSidebar"] [data-testid="stRadio"] label {
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.13);
-            border-radius: 10px;
-            padding: 0.42rem 0.9rem !important;
-            margin-bottom: 0.1rem !important;
-            transition: background 0.15s, border-color 0.15s;
+            background: rgba(255,255,255,0.04) !important;
+            border: 1px solid rgba(255,255,255,0.10) !important;
+            border-radius: var(--radius) !important;
+            padding: 0.55rem 1rem !important;
+            margin-bottom: 0 !important;
+            transition: background 0.12s, border-color 0.12s !important;
+            font-size: 0.9375rem !important;   /* 15px */
+            font-weight: 500 !important;
         }
         [data-testid="stSidebar"] [data-testid="stRadio"] label:has(input:checked) {
-            background: rgba(55,195,100,0.22) !important;
-            border-color: rgba(55,195,100,0.48) !important;
+            background: var(--sidebar-2bg) !important;
+            border-color: rgba(255,255,255,0.24) !important;
+        }
+        /* Radio label text colour */
+        [data-testid="stSidebar"] [data-testid="stRadio"] label p {
+            font-size: 0.9375rem !important;
+            color: #cbd5e1 !important;
+        }
+        [data-testid="stSidebar"] [data-testid="stRadio"] label:has(input:checked) p {
+            color: #f1f5f9 !important;
+        }
+
+        /* ── Collapse / expand toggle buttons ── */
+        /* Collapsed control (expand »» button — shown when sidebar is closed) */
+        [data-testid="collapsedControl"] {
+            background: var(--sidebar-bg) !important;
+        }
+        [data-testid="collapsedControl"] button,
+        [data-testid="stSidebarCollapseButton"] button {
+            background: #2d3c4e !important;
+            border: 1px solid rgba(255,255,255,0.10) !important;
+            border-radius: 50% !important;
+            width: 2.1rem !important;
+            height: 2.1rem !important;
+            padding: 0 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3) !important;
+            transition: background 0.14s !important;
+        }
+        [data-testid="collapsedControl"] button:hover,
+        [data-testid="stSidebarCollapseButton"] button:hover {
+            background: var(--sidebar-2bg) !important;
+        }
+        /* Icon inside collapse/expand — must stay Material Symbols */
+        [data-testid="collapsedControl"] button span,
+        [data-testid="collapsedControl"] button *,
+        [data-testid="stSidebarCollapseButton"] button span,
+        [data-testid="stSidebarCollapseButton"] button * {
+            font-family: 'Material Symbols Rounded', 'Material Symbols Outlined', 'Material Icons' !important;
+            font-feature-settings: 'liga' 1 !important;
+            -webkit-font-feature-settings: 'liga' 1 !important;
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24 !important;
+            font-size: 1.125rem !important;
+            color: #94a3b8 !important;
         }
 
         /* ── Main container ── */
         .main .block-container {
             padding-top: 1.25rem;
             padding-bottom: 3rem;
-            max-width: 1340px;
-        }
-        h1, h2, h3, h4 {
-            font-family: 'Space Grotesk', sans-serif !important;
-            letter-spacing: -0.025em;
-            color: var(--ink);
+            max-width: 1360px;
         }
 
-        /* ── Hero banner ── */
+        /* Headings — Work Sans weights that match the app */
+        h1 { font-size: 2.25rem !important; font-weight: 700 !important; line-height: 1.15 !important; color: var(--ink) !important; }
+        h2 { font-size: 1.5rem   !important; font-weight: 600 !important; color: var(--ink) !important; }
+        h3 { font-size: 1.25rem  !important; font-weight: 600 !important; color: var(--ink) !important; }
+        h4 { font-size: 1rem     !important; font-weight: 600 !important; color: var(--ink) !important; }
+
+        /* ── Hero banner — sidebar slate, exactly as that dark panel ── */
         .hero-wrap {
-            background: linear-gradient(132deg, #0d2719 0%, #1a5c33 52%, #257040 100%);
-            border-radius: 22px;
-            padding: 1.85rem 2.1rem 1.75rem;
-            border: 1px solid rgba(255,255,255,0.11);
+            background: var(--sidebar-bg);          /* #1e293b — matches sidebar */
+            border-radius: var(--radius);
+            padding: 2rem 2.25rem 1.9rem;
+            border: 1px solid rgba(255,255,255,0.07);
             box-shadow: var(--shadow-lg);
-            margin-bottom: 1rem;
-            position: relative;
-            overflow: hidden;
+            margin-bottom: 1.1rem;
+            position: relative; overflow: hidden;
         }
+        /* Very subtle dot texture */
         .hero-wrap::before {
             content: '';
             position: absolute; inset: 0;
-            background: url("data:image/svg+xml,%3Csvg width='52' height='52' viewBox='0 0 52 52' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='2' cy='2' r='1.5' fill='rgba(255,255,255,0.035)'/%3E%3C/svg%3E");
+            background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='2' cy='2' r='1' fill='rgba(255,255,255,0.03)'/%3E%3C/svg%3E");
             pointer-events: none;
         }
+        /* Right-side glow — #334155 lighter than bg */
         .hero-wrap::after {
             content: '';
-            position: absolute; right: -50px; top: -50px;
-            width: 280px; height: 280px; border-radius: 50%;
-            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 68%);
+            position: absolute; right: -30px; top: -30px;
+            width: 260px; height: 260px; border-radius: 50%;
+            background: radial-gradient(circle, rgba(51,65,85,0.9) 0%, transparent 68%);
             pointer-events: none;
         }
+
+        /* Kicker pill */
         .hero-kicker {
             display: inline-flex; align-items: center; gap: 0.38rem;
-            font-family: 'Space Grotesk', sans-serif;
-            color: #4cd180;
-            font-size: 0.695rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700;
-            border: 1px solid rgba(76,209,128,0.38); background: rgba(76,209,128,0.1);
-            padding: 0.22rem 0.7rem; border-radius: 999px;
-            margin: 0 0 0.6rem;
+            font-family: var(--font);
+            color: #94a3b8 !important;                /* muted slate-300 */
+            font-size: 0.6875rem;                     /* 11px */
+            font-weight: 600;
+            letter-spacing: 0.18em; text-transform: uppercase;
+            border: 1px solid rgba(148,163,184,0.3);
+            background: rgba(148,163,184,0.08);
+            padding: 0.2rem 0.7rem; border-radius: 999px;
+            margin: 0 0 0.65rem;
         }
-        .hero-kicker::before { content: '●'; font-size: 0.44rem; color: #4cd180; }
-        .hero-title {
-            font-family: 'Space Grotesk', sans-serif;
-            color: #f0fff3;
-            margin: 0 0 0.55rem;
-            font-size: 2.25rem; font-weight: 800; line-height: 1.1; letter-spacing: -0.035em;
+        .hero-kicker::before { content: '●'; font-size: 0.38rem; color: #64748b; }
+
+        /* Title — Work Sans 700, 2.25rem, pure white */
+        .hero-wrap .hero-title,
+        .hero-wrap h1.hero-title {
+            font-family: var(--font) !important;
+            color: #f8fafc !important;
+            margin: 0 0 0.55rem !important;
+            font-size: 2.25rem !important;   /* 36px */
+            font-weight: 700 !important;
+            line-height: 1.12 !important;
+            letter-spacing: -0.01em !important;
         }
-        .hero-sub {
-            color: rgba(214,242,222,0.88);
-            margin: 0; font-size: 0.97rem; line-height: 1.52; max-width: 700px;
+        /* Subtitle — Work Sans 400, 1rem, slate-300 */
+        .hero-wrap .hero-sub,
+        .hero-wrap p.hero-sub {
+            font-family: var(--font) !important;
+            color: #94a3b8 !important;
+            margin: 0 !important;
+            font-size: 1rem !important;      /* 16px */
+            font-weight: 400 !important;
+            line-height: 1.6 !important;
+            max-width: 740px;
         }
 
-        /* ── Metric cards row ── */
+        /* ── Metric cards — white surface, clean slate top-bar ── */
         .metric-row {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 0.85rem;
-            margin: 0.6rem 0 0.55rem;
+            gap: 0.875rem;
+            margin: 0.7rem 0 0.65rem;
         }
         .metric-card {
             background: var(--surface);
             border: 1px solid var(--border);
-            border-top: 3px solid var(--brand);
-            border-radius: 14px;
-            padding: 1.05rem 1.2rem 0.95rem;
+            border-top: 3px solid var(--accent-mid);  /* #334155 */
+            border-radius: var(--radius);
+            padding: 1.1rem 1.25rem 1rem;
             box-shadow: var(--shadow-sm);
-            position: relative; overflow: hidden;
-        }
-        .metric-card::after {
-            content: '';
-            position: absolute; top: 0; right: 0;
-            width: 72px; height: 72px;
-            background: radial-gradient(circle at top right, rgba(30,138,75,0.07) 0%, transparent 70%);
         }
         .mc-label {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.68rem; color: var(--muted);
-            text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700;
-            margin: 0 0 0.32rem;
+            font-family: var(--font);
+            font-size: 0.75rem;    /* 12px */
+            font-weight: 600;
+            color: var(--muted);
+            text-transform: uppercase; letter-spacing: 0.12em;
+            margin: 0 0 0.3rem;
         }
         .mc-value {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.65rem; font-weight: 700; color: var(--ink);
+            font-family: var(--font);
+            font-size: 1.75rem;    /* 28px */
+            font-weight: 700;
+            color: var(--ink);
             margin: 0; line-height: 1.1;
         }
-        .mc-value.small { font-size: 1.05rem; line-height: 1.4; font-weight: 600; }
-
-        /* ── Meta chips ── */
-        .meta-chips { margin: 0.5rem 0 0.9rem; }
-        .meta-chip {
-            display: inline-flex; align-items: center; gap: 0.36rem;
-            font-family: 'Space Grotesk', sans-serif;
-            border: 1px solid #c3d9c1; background: #edf7ea;
-            color: #1b3d26; border-radius: 999px;
-            padding: 0.27rem 0.82rem;
-            margin: 0 0.4rem 0 0;
-            font-size: 0.79rem; font-weight: 600;
+        .mc-value.small {
+            font-size: 1rem;       /* 16px */
+            font-weight: 500;
+            line-height: 1.5;
         }
-        .meta-chip::before { content: '◆'; font-size: 0.42rem; color: var(--brand); }
 
-        /* ── Section headers ── */
+        /* ── Meta chips — neutral slate tint ── */
+        .meta-chips { margin: 0.5rem 0 1rem; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+        .meta-chip {
+            display: inline-flex; align-items: center; gap: 0.35rem;
+            font-family: var(--font);
+            font-size: 0.8125rem;  /* 13px */
+            font-weight: 500;
+            border: 1px solid #d1d5db;
+            background: var(--surface);
+            color: var(--ink);
+            border-radius: 999px;
+            padding: 0.25rem 0.85rem;
+        }
+        .meta-chip::before { content: '◆'; font-size: 0.4rem; color: #9ca3af; }
+
+        /* ── Section headers — slate left-bar on white surface ── */
         .section-card {
             background: var(--surface);
             border: 1px solid var(--border);
-            border-left: 4px solid var(--brand);
-            border-radius: 0 12px 12px 0;
+            border-left: 4px solid var(--accent);  /* #1e293b */
+            border-radius: 0 var(--radius) var(--radius) 0;
             padding: 0.72rem 1.1rem;
             box-shadow: var(--shadow-xs);
-            margin: 1.45rem 0 0.7rem;
+            margin: 1.5rem 0 0.75rem;
             display: flex; align-items: center; gap: 0.5rem;
         }
         .section-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1rem; margin: 0;
-            color: #132c1e; font-weight: 700; letter-spacing: 0.005em;
+            font-family: var(--font);
+            font-size: 1rem;       /* 16px */
+            font-weight: 600;
+            margin: 0; color: var(--ink);
         }
 
-        /* ── Tabs ── */
-        .stTabs [data-baseweb="tab-list"] { gap: 0.35rem; margin-bottom: 0.75rem; }
+        /* ── Tabs — slate inactive, slate filled active ── */
+        .stTabs [data-baseweb="tab-list"] { gap: 0.3rem; margin-bottom: 0.8rem; }
         .stTabs [data-baseweb="tab"] {
-            background: #ebf4e6; border: 1px solid #ccddc6;
-            border-radius: 10px; padding: 0.42rem 0.9rem;
-            font-family: 'Space Grotesk', sans-serif; font-weight: 600; color: #253f30;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 0.44rem 1rem;
+            font-family: var(--font);
+            font-size: 0.875rem;   /* 14px */
+            font-weight: 500;
+            color: var(--muted);
         }
         .stTabs [aria-selected="true"] {
-            background: linear-gradient(120deg, #1e8a4b 0%, #15643a 100%) !important;
-            color: #f2fff5 !important; border-color: #176b3e !important;
+            background: var(--accent) !important;  /* #1e293b */
+            color: #f8fafc !important;
+            border-color: var(--accent) !important;
+            font-weight: 600 !important;
         }
 
         /* ── Data table ── */
-        .stDataFrame, .stTable { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+        .stDataFrame, .stTable {
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            font-size: 0.875rem;   /* 14px */
+        }
 
-        /* ── Download button ── */
+        /* ── Download button — Streamlit primary red (the one CTA colour) ── */
         .stDownloadButton button {
-            border-radius: 10px; border: 1px solid #187840;
-            background: linear-gradient(118deg, #1e8d4d 0%, #14613a 100%);
-            color: #f0fff4; font-weight: 600; font-family: 'Space Grotesk', sans-serif;
+            border-radius: var(--radius);
+            border: 1px solid var(--primary-dark);
+            background: var(--primary);
+            color: #ffffff !important;
+            font-family: var(--font) !important;
+            font-size: 0.9375rem;  /* 15px */
+            font-weight: 600;
+            letter-spacing: 0.005em;
         }
         .stDownloadButton button:hover {
-            background: linear-gradient(118deg, #23a35a 0%, #187645 100%) !important;
-            border-color: #1a8a48 !important;
+            background: var(--primary-dark) !important;
+            border-color: var(--primary-dark) !important;
         }
 
         /* ── Misc ── */
-        .stAlert { border-radius: 12px; }
-        .viz-caption { color: var(--muted); font-size: 0.84rem; margin-top: -0.1rem; margin-bottom: 0.4rem; }
+        .stAlert { border-radius: var(--radius); }
+        .viz-caption {
+            font-family: var(--font);
+            font-size: 0.875rem;   /* 14px */
+            font-weight: 300;
+            color: var(--muted);
+            margin-top: -0.05rem;
+            margin-bottom: 0.4rem;
+        }
+
+        /* ══════════════════════════════════════════════════════════════
+           ICON FONT RESTORE — MUST BE LAST in stylesheet so it always
+           wins the cascade over any earlier Work Sans !important rules.
+           Streamlit renders Material Symbol icons as text ligatures inside
+           plain <span> elements with no distinguishing class; if ANY
+           earlier rule sets font-family on those spans, ligatures break.
+           ══════════════════════════════════════════════════════════════ */
+        .material-icons,
+        .material-symbols-rounded,
+        .material-symbols-outlined,
+        [data-testid="stIconMaterial"],
+        span[class*="Icon"],
+        span[class*="icon"] {
+            font-family: 'Material Symbols Rounded', 'Material Symbols Outlined', 'Material Icons' !important;
+            font-feature-settings: 'liga' 1 !important;
+            -webkit-font-feature-settings: 'liga' 1 !important;
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24 !important;
+        }
+        /* Sidebar toggle buttons specifically */
+        [data-testid="stSidebarCollapseButton"] span,
+        [data-testid="stSidebarCollapseButton"] button span,
+        [data-testid="collapsedControl"] span,
+        [data-testid="collapsedControl"] button span {
+            font-family: 'Material Symbols Rounded', 'Material Symbols Outlined', 'Material Icons' !important;
+            font-feature-settings: 'liga' 1 !important;
+            -webkit-font-feature-settings: 'liga' 1 !important;
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24 !important;
+            font-size: 1.125rem !important;
+            color: #94a3b8 !important;
+        }
+        /* Undo Material Symbols on selectbox text — those spans hold real text */
+        [data-testid="stSidebar"] [data-baseweb="select"] span,
+        [data-testid="stSidebar"] [data-baseweb="select"] div {
+            font-family: var(--font) !important;
+            font-feature-settings: normal !important;
+            -webkit-font-feature-settings: normal !important;
+            font-variation-settings: normal !important;
+        }
 
         </style>
         """,
