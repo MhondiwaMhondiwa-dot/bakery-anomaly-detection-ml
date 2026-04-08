@@ -1,8 +1,8 @@
 Defect_Type,Count,Percentage
-valleys,159280,22.0
-stacked_before_robot,136053,18.79
-squashed,112095,15.48
-loose_packs,101860,14.07
-torn,90663,12.52
-undersized_small,67529,9.33
-pale_underbaked,56535,7.81
+valleys,171007,21.96
+stacked_before_robot,146035,18.75
+squashed,121061,15.54
+loose_packs,110043,14.13
+torn,97407,12.51
+undersized_small,72675,9.33
+pale_underbaked,60651,7.79

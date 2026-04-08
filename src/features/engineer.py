@@ -316,8 +316,14 @@ def flag_anomalies(df: pd.DataFrame) -> pd.DataFrame:
     replace or augment these rules.
     """
     df = df.copy()
-    # production defect: critical when average defect exceeds 15%
-    df["prod_defect_anomaly"] = df["avg_defect"] > 0.15
+    # production defect: statistically high when z-score > 2 (replaces absolute 15% threshold
+    # which was calibrated for uniformly-distributed defect rates across lines)
+    if "avg_defect" in df.columns:
+        _def_mean = df["avg_defect"].mean()
+        _def_std  = df["avg_defect"].std()
+        df["prod_defect_anomaly"] = ((df["avg_defect"] - _def_mean) / (_def_std + 1e-10)) > 2
+    else:
+        df["prod_defect_anomaly"] = False
     # delay anomalies: >60 min average or >30% of routes late
     df["delay_anomaly"] = df["avg_delay"] > 60
     df["late_route_anomaly"] = df["late_pct"] > 0.3
@@ -331,9 +337,12 @@ def flag_anomalies(df: pd.DataFrame) -> pd.DataFrame:
         df["waste_anomaly"] = ((df["total_waste"] - _waste_mean) / (_waste_std + 1e-10)).abs() > 2
     else:
         df["waste_anomaly"] = False
-    # QC anomaly: fail rate > 50% (tightened from 40%; baseline is ~38%, so >50% is a true outlier)
+    # QC anomaly: daily fail rate statistically elevated (z-score > 2)
+    # Absolute threshold of 0.50 is appropriate for 38% baseline but not 10% baseline
     if "qc_fail_pct" in df.columns:
-        df["qc_anomaly"] = df["qc_fail_pct"] > 0.50
+        _qc_mean = df["qc_fail_pct"].mean()
+        _qc_std  = df["qc_fail_pct"].std()
+        df["qc_anomaly"] = ((df["qc_fail_pct"] - _qc_mean) / (_qc_std + 1e-10)) > 2
     # Sales anomaly: demand collapse > 20% of retailers in a day
     # threshold of 0.10 (mean) flags >50% of active days; 0.20 is ~2SD above mean (~7 days = 1.9%)
     if "demand_collapse_pct" in df.columns:

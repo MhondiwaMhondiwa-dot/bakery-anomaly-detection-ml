@@ -1,5 +1,5 @@
 sku,Total_Tests,Passed_Tests,Failed_Tests,Pass_Rate_%
-High Energy Brown,1533,937,596,61.12
-Low GI Seed loaf,1479,911,568,61.6
-Soft white,1526,944,582,61.86
-Whole grain loaf,1462,919,543,62.86
+Whole grain loaf,1462,1302,160,89.06
+Soft white,1526,1364,162,89.38
+High Energy Brown,1533,1376,157,89.76
+Low GI Seed loaf,1479,1330,149,89.93

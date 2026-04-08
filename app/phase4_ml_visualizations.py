@@ -770,68 +770,181 @@ def show_anomalous_days_table(results):
 
 
 def plot_feature_importance(results):
-    """Show feature groups analysis."""
-    if 'cv_report' not in results:
-        return
-    
-    st.markdown("### 🔍 Feature Groups Used")
-    
-    # Description with key insights
+    """Show data-driven feature importance derived from the Isolation Forest model.
+
+    Importance = mean absolute contribution of each feature to the IF anomaly score,
+    estimated via permutation: for each feature, shuffle it and measure the mean
+    drop in anomaly score across all days. Larger drop → feature matters more.
+    The result is displayed as a ranked bar chart + pie chart bucketed by domain.
+    """
+    st.markdown("### 🔍 Feature Importance — Strongest Anomaly Signals")
+
     st.info("""
-    Distribution of engineered features across six operational domains used for anomaly detection. 
-    **Key insights:** Balanced feature representation ensures holistic anomaly detection across all operational areas. 
-    Larger segments indicate more granular monitoring in that domain. The multi-domain approach captures complex, 
-    multivariate anomalies that single-domain analysis would miss, providing comprehensive operational intelligence.
+    Which operational metrics drive the anomaly detection model? Importance is measured by
+    **permutation sensitivity**: each feature is shuffled independently and the degradation
+    in Isolation Forest anomaly scores reveals its contribution. **Taller bars = stronger
+    anomaly signal.** The domain pie (right) shows which area of operations drives the most
+    anomalous behaviour overall.
     """)
-    
-    # Key interpretation guide
-    with st.expander("🔑 Key Interpretation Guide"):
+
+    with st.expander("🔑 How to read this"):
         st.markdown("""
-        - **Pie slices:** Represent feature count per operational domain
-        - **Slice size:** Proportional to number of features in that category
-        - **Hover tooltip:** Shows exact feature count and percentage
-        - **Production features:** Batch output, defect rates, throughput metrics
-        - **Dispatch features:** Delivery performance, delay patterns, logistics KPIs
-        - **Quality Control features:** QC pass rates, parameter compliance, inspection results
-        - **Waste & Returns features:** Waste generation, return volumes, loss metrics
-        - **Inventory features:** Stock movements, balance anomalies, turnover rates
-        - **Sales features:** Demand patterns, promotional impacts, revenue metrics
-        - **Balanced distribution:** Indicates comprehensive coverage across operations
-        - **Expandable details:** Click to see specific features within each domain
+        - **Bar height:** How much anomaly discrimination is lost when this feature is removed  
+        - **Top features:** The model identified these as the strongest operational risk signals  
+        - **Domain pie:** Which operational area contributes most to detected anomalies  
+        - **Low-importance features** still contribute — the model uses all features collectively  
+        - **Correlation ≠ causation:** High importance means the metric *varies on anomalous days*, not necessarily that it *caused* the anomaly  
         """)
-    
-    cv_report = results['cv_report']
-    feature_groups = cv_report.get('feature_groups', {})
-    
-    if not feature_groups:
-        st.warning("No feature group information available")
+
+    # ------------------------------------------------------------------
+    # Load data  —  plant_daily.parquet + saved IF model
+    # ------------------------------------------------------------------
+    data_path  = DATA_DIR / "plant_daily.parquet"
+    model_path = MODELS_DIR / "flagged_anomalies_baseline.csv"
+
+    if not data_path.exists():
+        st.warning("Analytic dataset not found. Train the models first.")
         return
-    
-    # Count features by group
-    group_counts = {group: len(features) for group, features in feature_groups.items()}
-    
-    # Create pie chart
-    fig = go.Figure(data=[go.Pie(
-        labels=list(group_counts.keys()),
-        values=list(group_counts.values()),
-        hole=0.4,
-        textinfo='label+value',
-        hovertemplate='%{label}<br>%{value} features<br>%{percent}<extra></extra>'
-    )])
-    
-    fig.update_layout(
-        title="Features by Operational Category",
-        height=500
-    )
-    
-    st.plotly_chart(fig, use_container_width=True)
-    
-    # Show detailed feature lists
-    with st.expander("📋 Feature Details"):
-        for group, features in feature_groups.items():
-            st.markdown(f"**{group.replace('_', ' ').title()}** ({len(features)} features)")
-            st.write(", ".join(features))
-            st.markdown("---")
+
+    try:
+        from sklearn.ensemble import IsolationForest
+        from sklearn.preprocessing import StandardScaler
+
+        df = pd.read_parquet(data_path)
+
+        cv_report = results.get("cv_report", {})
+        feature_names = cv_report.get("features_used", [])
+        feature_groups = cv_report.get("feature_groups", {})
+
+        if not feature_names:
+            st.warning("Feature list not available in saved CV report.")
+            return
+
+        available = [f for f in feature_names if f in df.columns]
+        X = df[available].fillna(0)
+
+        scaler = StandardScaler()
+        X_scaled = scaler.fit_transform(X)
+
+        # Re-fit IF on the same contamination used during training
+        contamination = cv_report.get("contamination", 0.05)
+        model = IsolationForest(contamination=contamination, random_state=42,
+                                n_estimators=100, max_samples="auto")
+        model.fit(X_scaled)
+        baseline_scores = model.decision_function(X_scaled)  # higher = more normal
+
+        # Permutation importance: shuffle one feature, measure mean score drop
+        importances = {}
+        rng = np.random.default_rng(42)
+        for i, feat in enumerate(available):
+            X_perm = X_scaled.copy()
+            X_perm[:, i] = rng.permutation(X_perm[:, i])
+            perm_scores = model.decision_function(X_perm)
+            # Importance = mean drop in score when feature is shuffled
+            importances[feat] = float(np.mean(baseline_scores - perm_scores))
+
+        imp_series = pd.Series(importances).sort_values(ascending=False)
+        # Keep positive importances only (negative = shuffling actually helped — noise feature)
+        imp_series = imp_series[imp_series > 0]
+        if imp_series.empty:
+            st.warning("No positive feature importances found.")
+            return
+
+        # Normalise to percentage
+        imp_pct = (imp_series / imp_series.sum() * 100).round(2)
+        top_n = min(12, len(imp_pct))
+        top_imp = imp_pct.head(top_n)
+
+        # Map feature → domain
+        feature_to_domain = {}
+        for domain, feats in feature_groups.items():
+            for f in feats:
+                feature_to_domain[f] = domain.replace("_", " ").title()
+
+        # ------------------------------------------------------------------
+        # Layout: bar chart (left) + domain pie (right)
+        # ------------------------------------------------------------------
+        col_bar, col_pie = st.columns([3, 2])
+
+        with col_bar:
+            bar_colors = px.colors.qualitative.Set2[:top_n]
+            fig_bar = go.Figure(go.Bar(
+                x=top_imp.values,
+                y=top_imp.index,
+                orientation="h",
+                marker_color=[
+                    bar_colors[i % len(bar_colors)] for i in range(len(top_imp))
+                ],
+                text=[f"{v:.1f}%" for v in top_imp.values],
+                textposition="outside",
+                hovertemplate="%{y}<br>Importance: %{x:.2f}%<extra></extra>"
+            ))
+            fig_bar.update_layout(
+                title=f"Top {top_n} Features by Anomaly Importance",
+                xaxis_title="Importance (%)",
+                yaxis=dict(autorange="reversed"),
+                height=420,
+                margin=dict(l=10, r=60, t=40, b=40)
+            )
+            st.plotly_chart(fig_bar, use_container_width=True)
+
+        with col_pie:
+            domain_imp = {}
+            for feat, imp in imp_series.items():
+                domain = feature_to_domain.get(feat, "Other")
+                domain_imp[domain] = domain_imp.get(domain, 0) + imp
+
+            domain_pct = {k: round(v / sum(domain_imp.values()) * 100, 1) for k, v in domain_imp.items()}
+            fig_pie = go.Figure(go.Pie(
+                labels=list(domain_pct.keys()),
+                values=list(domain_pct.values()),
+                hole=0.38,
+                textinfo="label+percent",
+                hovertemplate="%{label}<br>%{value:.1f}%<extra></extra>",
+                marker=dict(colors=px.colors.qualitative.Pastel)
+            ))
+            fig_pie.update_layout(
+                title="Anomaly Signal by Domain",
+                height=420,
+                margin=dict(l=10, r=10, t=40, b=40),
+                showlegend=False
+            )
+            st.plotly_chart(fig_pie, use_container_width=True)
+
+        # Insight callout
+        top_feat  = top_imp.index[0]
+        top_pct   = top_imp.iloc[0]
+        top_domain = list(domain_pct.keys())[list(domain_pct.values()).index(max(domain_pct.values()))]
+        st.success(
+            f"**Key finding:** `{top_feat}` is the strongest individual anomaly signal "
+            f"({top_pct:.1f}% of total importance). The **{top_domain}** domain overall "
+            f"contributes the most to detected operational anomalies "
+            f"({domain_pct[top_domain]:.1f}% of domain importance)."
+        )
+
+        # Detailed table
+        with st.expander("📋 Full Feature Importance Table"):
+            imp_df = pd.DataFrame({
+                "Feature": imp_pct.index,
+                "Importance (%)": imp_pct.values,
+                "Domain": [feature_to_domain.get(f, "Other") for f in imp_pct.index]
+            })
+            st.dataframe(imp_df.round(2), use_container_width=True, hide_index=True)
+
+    except Exception as e:
+        st.error(f"Could not compute feature importance: {e}")
+        # Fallback: show feature group counts (old behaviour)
+        cv_report = results.get("cv_report", {})
+        feature_groups = cv_report.get("feature_groups", {})
+        if feature_groups:
+            group_counts = {g: len(fs) for g, fs in feature_groups.items()}
+            fig = go.Figure(go.Pie(
+                labels=list(group_counts.keys()),
+                values=list(group_counts.values()),
+                hole=0.4
+            ))
+            fig.update_layout(title="Features by Operational Category", height=400)
+            st.plotly_chart(fig, use_container_width=True)
 
 
 def render_phase4_visualizations():

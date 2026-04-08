@@ -1,101 +1,101 @@
 batch_id,Total_Tests,Passed_Tests,SKU,Failed_Tests,Pass_Rate_%
-BATCH_22979,1,0,Low GI Seed loaf,1,0.0
-BATCH_20007,1,0,Low GI Seed loaf,1,0.0
-BATCH_20048,1,0,Whole grain loaf,1,0.0
-BATCH_24205,2,0,High Energy Brown,2,0.0
-BATCH_24203,1,0,Whole grain loaf,1,0.0
-BATCH_24200,1,0,High Energy Brown,1,0.0
-BATCH_24196,1,0,Soft white,1,0.0
-BATCH_24193,1,0,Whole grain loaf,1,0.0
-BATCH_21870,1,0,Whole grain loaf,1,0.0
-BATCH_21866,2,0,Low GI Seed loaf,2,0.0
-BATCH_24153,1,0,High Energy Brown,1,0.0
-BATCH_24152,1,0,Soft white,1,0.0
-BATCH_24151,1,0,Soft white,1,0.0
-BATCH_24145,1,0,Soft white,1,0.0
-BATCH_22949,1,0,Soft white,1,0.0
-BATCH_22989,2,0,High Energy Brown,2,0.0
-BATCH_23061,1,0,Whole grain loaf,1,0.0
-BATCH_25944,2,0,Low GI Seed loaf,2,0.0
-BATCH_25935,1,0,Soft white,1,0.0
-BATCH_25931,2,0,Soft white,2,0.0
-BATCH_25926,1,0,Soft white,1,0.0
+BATCH_25821,1,0,Whole grain loaf,1,0.0
+BATCH_20056,1,0,High Energy Brown,1,0.0
 BATCH_20062,1,0,Whole grain loaf,1,0.0
-BATCH_20057,4,0,Whole grain loaf,4,0.0
-BATCH_20041,1,0,Whole grain loaf,1,0.0
-BATCH_20034,1,0,Whole grain loaf,1,0.0
-BATCH_20030,1,0,Soft white,1,0.0
-BATCH_25956,1,0,Whole grain loaf,1,0.0
-BATCH_25952,1,0,Low GI Seed loaf,1,0.0
-BATCH_25951,1,0,Whole grain loaf,1,0.0
-BATCH_25879,2,0,Whole grain loaf,2,0.0
-BATCH_25925,1,0,Whole grain loaf,1,0.0
-BATCH_25894,1,0,Soft white,1,0.0
-BATCH_20128,1,0,Soft white,1,0.0
-BATCH_20118,1,0,Whole grain loaf,1,0.0
-BATCH_20113,1,0,High Energy Brown,1,0.0
-BATCH_20108,1,0,High Energy Brown,1,0.0
-BATCH_20105,2,0,Whole grain loaf,2,0.0
-BATCH_20097,1,0,High Energy Brown,1,0.0
-BATCH_25903,1,0,High Energy Brown,1,0.0
-BATCH_22962,1,0,Whole grain loaf,1,0.0
-BATCH_23114,1,0,Low GI Seed loaf,1,0.0
-BATCH_23111,1,0,Whole grain loaf,1,0.0
-BATCH_23105,2,0,High Energy Brown,2,0.0
-BATCH_23097,1,0,Soft white,1,0.0
-BATCH_23096,2,0,High Energy Brown,2,0.0
-BATCH_22952,1,0,High Energy Brown,1,0.0
-BATCH_22951,1,0,Low GI Seed loaf,1,0.0
-BATCH_25983,1,0,Low GI Seed loaf,1,0.0
-BATCH_22937,1,0,Whole grain loaf,1,0.0
-BATCH_22927,1,0,Soft white,1,0.0
-BATCH_22924,1,0,High Energy Brown,1,0.0
-BATCH_22922,2,0,Low GI Seed loaf,2,0.0
-BATCH_23140,1,0,Whole grain loaf,1,0.0
-BATCH_23133,1,0,Whole grain loaf,1,0.0
-BATCH_23130,1,0,Low GI Seed loaf,1,0.0
-BATCH_20157,2,0,High Energy Brown,2,0.0
-BATCH_20155,1,0,Whole grain loaf,1,0.0
-BATCH_25867,1,0,Whole grain loaf,1,0.0
-BATCH_25859,1,0,Low GI Seed loaf,1,0.0
-BATCH_25853,1,0,Low GI Seed loaf,1,0.0
-BATCH_25852,1,0,Whole grain loaf,1,0.0
-BATCH_20141,2,0,Whole grain loaf,2,0.0
-BATCH_20133,1,0,Soft white,1,0.0
-BATCH_20131,1,0,Low GI Seed loaf,1,0.0
-BATCH_22917,1,0,Whole grain loaf,1,0.0
-BATCH_22913,1,0,Soft white,1,0.0
-BATCH_20183,3,0,High Energy Brown,3,0.0
-BATCH_20178,1,0,High Energy Brown,1,0.0
-BATCH_20177,1,0,Soft white,1,0.0
-BATCH_20174,1,0,Low GI Seed loaf,1,0.0
-BATCH_20170,2,0,High Energy Brown,2,0.0
-BATCH_25846,1,0,Low GI Seed loaf,1,0.0
-BATCH_25842,1,0,Soft white,1,0.0
-BATCH_25837,1,0,Whole grain loaf,1,0.0
-BATCH_25831,1,0,High Energy Brown,1,0.0
-BATCH_25824,1,0,Soft white,1,0.0
-BATCH_20169,2,0,Soft white,2,0.0
-BATCH_20166,1,0,Whole grain loaf,1,0.0
-BATCH_20163,1,0,Whole grain loaf,1,0.0
-BATCH_22938,1,0,High Energy Brown,1,0.0
-BATCH_25782,1,0,Soft white,1,0.0
-BATCH_25823,1,0,Low GI Seed loaf,1,0.0
-BATCH_25817,1,0,Low GI Seed loaf,1,0.0
-BATCH_25810,1,0,High Energy Brown,1,0.0
-BATCH_20196,1,0,High Energy Brown,1,0.0
-BATCH_20194,1,0,High Energy Brown,1,0.0
-BATCH_20189,1,0,High Energy Brown,1,0.0
-BATCH_23128,1,0,Whole grain loaf,1,0.0
-BATCH_23088,1,0,Whole grain loaf,1,0.0
-BATCH_23123,1,0,High Energy Brown,1,0.0
-BATCH_23118,1,0,Soft white,1,0.0
-BATCH_23155,1,0,Low GI Seed loaf,1,0.0
-BATCH_23154,1,0,Low GI Seed loaf,1,0.0
-BATCH_23150,1,0,Soft white,1,0.0
-BATCH_23145,1,0,High Energy Brown,1,0.0
-BATCH_23143,4,0,Low GI Seed loaf,4,0.0
-BATCH_25747,1,0,Soft white,1,0.0
-BATCH_25746,1,0,Low GI Seed loaf,1,0.0
-BATCH_25744,1,0,Whole grain loaf,1,0.0
+BATCH_25794,1,0,Low GI Seed loaf,1,0.0
+BATCH_25753,1,0,Soft white,1,0.0
+BATCH_25769,1,0,Soft white,1,0.0
+BATCH_25771,1,0,Low GI Seed loaf,1,0.0
+BATCH_25780,2,0,Low GI Seed loaf,2,0.0
+BATCH_25735,1,0,Low GI Seed loaf,1,0.0
 BATCH_25736,1,0,Soft white,1,0.0
+BATCH_20932,1,0,Soft white,1,0.0
+BATCH_21120,1,0,Low GI Seed loaf,1,0.0
+BATCH_21092,1,0,Low GI Seed loaf,1,0.0
+BATCH_21242,1,0,Low GI Seed loaf,1,0.0
+BATCH_20913,1,0,Soft white,1,0.0
+BATCH_21230,1,0,High Energy Brown,1,0.0
+BATCH_21200,1,0,Low GI Seed loaf,1,0.0
+BATCH_21208,1,0,Whole grain loaf,1,0.0
+BATCH_20068,2,0,High Energy Brown,2,0.0
+BATCH_20070,1,0,Whole grain loaf,1,0.0
+BATCH_25646,3,0,High Energy Brown,3,0.0
+BATCH_25643,1,0,Whole grain loaf,1,0.0
+BATCH_25569,1,0,Low GI Seed loaf,1,0.0
+BATCH_20896,2,0,Whole grain loaf,2,0.0
+BATCH_21382,1,0,High Energy Brown,1,0.0
+BATCH_20898,2,0,Soft white,2,0.0
+BATCH_20903,1,0,Low GI Seed loaf,1,0.0
+BATCH_21371,1,0,Soft white,1,0.0
+BATCH_21292,1,0,Whole grain loaf,1,0.0
+BATCH_21365,1,0,High Energy Brown,1,0.0
+BATCH_21317,1,0,Soft white,1,0.0
+BATCH_21276,1,0,High Energy Brown,1,0.0
+BATCH_25367,1,0,High Energy Brown,1,0.0
+BATCH_21283,1,0,Low GI Seed loaf,1,0.0
+BATCH_20097,1,0,High Energy Brown,1,0.0
+BATCH_20114,1,0,High Energy Brown,1,0.0
+BATCH_25513,1,0,Whole grain loaf,1,0.0
+BATCH_25418,1,0,Whole grain loaf,1,0.0
+BATCH_25437,1,0,Whole grain loaf,1,0.0
+BATCH_20879,1,0,High Energy Brown,1,0.0
+BATCH_21452,1,0,High Energy Brown,1,0.0
+BATCH_21497,1,0,High Energy Brown,1,0.0
+BATCH_21504,1,0,Soft white,1,0.0
+BATCH_21448,1,0,Soft white,1,0.0
+BATCH_21602,1,0,Whole grain loaf,1,0.0
+BATCH_21427,1,0,Whole grain loaf,1,0.0
+BATCH_21612,1,0,Whole grain loaf,1,0.0
+BATCH_21617,1,0,High Energy Brown,1,0.0
+BATCH_25309,1,0,Low GI Seed loaf,1,0.0
+BATCH_20859,1,0,Whole grain loaf,1,0.0
+BATCH_21580,2,0,Soft white,2,0.0
+BATCH_21545,1,0,Low GI Seed loaf,1,0.0
+BATCH_25398,1,0,Low GI Seed loaf,1,0.0
+BATCH_25408,1,0,Soft white,1,0.0
+BATCH_25410,1,0,Soft white,1,0.0
+BATCH_25412,1,0,Low GI Seed loaf,1,0.0
+BATCH_25293,1,0,Low GI Seed loaf,1,0.0
+BATCH_25376,1,0,Soft white,1,0.0
+BATCH_25345,1,0,Whole grain loaf,1,0.0
+BATCH_25306,1,0,Whole grain loaf,1,0.0
+BATCH_25294,1,0,Low GI Seed loaf,1,0.0
+BATCH_25311,1,0,Whole grain loaf,1,0.0
+BATCH_25219,1,0,Whole grain loaf,1,0.0
+BATCH_20154,1,0,Low GI Seed loaf,1,0.0
+BATCH_20715,2,0,Whole grain loaf,2,0.0
+BATCH_22148,1,0,Low GI Seed loaf,1,0.0
+BATCH_25225,1,0,High Energy Brown,1,0.0
+BATCH_25209,1,0,Soft white,1,0.0
+BATCH_21735,1,0,Soft white,1,0.0
+BATCH_25164,1,0,High Energy Brown,1,0.0
+BATCH_20821,1,0,Low GI Seed loaf,1,0.0
+BATCH_20837,1,0,Low GI Seed loaf,1,0.0
+BATCH_21646,1,0,High Energy Brown,1,0.0
+BATCH_21700,1,0,Whole grain loaf,1,0.0
+BATCH_21722,1,0,Soft white,1,0.0
+BATCH_21685,1,0,Whole grain loaf,1,0.0
+BATCH_21881,1,0,Whole grain loaf,1,0.0
+BATCH_21629,2,0,Low GI Seed loaf,2,0.0
+BATCH_21861,1,0,High Energy Brown,1,0.0
+BATCH_21812,1,0,Low GI Seed loaf,1,0.0
+BATCH_25091,1,0,Whole grain loaf,1,0.0
+BATCH_21796,1,0,Soft white,1,0.0
+BATCH_21752,1,0,Soft white,1,0.0
+BATCH_21759,1,0,Low GI Seed loaf,1,0.0
+BATCH_25157,1,0,Low GI Seed loaf,1,0.0
+BATCH_25158,1,0,Soft white,1,0.0
+BATCH_25139,1,0,High Energy Brown,1,0.0
+BATCH_25082,1,0,Low GI Seed loaf,1,0.0
+BATCH_22199,1,0,High Energy Brown,1,0.0
+BATCH_22067,1,0,Whole grain loaf,1,0.0
+BATCH_20772,1,0,Soft white,1,0.0
+BATCH_20787,1,0,High Energy Brown,1,0.0
+BATCH_22191,1,0,High Energy Brown,1,0.0
+BATCH_22230,1,0,Soft white,1,0.0
+BATCH_22164,1,0,Soft white,1,0.0
+BATCH_22140,1,0,Low GI Seed loaf,1,0.0
+BATCH_24794,1,0,Whole grain loaf,1,0.0
+BATCH_22487,1,0,Low GI Seed loaf,1,0.0
+BATCH_22061,1,0,High Energy Brown,1,0.0
+BATCH_24979,1,0,Low GI Seed loaf,1,0.0
