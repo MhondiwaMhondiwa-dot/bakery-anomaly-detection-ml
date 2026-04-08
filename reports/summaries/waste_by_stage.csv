@@ -1,2 +1,3 @@
 stage,qty_waste_sum,qty_waste_mean,qty_waste_count,temperature_at_check_mean
-post_dispatch,1803695,128.19,14070,24.96
+post_dispatch,891300,128.1,6958,24.97
+production,912395,128.29,7112,24.95

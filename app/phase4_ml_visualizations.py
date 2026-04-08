@@ -290,7 +290,7 @@ def render_training_interface():
                     **Next Steps:**
                     1. Scroll down to explore the results
                     2. Review model performance metrics
-                    3. Examine the 22 anomalous days identified
+                    3. Examine the anomalous days identified by the ensemble
                     4. Download the CSV for operational review
                     """)
                     
@@ -461,8 +461,8 @@ def plot_anomalies_by_model(results):
     st.info("""
     Total number of anomalous days identified by each algorithm from 365 days of operational data. 
     **Key insights:** Variance in detection counts reflects algorithmic sensitivity differences. The ensemble model 
-    aggregates all detections (flags if ≥1 model agrees), providing comprehensive anomaly coverage. Higher detection 
-    counts may indicate either stricter thresholds or genuine operational volatility in specific patterns each algorithm targets.
+    uses majority voting (≥2 of 4 core models agree), providing high-confidence anomaly coverage with fewer false positives. 
+    Low detection counts reflect tighter thresholds; higher counts reflect broader sensitivity to operational patterns.
     """)
     
     # Key interpretation guide

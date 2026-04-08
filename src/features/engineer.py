@@ -323,16 +323,25 @@ def flag_anomalies(df: pd.DataFrame) -> pd.DataFrame:
     df["late_route_anomaly"] = df["late_pct"] > 0.3
     # return anomalies based on rolling spike proportion
     df["return_anomaly"] = df["return_spike_pct"] > 0.1
-    # waste spikes
-    df["waste_anomaly"] = df["route_spike_pct"] > 0.1    # QC anomaly: fail rate > 40% (baseline is 38.15%)
+    # waste anomaly: daily total waste statistically elevated (z-score > 2)
+    # route_spike_pct is always ~0 in practice; total_waste z-score is a robust signal
+    if "total_waste" in df.columns:
+        _waste_mean = df["total_waste"].mean()
+        _waste_std = df["total_waste"].std()
+        df["waste_anomaly"] = ((df["total_waste"] - _waste_mean) / (_waste_std + 1e-10)).abs() > 2
+    else:
+        df["waste_anomaly"] = False
+    # QC anomaly: fail rate > 50% (tightened from 40%; baseline is ~38%, so >50% is a true outlier)
     if "qc_fail_pct" in df.columns:
-        df["qc_anomaly"] = df["qc_fail_pct"] > 0.4
-    # Sales anomaly: demand collapse > 10% of retailers
+        df["qc_anomaly"] = df["qc_fail_pct"] > 0.50
+    # Sales anomaly: demand collapse > 20% of retailers in a day
+    # threshold of 0.10 (mean) flags >50% of active days; 0.20 is ~2SD above mean (~7 days = 1.9%)
     if "demand_collapse_pct" in df.columns:
-        df["sales_anomaly"] = df["demand_collapse_pct"] > 0.1
-    # Inventory anomaly: negative balance detected
+        df["sales_anomaly"] = df["demand_collapse_pct"] > 0.20
+    # Inventory anomaly: multiple negative balances in a day (> 4 events indicates systemic issue)
+    # Using > 0 was too sensitive (49% of days); IQR upper fence = 6, so > 4 captures true outliers (~6%)
     if "negative_balance_count" in df.columns:
-        df["inventory_anomaly"] = df["negative_balance_count"] > 0
+        df["inventory_anomaly"] = df["negative_balance_count"] > 4
     
     # Adjust anomaly detection for holiday context
     # Don't flag sales spikes on holidays/pre-holidays as anomalies (expected demand surge)

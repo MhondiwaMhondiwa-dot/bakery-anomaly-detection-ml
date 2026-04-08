@@ -717,7 +717,7 @@ DATASETS = {
         ]
     },
     'Waste': {
-        'file': 'waste_dataset.cleaned.csv',
+        'file': 'waste_dataset.parquet',
         'description': '**Waste Dataset** – Loss analysis (production vs post-dispatch). Top reason: Contaminated. Night shift highest waste share.',
         'summary_file': 'waste_summary.txt',
         'figures': [

@@ -254,21 +254,20 @@ class AnomalyDetectionPipeline:
         
         model = OneClassSVM(
             kernel='rbf',
-            gamma='auto',
+            gamma='scale',   # 1/(n_features * X.var()) — better calibrated than 'auto'
             nu=self.contamination
         )
         
         model.fit(X_train)
         
-        y_pred_train = model.predict(X_train)
-        y_pred_test = model.predict(X_test)
-        
         scores_train = model.decision_function(X_train)
         scores_test = model.decision_function(X_test)
         
-        # Convert to binary
-        y_pred_train_binary = (y_pred_train == -1).astype(int)
-        y_pred_test_binary = (y_pred_test == -1).astype(int)
+        # Calibrate predictions at the contamination percentile of training scores
+        # This guarantees ~contamination% are flagged rather than using the raw boundary
+        threshold = np.percentile(scores_train, self.contamination * 100)
+        y_pred_train_binary = (scores_train < threshold).astype(int)
+        y_pred_test_binary = (scores_test < threshold).astype(int)
         
         self.models['ocsvm'] = model
         
@@ -413,20 +412,41 @@ class AnomalyDetectionPipeline:
         if_results = self.train_isolation_forest(X_scaled, X_scaled)
         final_predictions['isolation_forest'] = if_results['train_predictions']
         
+        # LOF — fit on full dataset with novelty=True so we get consistent predictions
+        lof_model = LocalOutlierFactor(
+            contamination=self.contamination,
+            novelty=True,
+            n_neighbors=20
+        )
+        lof_model.fit(X_scaled)
+        lof_scores = lof_model.score_samples(X_scaled)
+        # Calibrate at contamination percentile (guarantees expected flagging rate)
+        lof_threshold = np.percentile(lof_scores, self.contamination * 100)
+        final_predictions['lof'] = (lof_scores < lof_threshold).astype(int)
+        self.models['lof'] = lof_model
+        
+        # One-Class SVM
+        ocsvm_results = self.train_ocsvm(X_scaled, X_scaled)
+        final_predictions['ocsvm'] = ocsvm_results['train_predictions']
+        
         # Statistical baseline
         stat_results = self.train_statistical_baseline(X_scaled, X_scaled)
         final_predictions['statistical'] = stat_results['train_predictions']
         
-        # Combine predictions (ensemble: vote)
+        # Ensemble: majority vote across the 4 core models (≥2 agree)
         ensemble_votes = np.column_stack([
             final_predictions['isolation_forest'],
+            final_predictions['lof'],
+            final_predictions['ocsvm'],
             final_predictions['statistical']
         ])
-        final_predictions['ensemble'] = (ensemble_votes.sum(axis=1) >= 1).astype(int)
+        final_predictions['ensemble'] = (ensemble_votes.sum(axis=1) >= 2).astype(int)
         
         # Store anomaly scores
         self.anomaly_scores = {
             'isolation_forest': if_results['train_scores'],
+            'lof': lof_scores,
+            'ocsvm': ocsvm_results['train_scores'],
             'statistical': stat_results['train_scores']
         }
         

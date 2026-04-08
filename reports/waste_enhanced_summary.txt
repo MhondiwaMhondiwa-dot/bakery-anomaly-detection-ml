@@ -17,17 +17,18 @@ Unique Batches: 6796
 --------------------------------------------------------------------------------
                Total Units  Avg Units/Incident  ...  Record Count  % of Total
 stage                                           ...                          
-post_dispatch      1803695          128.194385  ...         14070       100.0
+post_dispatch       891300          128.097154  ...          6958        49.4
+production          912395          128.289511  ...          7112        50.6
 
-[1 rows x 5 columns]
+[2 rows x 5 columns]
 
-⚠️ **POST-DISPATCH WASTE DOMINANT:** 1,803,695 units (100.0%)
-   Interpretation: Products are being wasted after leaving the plant (handling, spoilage, unsold returns)
+⚠️ **PRODUCTION WASTE DOMINANT:** 912,395 units (50.6%)
+   Interpretation: Manufacturing defects, quality issues, or process inefficiencies are the primary waste driver
    Action Items:
-   - Audit cold chain compliance at depots and during transport
-   - Review demand forecasting accuracy to reduce overstocking
-   - Examine handling_condition data for rough handling patterns
-   - Analyze returned unsold products by route/depot
+   - Review production line equipment maintenance schedules
+   - Analyze batch sizing vs demand patterns
+   - Implement tighter quality control checkpoints
+   - Investigate waste_reason codes in production stages
 
 🔍 WASTE ROOT CAUSE ANALYSIS (Top 10 Reasons)
 --------------------------------------------------------------------------------
@@ -135,35 +136,35 @@ Peak Waste Hour: 0.0:00 (84395 units)
 
 🚛 POST-DISPATCH WASTE ANALYSIS
 --------------------------------------------------------------------------------
-Post-Dispatch Waste: 14,070 incidents, 1,803,695 units
+Post-Dispatch Waste: 6,958 incidents, 891,300 units
 
 Top 15 Routes by Waste:
            Total Wasted  Incidents
 route_id                          
-RT_BIN_01        260039       2014
-RT_MUR_01        250814       1990
-RT_HAT_02        136140       1055
-RT_HAT_01        131838       1035
-RT_CHE_01        130446        987
-RT_CHE_02        129009       1021
-RT_CHI_01        128758        983
-RT_MUT_01        128540       1006
-RT_CHI_02        127390       1021
-RT_MUT_02        122433        949
-RT_HAR_03         91942        699
-RT_HAR_02         83196        647
-RT_HAR_01         83150        663
+RT_BIN_01        133068       1030
+RT_MUR_01        119958        954
+RT_HAT_01         67916        539
+RT_CHI_02         67045        527
+RT_HAT_02         66065        523
+RT_MUT_01         65021        514
+RT_CHE_02         64293        505
+RT_CHI_01         62656        477
+RT_MUT_02         61397        472
+RT_CHE_01         59957        460
+RT_HAR_03         48729        364
+RT_HAR_01         38733        310
+RT_HAR_02         36462        283
 
 Top 15 Depots by Waste:
           Total Wasted  Incidents
 depot_id                         
-Hatcliff        267978       2090
-Bindura         260039       2014
-Chegutu         259455       2008
-Harare          258288       2009
-Chinhoyi        256148       2004
-Mutare          250973       1955
-Murehwa         250814       1990
+Hatcliff        133981       1062
+Bindura         133068       1030
+Chinhoyi        129701       1004
+Mutare          126418        986
+Chegutu         124250        965
+Harare          123924        957
+Murehwa         119958        954
 
 🔗 BATCH TRACEABILITY
 --------------------------------------------------------------------------------
@@ -192,10 +193,9 @@ Name: qty_waste, dtype: int64
    • Date range analyzed: 2025-01-01 to 2025-07-30
 
 🎯 PRIMARY FOCUS AREA:
-   → POST-DISPATCH WASTE (>50% of total)
-   • Total: 1,803,695 units
-   • Root causes likely: Cold chain breaks, handling damage, shelf-life expiry
-
+   → PRODUCTION WASTE (>50% of total)
+   • Total: 912,395 units
+   • Root causes likely: Equipment failures, quality defects, batch sizing
 🔍 SPECIFIC ACTION ITEMS (PRIORITY ORDER):
 
 1. **TOP WASTE REASON - DAMAGED** (25.8%)

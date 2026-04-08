@@ -1,14 +1,15 @@
 Waste Dataset Summary
 ============================================================
-Shape: 14070 rows × 18 columns
+Shape: 14070 rows × 20 columns
 
-Columns: qty_waste, timestamp, plant_id, depot_id, route_id, temperature_at_check, handling_condition, batch_id, shift, notes, soft_white, high_energy_brown, whole_grain_loaf, low_gi_seed_loaf, hour, dayofweek, date, is_weekend
+Columns: waste_id, timestamp, plant_id, depot_id, route_id, qty_waste, waste_reason, temperature_at_check, handling_condition, batch_id, shift, notes, soft_white, high_energy_brown, whole_grain_loaf, low_gi_seed_loaf, hour, dayofweek, date, is_weekend
 
 Data types:
-object            10
-int64              4
+str               10
+int64              5
 float64            2
-datetime64[ns]     1
+datetime64[us]     1
+object             1
 bool               1
 Name: count, dtype: int64
 
@@ -21,7 +22,7 @@ date           17
 dtype: int64
 
 Waste Quantity Stats (qty_waste):
-  Total waste: 0 units
-  Mean: nan
-  Median: nan
-  Max: nan
+  Total waste: 1,803,695 units
+  Mean: 128.19
+  Median: 129.00
+  Max: 250

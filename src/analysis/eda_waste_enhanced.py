@@ -66,8 +66,16 @@ def load_and_prepare():
         else:
             df['qty_waste'] = 0
     
-    # Create stage column based on route_id presence (if route_id exists, it's post-dispatch)
-    if 'route_id' in df.columns:
+    # Derive stage from waste_reason semantics:
+    # - 'Quality Failure' and 'Damaged' occur at production/plant level
+    # - 'Expired Waste' and 'Returned Unsold' occur after product leaves the plant
+    # (route_id is present on ALL records so cannot be used as the split signal)
+    if 'waste_reason' in df.columns:
+        production_reasons = {'Quality Failure', 'Damaged'}
+        df['stage'] = df['waste_reason'].apply(
+            lambda r: 'production' if r in production_reasons else 'post_dispatch'
+        )
+    elif 'route_id' in df.columns:
         df['stage'] = df['route_id'].apply(lambda x: 'post_dispatch' if pd.notna(x) else 'production')
     else:
         df['stage'] = 'unknown'
