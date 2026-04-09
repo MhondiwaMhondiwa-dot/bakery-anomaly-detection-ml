@@ -1,7 +1,7 @@
-movement_type,Records,Qty_In,Qty_Out,Net_Movement,Avg_Balance
-dispatch,2000,0,2106726,-2106726,1365.96
-production,1200,2272836,0,2272836,4340.98
-return_from_store,600,37934,0,37934,2486.5
-sale,5500,0,177283,-177283,2376.37
-stock_adjustment,200,9693,10218,-525,2432.38
-waste,500,0,65199,-65199,2316.87
+movement_type
+dispatch
+production
+return_from_store
+sale
+stock_adjustment
+waste

@@ -1,6 +1,6 @@
 region,quantity_sold_sum,quantity_sold_mean,revenue_sum,revenue_mean,sale_id_count,retailer_id_nunique,promotion_flag_sum
-Mashonaland West,106721,62.93,99250.53,58.52,1696,0,433
-Harare Urban,73451,62.04,68309.43,57.69,1184,0,310
-Mashonaland Central,52122,61.83,48473.46,57.5,843,0,209
-Mashonaland East,50834,64.1,47275.62,59.62,793,0,193
-Manicaland,31582,62.79,29371.26,58.39,503,0,111
+Mashonaland West,113597,66.98,154829.89,91.29,1696,67,433
+Harare Urban,78117,65.98,106648.59,90.07,1184,49,310
+Mashonaland Central,55444,65.77,75086.11,89.07,843,34,209
+Mashonaland East,53815,67.86,73183.84,92.29,793,30,193
+Manicaland,33291,66.18,45569.26,90.59,503,20,111

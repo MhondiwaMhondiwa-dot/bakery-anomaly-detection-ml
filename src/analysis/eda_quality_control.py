@@ -152,9 +152,15 @@ def summary_stats(df):
         
         peak_fail_hour = hourly_stats['Pass_Rate_%'].idxmin()
         best_hour = hourly_stats['Pass_Rate_%'].idxmax()
-        
-        f.write(f"Worst QC Hour: {peak_fail_hour:02d}:00 ({hourly_stats.loc[peak_fail_hour, 'Pass_Rate_%']:.2f}% pass rate)\n")
-        f.write(f"Best QC Hour: {best_hour:02d}:00 ({hourly_stats.loc[best_hour, 'Pass_Rate_%']:.2f}% pass rate)\n")
+        hour_diff = hourly_stats.loc[best_hour, 'Pass_Rate_%'] - hourly_stats.loc[peak_fail_hour, 'Pass_Rate_%']
+
+        # Only report best/worst hour when there is a meaningful difference
+        if hour_diff >= 1.0:
+            f.write(f"Worst QC Hour: {peak_fail_hour:02d}:00 ({hourly_stats.loc[peak_fail_hour, 'Pass_Rate_%']:.2f}% pass rate)\n")
+            f.write(f"Best QC Hour: {best_hour:02d}:00 ({hourly_stats.loc[best_hour, 'Pass_Rate_%']:.2f}% pass rate)\n")
+            f.write(f"Hourly variation: {hour_diff:.2f}% spread between best and worst hour\n")
+        else:
+            f.write(f"Hourly QC variation: minimal ({hour_diff:.2f}% spread) — no significant hour-of-day quality pattern detected\n")
         
         daily_stats = df.groupby('dayofweek')['is_pass'].agg(['sum', 'count'])
         daily_stats.columns = ['Passed', 'Total']

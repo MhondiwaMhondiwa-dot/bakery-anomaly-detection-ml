@@ -1,5 +1,5 @@
-sku,Records,Qty_In,Qty_Out,Net_Movement,Avg_Balance,Latest_Balance,Expired_Movements,Turnover_Ratio
-High Energy Brown,2444,529964,589874,-59910,2345.32,2761,1197,1.11
-Soft white,2547,625071,595228,29843,2455.17,2535,1222,0.95
-Whole grain loaf,2517,622765,576227,46538,2451.98,1873,1208,0.93
-Low GI Seed loaf,2492,542663,598097,-55434,2404.11,1308,1167,1.1
+sku,quantity_moved
+Whole grain loaf,46538
+Soft white,29843
+Low GI Seed loaf,-55434
+High Energy Brown,-59910

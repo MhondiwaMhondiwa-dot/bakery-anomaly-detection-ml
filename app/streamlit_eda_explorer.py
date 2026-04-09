@@ -564,12 +564,11 @@ DATASETS = {
     },
     'Quality Control': {
         'file': 'quality_control_dataset.parquet',
-        'description': '**Quality Control (QC) Dataset** – Batch-level inspections with **38.15% fail rate** (systematic issue). Parameters: seal_strength, temperature, moisture, weight.',
+        'description': '**Quality Control (QC) Dataset** – Batch-level inspections with **10.5% overall fail rate**. Parameters: seal_strength, temperature, moisture, weight.',
         'summary_file': 'quality_control_summary.txt',
         'figures': [
             'qc_overall_pass_fail.png',
             'qc_parameter_fail_rates.png',
-            'qc_hourly_trend.png',
             'qc_daily_trend.png',
             'qc_by_sku.png',
             'qc_parameter_distributions.png',
@@ -884,8 +883,8 @@ VIZ_EXPLANATIONS = {
     },
     'dispatch_volume_by_sku.png': {
         'title': '🍞 Dispatch Volume by SKU (Top 10)',
-        'explanation': 'Horizontal bar chart showing total quantity dispatched for top 10 SKUs. **Key insights:** Reveals demand patterns and product distribution focus. Top SKUs: Soft White, Seed Loaf, Whole Wheat (each ~14%). Even distribution = balanced demand.',
-        'key_points': ['• **X-axis:** Total units dispatched', '• **Y-axis:** SKU names', '• **Top SKUs:** Products with highest distribution volume', '• **Even distribution:** Balanced demand across products', '• **Skewed distribution:** Demand concentration (single-point risk)', '• **Use case:** Production planning, route loading optimization', '• **Link to waste:** High volume SKUs must have efficient dispatch to avoid staleness']
+        'explanation': 'Horizontal bar chart showing total quantity dispatched for top 10 SKUs. **Key insights:** Soft White bread consistently leads dispatch volumes — this is expected and by design. **Why Soft White dominates:** White bread is baked every single day regardless of demand conditions, while brown and whole-wheat variants (High Energy Brown, Whole Grain Loaf, Low GI Seed Loaf) can have batch sizes reduced or even skipped on low-demand days. This production flexibility makes Soft White the operational anchor of the bakery, always present in every dispatch load.',
+        'key_points': ['• **X-axis:** Total units dispatched', '• **Y-axis:** SKU names', '• **Soft White (top bar):** Always-on product — never cut from production schedule', '• **Brown/Whole-grain SKUs:** Flexible — batch sizes adjusted based on demand signals', '• **Even distribution of others:** Balanced demand across non-white varieties', '• **Operational note:** Soft White volume dominance is realistic, not a data anomaly', '• **Use case:** Production planning, route loading optimization', '• **Link to waste:** High-volume SKUs must have efficient dispatch to avoid staleness']
     },
     'dispatch_delay_category_pie.png': {
         'title': '⏱️ Delay Category Distribution',
@@ -919,8 +918,8 @@ VIZ_EXPLANATIONS = {
     },
     'sales_pos_daily_trend.png': {
         'title': '📈 Daily Sales Trend with Moving Average',
-        'explanation': 'Time series showing daily units sold from Jan 1 to Jul 30, 2025. Dark blue line = daily sales, red line = 7-day moving average, light blue fill = volume. **Key insights:** Identifies demand volatility, seasonal patterns, and anomalies. Smooth moving average helps filter noise and reveal underlying trends.',
-        'key_points': ['• **X-axis:** Date (Jan-Jul 2025)', '• **Y-axis:** Daily units sold', '• **Blue line:** Actual daily sales (volatile)', '• **Red line:** 7-day moving average (trend)', '• **Filled area:** Visual emphasis on volume', '• **Spikes:** High-demand days (holidays, promotions)', '• **Dips:** Low-demand periods (investigate causes)', '• **Use case:** Demand forecasting, production planning']
+        'explanation': 'Time series showing daily units sold from Jan 1 to Oct 31, 2025. Dark blue line = daily sales, red line = 7-day moving average, light blue fill = volume. **Key insights:** Identifies demand volatility, seasonal patterns, and anomalies. Smooth moving average helps filter noise and reveal underlying trends.',
+        'key_points': ['• **X-axis:** Date (Jan-Oct 2025)', '• **Y-axis:** Daily units sold', '• **Blue line:** Actual daily sales (volatile)', '• **Red line:** 7-day moving average (trend)', '• **Filled area:** Visual emphasis on volume', '• **Spikes:** High-demand days (holidays, promotions)', '• **Dips:** Low-demand periods (investigate causes)', '• **Use case:** Demand forecasting, production planning']
     },
     'sales_pos_hourly_pattern.png': {
         'title': '⏰ Sales Volume by Hour of Day',

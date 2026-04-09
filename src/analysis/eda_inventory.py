@@ -93,11 +93,17 @@ def grouped_summaries(df: pd.DataFrame, out_dir: Path):
             agg_cols.append('qty_in')
         if 'qty_out' in df.columns:
             agg_cols.append('qty_out')
-        
-        by_sku = df.groupby('sku')[agg_cols].sum().reset_index()
-        by_sku = by_sku.sort_values(by_sku.columns[1], ascending=False).head(50)
-        by_sku.to_csv(summaries_dir / 'inventory_by_sku.csv', index=False)
-        logger.info('Wrote inventory_by_sku.csv')
+        if 'quantity_moved' in df.columns and not agg_cols:
+            agg_cols.append('quantity_moved')
+
+        if not agg_cols:
+            logger.warning('No quantity columns found for SKU grouping; skipping')
+        else:
+            by_sku = df.groupby('sku')[agg_cols].sum().reset_index()
+            sort_col = agg_cols[0]
+            by_sku = by_sku.sort_values(sort_col, ascending=False).head(50)
+            by_sku.to_csv(summaries_dir / 'inventory_by_sku.csv', index=False)
+            logger.info('Wrote inventory_by_sku.csv')
     
     # by movement type
     if 'movement_type' in df.columns:

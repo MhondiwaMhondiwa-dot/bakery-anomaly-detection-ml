@@ -545,31 +545,92 @@ def visualizations(df):
     else:
         plt.close()
     
-    # 9. Price distribution by multi-SKU columns (skip if price_col missing)
-    if 'retail_price' in df.columns or 'bakers_inn_price' in df.columns:
-        price_col_for_viz = 'retail_price' if 'retail_price' in df.columns else 'bakers_inn_price'
-        fig, ax = plt.subplots(figsize=(12, 6))
-        df_price = df[[price_col_for_viz, 'retailer_id']].copy()
-        df_price['price_range'] = pd.cut(df_price[price_col_for_viz], bins=5)
-        df_price['price_range'].value_counts().sort_index().plot(kind='bar', ax=ax, color='steelblue')
-        ax.set_title(f'Price Distribution ({price_col_for_viz})', fontsize=16, fontweight='bold')
-        ax.set_xlabel('Price Range', fontsize=12)
-        ax.set_ylabel('Frequency', fontsize=12)
-        ax.tick_params(axis='x', rotation=45)
-        add_caption(fig, 'Summarizes retail price dispersion across transactions.')
-        plt.tight_layout()
-        plt.savefig(FIGURES_DIR / 'sales_pos_price_distribution.png', dpi=300, bbox_inches='tight')
+    # 9. Price distribution — histogram with explicit numeric bins
+    price_col_for_viz = None
+    for _cand in ['retail_price', 'bakers_inn_price']:
+        if _cand in df.columns and pd.api.types.is_numeric_dtype(df[_cand]) and df[_cand].std() > 0:
+            price_col_for_viz = _cand
+            break
+
+    fig, axes = plt.subplots(1, 2, figsize=(14, 6))
+
+    # Left: histogram of transaction-level price
+    if price_col_for_viz:
+        prices = df[price_col_for_viz].dropna()
+        pmin, pmax = prices.min(), prices.max()
+        bins = np.linspace(pmin, pmax, 15)
+        counts, edges = np.histogram(prices, bins=bins)
+        labels = [f"${edges[i]:.2f}–\n${edges[i+1]:.2f}" for i in range(len(edges) - 1)]
+        axes[0].bar(range(len(counts)), counts, color='steelblue', edgecolor='white')
+        axes[0].set_xticks(range(len(counts)))
+        axes[0].set_xticklabels(labels, rotation=45, ha='right', fontsize=8)
+        axes[0].set_title(f'Transaction Price Distribution\n({price_col_for_viz})',
+                          fontsize=13, fontweight='bold')
+        axes[0].set_xlabel('Price per Unit ($)', fontsize=11)
+        axes[0].set_ylabel('Transactions', fontsize=11)
+    else:
+        axes[0].text(0.5, 0.5, 'No price data available', ha='center', va='center',
+                     transform=axes[0].transAxes, fontsize=12)
+        axes[0].set_title('Price Distribution', fontsize=13, fontweight='bold')
+
+    # Right: per-SKU estimated revenue (quantity × SKU price)
+    sku_price_map = {
+        'soft_white': 1.05, 'high_energy_brown': 1.25,
+        'whole_grain_loaf': 1.45, 'low_gi_seed_loaf': 1.70,
+    }
+    sku_rev = {}
+    for sku_col, unit_price in sku_price_map.items():
+        if sku_col in df.columns:
+            sku_rev[sku_col.replace('_', ' ').title()] = (df[sku_col] * unit_price).sum()
+    if sku_rev:
+        sku_labels = list(sku_rev.keys())
+        sku_vals   = list(sku_rev.values())
+        colors = ['#4C72B0', '#55A868', '#C44E52', '#8172B2']
+        axes[1].bar(sku_labels, sku_vals, color=colors[:len(sku_labels)], edgecolor='white')
+        axes[1].set_title('Total Revenue by SKU (Period)', fontsize=13, fontweight='bold')
+        axes[1].set_xlabel('SKU', fontsize=11)
+        axes[1].set_ylabel('Total Revenue ($)', fontsize=11)
+        axes[1].tick_params(axis='x', rotation=20)
+        for i, v in enumerate(sku_vals):
+            axes[1].text(i, v * 1.01, f'${v:,.0f}', ha='center', fontsize=9)
+    else:
+        axes[1].text(0.5, 0.5, 'No SKU data available', ha='center', va='center',
+                     transform=axes[1].transAxes, fontsize=12)
+
+    add_caption(fig, 'Left: distribution of weighted-average retail price per transaction. '
+                     'Right: estimated total revenue contribution per SKU.')
+    plt.tight_layout()
+    plt.savefig(FIGURES_DIR / 'sales_pos_price_distribution.png', dpi=300, bbox_inches='tight')
     plt.close()
     logging.info("Saved sales_pos_price_distribution.png")
     
     # 10. Top 20 retailers by revenue
     fig, ax = plt.subplots(figsize=(12, 8))
-    retailer_rev = df.groupby('retailer_id')['revenue'].sum().sort_values(ascending=True)
-    if not retailer_rev.empty and len(retailer_rev.dropna())>0:
-        retailer_rev = retailer_rev.tail(20)
-        retailer_rev.plot(kind='barh', ax=ax, color='mediumseagreen')
+    # Compute revenue using per-SKU prices for accuracy
+    _sku_price_map = {
+        'soft_white': 1.05, 'high_energy_brown': 1.25,
+        'whole_grain_loaf': 1.45, 'low_gi_seed_loaf': 1.70,
+    }
+    _available_sku_cols = [c for c in _sku_price_map if c in df.columns]
+    if _available_sku_cols:
+        df['_sku_revenue'] = sum(df[c] * _sku_price_map[c] for c in _available_sku_cols)
+        retailer_rev = df.groupby('retailer_id')['_sku_revenue'].sum().sort_values(ascending=True)
+    else:
+        retailer_rev = df.groupby('retailer_id')['revenue'].sum().sort_values(ascending=True)
+
+    if not retailer_rev.empty and retailer_rev.dropna().sum() > 0:
+        top20 = retailer_rev.tail(20)
+        bars = ax.barh(range(len(top20)), top20.values, color='mediumseagreen')
+        ax.set_yticks(range(len(top20)))
+        ax.set_yticklabels(top20.index, fontsize=9)
+        # Add value labels
+        for bar, val in zip(bars, top20.values):
+            ax.text(val * 1.005, bar.get_y() + bar.get_height() / 2,
+                    f'${val:,.0f}', va='center', fontsize=8)
     else:
         logging.info('No valid retailer revenue data; skipping retailer bar plot')
+        ax.text(0.5, 0.5, 'No revenue data available', ha='center', va='center',
+                transform=ax.transAxes, fontsize=12)
     ax.set_title('Top 20 Retailers by Revenue', fontsize=16, fontweight='bold')
     ax.set_xlabel('Total Revenue ($)', fontsize=12)
     ax.set_ylabel('Retailer ID', fontsize=12)

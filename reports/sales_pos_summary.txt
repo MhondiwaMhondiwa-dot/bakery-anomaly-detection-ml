@@ -5,12 +5,12 @@ SALES / RETAIL POS DATASET - EXPLORATORY DATA ANALYSIS
 📊 DATASET OVERVIEW
 --------------------------------------------------------------------------------
 Total Sales Transactions: 5,019
-Date Range: 2025-01-01 07:00:00 to 2025-06-30 17:00:00
-Total Units Sold: 314,710
-Total Revenue: $292,680.30
-Average Transaction Size: 62.7 units
-Average Price: $0.93
-Unique Retailers: 0
+Date Range: 2025-01-01 08:00:00 to 2025-10-30 16:00:00
+Total Units Sold: 334,264
+Total Revenue: $455,317.69
+Average Transaction Size: 66.6 units
+Average Price: $1.36
+Unique Retailers: 200
 Regions: 5 - Harare Urban, Manicaland, Mashonaland Central, Mashonaland East, Mashonaland West
 Multi-SKU columns: soft_white, high_energy_brown, whole_grain_loaf, low_gi_seed_loaf
 
@@ -21,95 +21,123 @@ Sales without Promotions: 3,763 (75.0%)
 Unique Promotions: 4
 
 Promotion vs Non-Promotion Performance:
-               quantity_sold           revenue        bakers_inn_price
-                         sum   mean        sum   mean             mean
-promotion_flag                                                        
-0                     236371  62.81  219825.03  58.42             0.93
-1                      78339  62.37   72855.27  58.01             0.93
+               quantity_sold           revenue         retail_price
+                         sum   mean        sum    mean         mean
+promotion_flag                                                     
+0                     236371  62.81  321894.56   85.54         1.36
+1                      97893  77.94  133423.13  106.23         1.36
 
-⚠️ WARNING: Promotions showing NEGATIVE uplift: -0.7% quantity
+✅ Promotion Uplift: +24.1% quantity, +24.2% revenue per transaction
 
 Top Promotions by Sales Volume:
                         Units Sold   Revenue  Transactions
 promotion_name                                            
-Independence Day Promo       21343  19848.99           341
-Easter Promo                 19811  18424.23           318
-Heroes Day Promo             18894  17571.42           304
-Christmas Promo              18291  17010.63           293
+Independence Day Promo       26675  36275.94           341
+Easter Promo                 24702  33522.22           318
+Heroes Day Promo             23553  32194.34           304
+Christmas Promo              22963  31430.63           293
 
 🌍 REGIONAL DEMAND ANALYSIS
 --------------------------------------------------------------------------------
                      Units Sold  ...  Avg Revenue/Transaction
 region                           ...                         
-Mashonaland West         106721  ...                    58.52
-Harare Urban              73451  ...                    57.69
-Mashonaland Central       52122  ...                    57.50
-Mashonaland East          50834  ...                    59.62
-Manicaland                31582  ...                    58.39
+Mashonaland West         113597  ...                    91.29
+Harare Urban              78117  ...                    90.07
+Mashonaland Central       55444  ...                    89.07
+Mashonaland East          53815  ...                    92.29
+Manicaland                33291  ...                    90.59
 
 [5 rows x 6 columns]
 
 🍞 SKU PERFORMANCE ANALYSIS
 --------------------------------------------------------------------------------
-                 SKU  Units Sold   Revenue  Transactions  % of Total Units
-1  High Energy Brown       81101  75423.93          3751         25.770074
-3   Low Gi Seed Loaf       78091  72624.63          3702         24.813638
-2   Whole Grain Loaf       77880  72428.40          3676         24.746592
-0         Soft White       77638  72203.34          3676         24.669696
+                 SKU  Units Sold    Revenue  Transactions  % of Total Units
+1  High Energy Brown       86216  115601.37          3751         25.792787
+3   Low Gi Seed Loaf       82935  118616.03          3702         24.811227
+2   Whole Grain Loaf       82789  113963.82          3676         24.767549
+0         Soft White       82324  107136.47          3676         24.628437
 
 ⏰ TEMPORAL DEMAND PATTERNS
 --------------------------------------------------------------------------------
 Sales by Day of Week:
            Units   Revenue  Transactions
 day_name                                
-Monday     43944  40867.92           707
-Tuesday    40302  37480.86           646
-Wednesday  45127  41968.11           706
-Thursday   45922  42707.46           738
-Friday     43454  40412.22           699
-Saturday   48266  44887.38           763
-Sunday     47695  44356.35           760
+Monday     46868  63787.00           710
+Tuesday    47295  64721.22           706
+Wednesday  47839  65108.24           729
+Thursday   45827  62659.36           695
+Friday     48233  65808.30           707
+Saturday   48881  66067.69           723
+Sunday     49321  67165.88           749
 
 Weekday vs Weekend:
         quantity_sold           revenue       
                   sum   mean        sum   mean
-Weekday        218749  62.57  203436.57  58.19
-Weekend         95961  63.01   89243.73  58.60
+Weekday        236062  66.55  322084.12  90.80
+Weekend         98202  66.71  133233.57  90.51
 
 Hourly Sales Summary:
       Total Units  Avg Units/Sale  Transactions
 hour                                           
-7           32054            65.2           492
-8           31100            64.9           479
-9           29121            62.2           468
-10          30233            65.0           465
-11          29925            63.7           470
-12          30759            61.0           504
-13          33828            64.1           528
-14          30860            62.2           496
-15          33235            62.2           534
-16          31215            62.7           498
-17            657            27.4            24
-18            873            31.2            28
-19            549            26.1            21
-20            226            25.1             9
-21             75            25.0             3
+7           33981            69.1           492
+8           33254            69.4           479
+9           30972            66.2           468
+10          32232            69.3           465
+11          31767            67.6           470
+12          32668            64.8           504
+13          35965            68.1           528
+14          32851            66.2           496
+15          35063            65.7           534
+16          33011            66.3           498
+17            702            29.2            24
+18            915            32.7            28
+19            565            26.9            21
+20            238            26.4             9
+21             80            26.7             3
 
-Peak Sales Hour: 13:00 (33828 units)
-Lowest Sales Hour: 21:00 (75 units)
+Peak Sales Hour: 13:00 (35965 units)
+Lowest Sales Hour: 21:00 (80 units)
 
 💲 PRICE ANALYSIS
 --------------------------------------------------------------------------------
 Price Statistics by Retailer (Top 10):
-Empty DataFrame
-Columns: [Min Price, Avg Price, Max Price, Std Dev]
-Index: []
+             Min Price  Avg Price  Max Price  Std Dev
+retailer_id                                          
+STORE_001         1.16       1.31       1.58     0.11
+STORE_002         1.18       1.38       1.60     0.12
+STORE_003         1.13       1.36       1.68     0.12
+STORE_004         1.12       1.37       1.68     0.13
+STORE_005         1.22       1.35       1.53     0.09
+STORE_006         1.06       1.32       1.66     0.15
+STORE_007         1.13       1.31       1.51     0.13
+STORE_008         1.09       1.37       1.66     0.12
+STORE_009         1.16       1.38       1.61     0.12
+STORE_010         1.02       1.34       1.67     0.16
 
 🏪 TOP RETAILERS BY SALES VOLUME
 --------------------------------------------------------------------------------
-Empty DataFrame
-Columns: [Units Sold, Revenue, Transactions, Avg Units/Transaction]
-Index: []
+             Units Sold  Revenue  Transactions  Avg Units/Transaction
+retailer_id                                                          
+STORE_180          2914  3964.17            39                   74.7
+STORE_009          2654  3641.17            34                   78.1
+STORE_194          2616  3509.03            36                   72.7
+STORE_150          2569  3476.75            35                   73.4
+STORE_121          2545  3474.21            37                   68.8
+STORE_018          2536  3442.42            33                   76.8
+STORE_187          2508  3407.83            36                   69.7
+STORE_117          2499  3330.97            37                   67.5
+STORE_130          2456  3450.03            33                   74.4
+STORE_008          2452  3330.84            35                   70.1
+STORE_195          2440  3269.20            37                   65.9
+STORE_029          2435  3288.04            32                   76.1
+STORE_142          2426  3296.40            35                   69.3
+STORE_198          2415  3295.53            33                   73.2
+STORE_153          2401  3326.86            35                   68.6
+STORE_116          2397  3223.57            33                   72.6
+STORE_155          2369  3209.49            35                   67.7
+STORE_189          2367  3221.11            36                   65.8
+STORE_138          2363  3177.88            37                   63.9
+STORE_105          2326  3144.63            30                   77.5
 
 🎯 KEY INSIGHTS & ACTION ITEMS
 ================================================================================

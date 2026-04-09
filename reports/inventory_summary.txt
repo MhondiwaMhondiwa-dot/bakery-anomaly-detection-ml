@@ -1,39 +1,25 @@
 Inventory Dataset Summary
 ============================================================
-Shape: 18090 rows × 16 columns
+Shape: 10000 rows × 16 columns
 
-Columns: record_id, timestamp, plant_id, store_id, sku, qty_in, qty_out, balance_before, balance_after, movement_type, reason_code, expiry_date, route_id, date, hour, dayofweek
+Columns: record_id, timestamp, plant_id, depot_id, route_id, store_id, sku, balance_before, balance_after, quantity_moved, movement_type, reason_code, expiry_date, date, hour, dayofweek
 
 Data types:
-object            9
-int64             4
-datetime64[ns]    2
-float64           1
+str               9
+int64             3
+object            2
+datetime64[us]    1
+int32             1
 Name: count, dtype: int64
 
 Missing values:
-timestamp         17
-plant_id        6028
-store_id       12062
-reason_code       91
-route_id       15103
-date              17
-hour              17
-dayofweek         17
+route_id    7400
 dtype: int64
 
-Quantity In Stats:
-  Total: 4,280,258
-  Mean: 236.61
-
-Quantity Out Stats:
-  Total: 3,543,372
-  Mean: 195.87
-
 Movement Types:
-  production: 3,076
-  stock_adjustment: 3,047
-  return_from_store: 3,039
-  dispatch: 2,997
-  store_sale: 2,989
-  waste: 2,942
+  sale: 5,500
+  dispatch: 2,000
+  production: 1,200
+  return_from_store: 600
+  waste: 500
+  stock_adjustment: 200
