@@ -61,7 +61,8 @@ pyod==2.0.6
 pyparsing==3.2.5
 python-dateutil==2.9.0.post0
 python-dotenv==1.2.1
-pytz==2025.2
+# pytz==2025.2
+pytz
 pywin32==311
 PyYAML==6.0.3
 requests==2.32.5
