@@ -7,9 +7,9 @@ SALES / RETAIL POS DATASET - EXPLORATORY DATA ANALYSIS
 Total Sales Transactions: 5,019
 Date Range: 2025-01-01 08:00:00 to 2025-10-30 16:00:00
 Total Units Sold: 334,264
-Total Revenue: $455,317.69
+Total Revenue: $334,264.00
 Average Transaction Size: 66.6 units
-Average Price: $1.36
+Average Price: $1.00
 Unique Retailers: 200
 Regions: 5 - Harare Urban, Manicaland, Mashonaland Central, Mashonaland East, Mashonaland West
 Multi-SKU columns: soft_white, high_energy_brown, whole_grain_loaf, low_gi_seed_loaf
@@ -21,60 +21,60 @@ Sales without Promotions: 3,763 (75.0%)
 Unique Promotions: 4
 
 Promotion vs Non-Promotion Performance:
-               quantity_sold           revenue         retail_price
-                         sum   mean        sum    mean         mean
-promotion_flag                                                     
-0                     236371  62.81  321894.56   85.54         1.36
-1                      97893  77.94  133423.13  106.23         1.36
+               quantity_sold          revenue        retail_price
+                         sum   mean       sum   mean         mean
+promotion_flag                                                   
+0                     236371  62.81  236371.0  62.81          1.0
+1                      97893  77.94   97893.0  77.94          1.0
 
-✅ Promotion Uplift: +24.1% quantity, +24.2% revenue per transaction
+✅ Promotion Uplift: +24.1% quantity, +24.1% revenue per transaction
 
 Top Promotions by Sales Volume:
-                        Units Sold   Revenue  Transactions
-promotion_name                                            
-Independence Day Promo       26675  36275.94           341
-Easter Promo                 24702  33522.22           318
-Heroes Day Promo             23553  32194.34           304
-Christmas Promo              22963  31430.63           293
+                        Units Sold  Revenue  Transactions
+promotion_name                                           
+Independence Day Promo       26675  26675.0           341
+Easter Promo                 24702  24702.0           318
+Heroes Day Promo             23553  23553.0           304
+Christmas Promo              22963  22963.0           293
 
 🌍 REGIONAL DEMAND ANALYSIS
 --------------------------------------------------------------------------------
                      Units Sold  ...  Avg Revenue/Transaction
 region                           ...                         
-Mashonaland West         113597  ...                    91.29
-Harare Urban              78117  ...                    90.07
-Mashonaland Central       55444  ...                    89.07
-Mashonaland East          53815  ...                    92.29
-Manicaland                33291  ...                    90.59
+Mashonaland West         113597  ...                    66.98
+Harare Urban              78117  ...                    65.98
+Mashonaland Central       55444  ...                    65.77
+Mashonaland East          53815  ...                    67.86
+Manicaland                33291  ...                    66.18
 
 [5 rows x 6 columns]
 
 🍞 SKU PERFORMANCE ANALYSIS
 --------------------------------------------------------------------------------
-                 SKU  Units Sold    Revenue  Transactions  % of Total Units
-1  High Energy Brown       86216  115601.37          3751         25.792787
-3   Low Gi Seed Loaf       82935  118616.03          3702         24.811227
-2   Whole Grain Loaf       82789  113963.82          3676         24.767549
-0         Soft White       82324  107136.47          3676         24.628437
+                 SKU  Units Sold  Revenue  Transactions  % of Total Units
+1  High Energy Brown       86216  86216.0          3751         25.792787
+3   Low Gi Seed Loaf       82935  82935.0          3702         24.811227
+2   Whole Grain Loaf       82789  82789.0          3676         24.767549
+0         Soft White       82324  82324.0          3676         24.628437
 
 ⏰ TEMPORAL DEMAND PATTERNS
 --------------------------------------------------------------------------------
 Sales by Day of Week:
-           Units   Revenue  Transactions
-day_name                                
-Monday     46868  63787.00           710
-Tuesday    47295  64721.22           706
-Wednesday  47839  65108.24           729
-Thursday   45827  62659.36           695
-Friday     48233  65808.30           707
-Saturday   48881  66067.69           723
-Sunday     49321  67165.88           749
+           Units  Revenue  Transactions
+day_name                               
+Monday     46868  46868.0           710
+Tuesday    47295  47295.0           706
+Wednesday  47839  47839.0           729
+Thursday   45827  45827.0           695
+Friday     48233  48233.0           707
+Saturday   48881  48881.0           723
+Sunday     49321  49321.0           749
 
 Weekday vs Weekend:
-        quantity_sold           revenue       
-                  sum   mean        sum   mean
-Weekday        236062  66.55  322084.12  90.80
-Weekend         98202  66.71  133233.57  90.51
+        quantity_sold          revenue       
+                  sum   mean       sum   mean
+Weekday        236062  66.55  236062.0  66.55
+Weekend         98202  66.71   98202.0  66.71
 
 Hourly Sales Summary:
       Total Units  Avg Units/Sale  Transactions
@@ -103,41 +103,43 @@ Lowest Sales Hour: 21:00 (80 units)
 Price Statistics by Retailer (Top 10):
              Min Price  Avg Price  Max Price  Std Dev
 retailer_id                                          
-STORE_001         1.16       1.31       1.58     0.11
-STORE_002         1.18       1.38       1.60     0.12
-STORE_003         1.13       1.36       1.68     0.12
-STORE_004         1.12       1.37       1.68     0.13
-STORE_005         1.22       1.35       1.53     0.09
-STORE_006         1.06       1.32       1.66     0.15
-STORE_007         1.13       1.31       1.51     0.13
-STORE_008         1.09       1.37       1.66     0.12
-STORE_009         1.16       1.38       1.61     0.12
-STORE_010         1.02       1.34       1.67     0.16
+STORE_001          1.0        1.0        1.0      0.0
+STORE_002          1.0        1.0        1.0      0.0
+STORE_003          1.0        1.0        1.0      0.0
+STORE_004          1.0        1.0        1.0      0.0
+STORE_005          1.0        1.0        1.0      0.0
+STORE_006          1.0        1.0        1.0      0.0
+STORE_007          1.0        1.0        1.0      0.0
+STORE_008          1.0        1.0        1.0      0.0
+STORE_009          1.0        1.0        1.0      0.0
+STORE_010          1.0        1.0        1.0      0.0
 
 🏪 TOP RETAILERS BY SALES VOLUME
 --------------------------------------------------------------------------------
-             Units Sold  Revenue  Transactions  Avg Units/Transaction
-retailer_id                                                          
-STORE_180          2914  3964.17            39                   74.7
-STORE_009          2654  3641.17            34                   78.1
-STORE_194          2616  3509.03            36                   72.7
-STORE_150          2569  3476.75            35                   73.4
-STORE_121          2545  3474.21            37                   68.8
-STORE_018          2536  3442.42            33                   76.8
-STORE_187          2508  3407.83            36                   69.7
-STORE_117          2499  3330.97            37                   67.5
-STORE_130          2456  3450.03            33                   74.4
-STORE_008          2452  3330.84            35                   70.1
-STORE_195          2440  3269.20            37                   65.9
-STORE_029          2435  3288.04            32                   76.1
-STORE_142          2426  3296.40            35                   69.3
-STORE_198          2415  3295.53            33                   73.2
-STORE_153          2401  3326.86            35                   68.6
-STORE_116          2397  3223.57            33                   72.6
-STORE_155          2369  3209.49            35                   67.7
-STORE_189          2367  3221.11            36                   65.8
-STORE_138          2363  3177.88            37                   63.9
-STORE_105          2326  3144.63            30                   77.5
+             Units Sold  ...  Avg Units/Transaction
+retailer_id              ...                       
+STORE_180          2914  ...                   74.7
+STORE_009          2654  ...                   78.1
+STORE_194          2616  ...                   72.7
+STORE_150          2569  ...                   73.4
+STORE_121          2545  ...                   68.8
+STORE_018          2536  ...                   76.8
+STORE_187          2508  ...                   69.7
+STORE_117          2499  ...                   67.5
+STORE_130          2456  ...                   74.4
+STORE_008          2452  ...                   70.1
+STORE_195          2440  ...                   65.9
+STORE_029          2435  ...                   76.1
+STORE_142          2426  ...                   69.3
+STORE_198          2415  ...                   73.2
+STORE_153          2401  ...                   68.6
+STORE_116          2397  ...                   72.6
+STORE_155          2369  ...                   67.7
+STORE_189          2367  ...                   65.8
+STORE_138          2363  ...                   63.9
+STORE_105          2326  ...                   77.5
+
+[20 rows x 4 columns]
 
 🎯 KEY INSIGHTS & ACTION ITEMS
 ================================================================================

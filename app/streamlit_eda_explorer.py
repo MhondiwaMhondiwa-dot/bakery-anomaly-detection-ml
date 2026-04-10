@@ -913,8 +913,8 @@ VIZ_EXPLANATIONS = {
     },
     'sales_pos_promotion_effectiveness.png': {
         'title': '🎯 Promotion Effectiveness Analysis',
-        'explanation': 'Dual bar chart comparing average units sold (left) and average revenue (right) per transaction with vs without promotions. **CRITICAL FINDING:** Promotions deliver +39.1% quantity uplift and +26.8% revenue uplift. Proves promotion ROI is positive and should be expanded strategically.',
-        'key_points': ['• **Left chart:** Avg units per transaction (No Promo: 30.8, With Promo: 42.8)', '• **Right chart:** Avg revenue per transaction (No Promo: $45.85, With Promo: $58.13)', '• **Green bars:** With Promotion (higher is better)', '• **Red bars:** No Promotion (baseline)', '• **Uplift calculation:** (Promo / No Promo) - 1', '• **Action:** Expand promotions during slow demand periods', '• **Best promotions:** Women\'s Day, Africa Day, Independence Day']
+        'explanation': 'Dual bar chart comparing average units sold (left) and average revenue (right) per transaction with vs without promotions. **CRITICAL FINDING:** Promotions deliver +24.1% quantity uplift and +24.1% revenue uplift (at fixed $1.00/loaf price). Proves promotion ROI is positive and should be expanded strategically.',
+        'key_points': ['• **Left chart:** Avg units per transaction (No Promo: 62.8, With Promo: 77.9)', '• **Right chart:** Avg revenue per transaction (No Promo: $62.80, With Promo: $77.90)', '• **Green bars:** With Promotion (higher is better)', '• **Red bars:** No Promotion (baseline)', '• **Uplift calculation:** (Promo / No Promo) - 1 = +24.1%', '• **Action:** Expand promotions during slow demand periods', '• **Best promotions:** Women\'s Day, Africa Day, Independence Day']
     },
     'sales_pos_daily_trend.png': {
         'title': '📈 Daily Sales Trend with Moving Average',
@@ -942,9 +942,9 @@ VIZ_EXPLANATIONS = {
         'key_points': ['• **X-axis:** Regions', '• **Y-axis:** SKUs', '• **Color intensity:** Units sold (red = high demand)', '• **Annotations:** Exact units sold per cell', '• **Use case:** Regional dispatch optimization', '• **Action:** Allocate high-demand SKUs to high-volume regions', '• **Insights:** Identify mismatches between dispatch and demand', '• **Strategy:** Customize SKU mix per region for reduced waste']
     },
     'sales_pos_price_distribution.png': {
-        'title': '💲 Price Distribution by Top 10 SKUs',
-        'explanation': 'Box plot showing price range for each SKU. **Key insights:** Family Loaf has highest avg price ($2.20), while High Energy Brown/White are lowest ($1.31). Tight boxes = consistent pricing; wide boxes = price variability (promotions, regional differences). Outliers indicate special pricing events.',
-        'key_points': ['• **X-axis:** Price ($)', '• **Y-axis:** SKU names', '• **Box:** Interquartile range (25th-75th percentile)', '• **Line in box:** Median price', '• **Whiskers:** Price range (min/max)', '• **Dots:** Outliers (unusual prices)', '• **Use case:** Price elasticity analysis, promotion strategy', '• **Action:** Test price sensitivity for high-margin SKUs']
+        'title': '💲 Retailer Revenue Distribution & Fixed Pricing Model',
+        'explanation': 'Left: Histogram of total revenue per retailer across 200 stores (uniform $1.00/loaf). Mean $1,671, Median $1,631 — right-skewed distribution shows a few high-volume retailers. Right: Fixed pricing model bar chart — Baker\'s Inn transfer price $0.93 → $0.07 retailer margin → $1.00 retail price. **All 4 SKUs sold at identical prices with zero variation.**',
+        'key_points': ['• **Left chart:** Revenue distribution across 200 retailers ($1.00/loaf)', '• **Right chart:** Transfer $0.93 → Margin $0.07 → Retail $1.00', '• **Mean retailer revenue:** $1,671 | **Median:** $1,631', '• **Top retailer:** STORE_180 (~$2,914 revenue)', '• **Fixed pricing:** All SKUs — Soft White, High Energy Brown, Whole Grain, Low GI Seed — at $1.00 retail', '• **Retailer margin:** 7.5% ($0.07 per loaf)', '• **Use case:** Pricing compliance monitoring, margin analysis', '• **Action:** Identify low-volume retailers for targeted promotions']
     },
     'sales_pos_top_retailers.png': {
         'title': '🏪 Top 20 Retailers by Revenue',

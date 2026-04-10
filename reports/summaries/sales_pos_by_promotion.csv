@@ -1,5 +1,5 @@
 promotion_name,quantity_sold_sum,quantity_sold_mean,quantity_sold_count,revenue_sum,revenue_mean,retailer_id_nunique
-Independence Day Promo,26675,78.23,341,36275.94,106.38,163
-Easter Promo,24702,77.68,318,33522.22,105.42,161
-Heroes Day Promo,23553,77.48,304,32194.34,105.9,152
-Christmas Promo,22963,78.37,293,31430.63,107.27,154
+Independence Day Promo,26675,78.23,341,26675.0,78.23,163
+Easter Promo,24702,77.68,318,24702.0,77.68,161
+Heroes Day Promo,23553,77.48,304,23553.0,77.48,152
+Christmas Promo,22963,78.37,293,22963.0,78.37,154

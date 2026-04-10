@@ -13,7 +13,7 @@ int32             1
 Name: count, dtype: int64
 
 Missing values:
-route_id    7400
+route_id    1400
 dtype: int64
 
 Movement Types:

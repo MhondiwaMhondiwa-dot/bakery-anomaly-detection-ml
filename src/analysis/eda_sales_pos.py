@@ -545,78 +545,58 @@ def visualizations(df):
     else:
         plt.close()
     
-    # 9. Price distribution — histogram with explicit numeric bins
-    price_col_for_viz = None
-    for _cand in ['retail_price', 'bakers_inn_price']:
-        if _cand in df.columns and pd.api.types.is_numeric_dtype(df[_cand]) and df[_cand].std() > 0:
-            price_col_for_viz = _cand
-            break
+    # 9. Pricing model & retailer revenue distribution
+    # All bread types are sold at a fixed $1.00 retail price / $0.93 transfer price.
+    # This chart shows the pricing model and how revenue is distributed across retailers.
+    RETAIL_PRICE  = 1.00
+    TRANSFER_PRICE = 0.93
+    MARGIN_PER_LOAF = round(RETAIL_PRICE - TRANSFER_PRICE, 2)
 
     fig, axes = plt.subplots(1, 2, figsize=(14, 6))
 
-    # Left: histogram of transaction-level price
-    if price_col_for_viz:
-        prices = df[price_col_for_viz].dropna()
-        pmin, pmax = prices.min(), prices.max()
-        bins = np.linspace(pmin, pmax, 15)
-        counts, edges = np.histogram(prices, bins=bins)
-        labels = [f"${edges[i]:.2f}–\n${edges[i+1]:.2f}" for i in range(len(edges) - 1)]
-        axes[0].bar(range(len(counts)), counts, color='steelblue', edgecolor='white')
-        axes[0].set_xticks(range(len(counts)))
-        axes[0].set_xticklabels(labels, rotation=45, ha='right', fontsize=8)
-        axes[0].set_title(f'Transaction Price Distribution\n({price_col_for_viz})',
-                          fontsize=13, fontweight='bold')
-        axes[0].set_xlabel('Price per Unit ($)', fontsize=11)
-        axes[0].set_ylabel('Transactions', fontsize=11)
-    else:
-        axes[0].text(0.5, 0.5, 'No price data available', ha='center', va='center',
-                     transform=axes[0].transAxes, fontsize=12)
-        axes[0].set_title('Price Distribution', fontsize=13, fontweight='bold')
+    # Left: Retailer revenue distribution histogram (all retailers)
+    retailer_rev_all = (df.groupby('retailer_id')['quantity_sold'].sum() * RETAIL_PRICE).sort_values()
+    axes[0].hist(retailer_rev_all.values, bins=20, color='steelblue', edgecolor='white')
+    axes[0].axvline(retailer_rev_all.mean(), color='red', linestyle='--', linewidth=1.5,
+                    label=f'Mean ${retailer_rev_all.mean():,.0f}')
+    axes[0].axvline(retailer_rev_all.median(), color='orange', linestyle='--', linewidth=1.5,
+                    label=f'Median ${retailer_rev_all.median():,.0f}')
+    axes[0].set_title(f'Retailer Revenue Distribution\n({retailer_rev_all.shape[0]} retailers @ $1.00/loaf)',
+                      fontsize=13, fontweight='bold')
+    axes[0].set_xlabel('Total Revenue per Retailer ($)', fontsize=11)
+    axes[0].set_ylabel('Number of Retailers', fontsize=11)
+    axes[0].legend(fontsize=9)
 
-    # Right: per-SKU estimated revenue (quantity × SKU price)
-    sku_price_map = {
-        'soft_white': 1.05, 'high_energy_brown': 1.25,
-        'whole_grain_loaf': 1.45, 'low_gi_seed_loaf': 1.70,
-    }
-    sku_rev = {}
-    for sku_col, unit_price in sku_price_map.items():
-        if sku_col in df.columns:
-            sku_rev[sku_col.replace('_', ' ').title()] = (df[sku_col] * unit_price).sum()
-    if sku_rev:
-        sku_labels = list(sku_rev.keys())
-        sku_vals   = list(sku_rev.values())
-        colors = ['#4C72B0', '#55A868', '#C44E52', '#8172B2']
-        axes[1].bar(sku_labels, sku_vals, color=colors[:len(sku_labels)], edgecolor='white')
-        axes[1].set_title('Total Revenue by SKU (Period)', fontsize=13, fontweight='bold')
-        axes[1].set_xlabel('SKU', fontsize=11)
-        axes[1].set_ylabel('Total Revenue ($)', fontsize=11)
-        axes[1].tick_params(axis='x', rotation=20)
-        for i, v in enumerate(sku_vals):
-            axes[1].text(i, v * 1.01, f'${v:,.0f}', ha='center', fontsize=9)
-    else:
-        axes[1].text(0.5, 0.5, 'No SKU data available', ha='center', va='center',
-                     transform=axes[1].transAxes, fontsize=12)
+    # Right: Pricing model — transfer vs retail vs margin
+    categories  = ["Baker's Inn\nTransfer Price", 'Retailer\nMargin', 'Retailer\nSelling Price']
+    values_bar  = [TRANSFER_PRICE, MARGIN_PER_LOAF, RETAIL_PRICE]
+    bar_colors  = ['#4C72B0', '#55A868', '#C44E52']
+    bars2 = axes[1].bar(categories, values_bar, color=bar_colors, edgecolor='white', width=0.5)
+    for bar, val in zip(bars2, values_bar):
+        axes[1].text(bar.get_x() + bar.get_width() / 2, bar.get_height() + 0.005,
+                     f'${val:.2f}', ha='center', va='bottom', fontsize=12, fontweight='bold')
+    axes[1].set_title('Fixed Pricing Model (All SKUs)', fontsize=13, fontweight='bold')
+    axes[1].set_ylabel('Price per Loaf ($)', fontsize=11)
+    axes[1].set_ylim(0, 1.20)
+    axes[1].axhline(RETAIL_PRICE, color='grey', linestyle=':', linewidth=1)
+    note = (f"All bread types sold at a\nuniform fixed price.\n"
+            f"Transfer: ${TRANSFER_PRICE:.2f} → Retail: ${RETAIL_PRICE:.2f}\n"
+            f"Margin per loaf: ${MARGIN_PER_LOAF:.2f} ({MARGIN_PER_LOAF/RETAIL_PRICE*100:.0f}%)")
+    axes[1].text(0.97, 0.97, note, transform=axes[1].transAxes,
+                 va='top', ha='right', fontsize=9,
+                 bbox=dict(boxstyle='round,pad=0.4', facecolor='lightyellow', alpha=0.8))
 
-    add_caption(fig, 'Left: distribution of weighted-average retail price per transaction. '
-                     'Right: estimated total revenue contribution per SKU.')
+    add_caption(fig, 'Left: distribution of total revenue earned per retailer (uniform $1.00/loaf). '
+                     'Right: fixed pricing model showing $0.93 transfer price, $0.07 margin, $1.00 retail.')
     plt.tight_layout()
     plt.savefig(FIGURES_DIR / 'sales_pos_price_distribution.png', dpi=300, bbox_inches='tight')
     plt.close()
     logging.info("Saved sales_pos_price_distribution.png")
     
-    # 10. Top 20 retailers by revenue
+    # 10. Top 20 retailers by revenue  (all bread at $1.00/loaf)
     fig, ax = plt.subplots(figsize=(12, 8))
-    # Compute revenue using per-SKU prices for accuracy
-    _sku_price_map = {
-        'soft_white': 1.05, 'high_energy_brown': 1.25,
-        'whole_grain_loaf': 1.45, 'low_gi_seed_loaf': 1.70,
-    }
-    _available_sku_cols = [c for c in _sku_price_map if c in df.columns]
-    if _available_sku_cols:
-        df['_sku_revenue'] = sum(df[c] * _sku_price_map[c] for c in _available_sku_cols)
-        retailer_rev = df.groupby('retailer_id')['_sku_revenue'].sum().sort_values(ascending=True)
-    else:
-        retailer_rev = df.groupby('retailer_id')['revenue'].sum().sort_values(ascending=True)
+    # Fixed $1.00 per loaf for all SKUs
+    retailer_rev = (df.groupby('retailer_id')['quantity_sold'].sum() * 1.00).sort_values(ascending=True)
 
     if not retailer_rev.empty and retailer_rev.dropna().sum() > 0:
         top20 = retailer_rev.tail(20)
